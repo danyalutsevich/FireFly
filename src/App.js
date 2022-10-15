@@ -8,6 +8,8 @@ import WatchList from './Components/Watchlist';
 import Profile from './Components/Profile';
 import Error404 from './Components/Error404';
 
+import "./Components/App.css";
+
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 
@@ -22,7 +24,7 @@ function App() {
       <div>
         <Header username={"Martin Scorsese"} />
       <Routes>
-        <Route path="/home" element={<Home/>}  />
+        <Route path="/" element={<Home/>}  />
         <Route path="/ratings" element={<Ratings/>}  />
         <Route path="/liked" element={<Liked/>}  />
         <Route path="/watchList" element={<WatchList/>}  />
