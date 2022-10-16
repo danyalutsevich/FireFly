@@ -1,0 +1,27 @@
+h1, h2 {
+    position: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 48px;
+    font-family: "Libre Barcode 39 Text";
+    color: white;
+    margin: 10px;
+}
+
+
+.Error404 {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* отцентровать гифку */
+.Error404 img {
+    /* сделать гиф больше по размеру */
+    width: 50%;
+    height: 50%;
+    display: block;
+    margin: 0 auto;
+}
