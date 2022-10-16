@@ -3,8 +3,6 @@
 
 }
 
-
-
 .NavElement a{
     color: black;
     margin: 10px;
@@ -21,10 +19,12 @@
 .NavElement:hover{
     background-color: gray;
 }
+
 img{
     height: 8vh;
     border-radius: 50%;
 }
+
 .Header{
 
     width: 100vw;
