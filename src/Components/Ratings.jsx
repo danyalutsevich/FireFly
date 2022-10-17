@@ -29,7 +29,7 @@ export default function Ratings() {
               <tr key={film.id}>
                 <td>{index + 1}</td>
                 <td>{film.title}</td>
-                <td>{film.rating}</td>
+                <td>{film.imDbRating}</td>
               </tr>
             )
           })}

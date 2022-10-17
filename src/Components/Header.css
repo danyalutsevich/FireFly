@@ -25,6 +25,20 @@ img{
     border-radius: 50%;
 }
 
+table{
+    font-family: "Fira Mono";
+    font-size: 30px;
+    width: 80vw;
+}
+
+thead{
+    background-color: brown;
+}
+
+tr{
+    background-color:blue;
+}
+
 .Header{
 
     width: 100vw;
