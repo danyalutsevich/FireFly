@@ -35,14 +35,25 @@ export default class Film extends React.Component {
       return <div className='ErrorMessage'><p>Error: {error.message}</p></div>;
     }
     else if(isLoaded != true) {
-      return <div className='LoadingMessage'><p>Loading...</p></div>;
+      return <div class="Loading">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>;
     }
     else {
       return (
         <div className='Film'>
           <h1>Most popular movies</h1>
           <ul>
-          {movies.map(movie => (
+          {movies.map((movie,index) => (
             <ol className='List'>
                 <li key={movie.title}>
                   <img src={movie.image} alt={movie.title} />
