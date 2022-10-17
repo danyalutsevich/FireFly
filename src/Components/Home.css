@@ -1,8 +1,59 @@
-/* выровнять div */
-.home h2 {
-    font-size: 2.5rem;
-    color: rgb(111, 111, 111);
-    margin-top: 1rem;
-    font-family:Helvetica, Arial, sans-serif;
-    font-weight: bold;
+body {
+    background-color: #272727;
 }
+.Film h1 {
+    text-align: left;
+    font-family: 'Fira Mono', monospace;
+    font-size: 2.5em;
+    color: white;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+.List {
+    counter-reset: li; 
+    list-style: none; 
+    font: 14px "Fira Mono", monospace;
+    padding: 0;
+    text-shadow: 0 1px 0 rgba(255,255,255,.5);
+}
+.List a {
+        position: relative;
+        display: block;
+        padding: .4em .4em .4em .8em;
+        margin: .5em 0 .5em 2.5em;
+        background: #D3D4DA;
+        color: #444;
+        text-decoration: none;
+        transition: all .3s ease-out;
+}
+
+.List a:hover {background: #DCDDE1;} 
+.List a:before {
+    content: counter(li);
+    counter-increment: li;
+    position: absolute;
+    left: -2.5em;
+    top: 50%;
+    margin-top: -1em;
+    background: #9097A2;
+    height: 2em;
+    width: 2em;
+    line-height: 2em;
+    text-align: center;
+    font-weight: bold;
+    }
+
+.List a:after {
+    position: absolute;
+    content: "";
+    border: .5em solid transparent;
+    left: -1em;
+    top: 50%;
+    margin-top: -.5em;
+    transition: all .3s ease-out;
+    }
+.List a:hover:after {
+    left: -.5em;
+    border-left-color: #9097A2;
+    }

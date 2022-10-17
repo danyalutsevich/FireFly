@@ -13,7 +13,7 @@ export default class Film extends React.Component {
   }
 
   componentDidMount() {
-    fetch("здесь ссылка на апишку откуда брать предложения").then(res=>res.json()).then(
+    fetch(Links.mpm).then(res=>res.json()).then(
       (result)=>{
         this.setState({
           isLoaded: true,
@@ -42,10 +42,13 @@ export default class Film extends React.Component {
         <div className='Film'>
           <h1>Most popular movies</h1>
           <ul>
-            {movies.map(movie => (
-              <li key={movie.title}>
-                {movie.title} {movie.year} {movie.imDbRating}
-              </li>
+          {movies.map(movie => (
+            <ol className='List'>
+                <li key={movie.title}>
+                  <img src={movie.image} alt={movie.title} />
+                  <a href="3">{movie.title} {movie.year} {movie.imDbRating}</a>
+                </li>
+            </ol>
             ))}
           </ul>
         </div>
