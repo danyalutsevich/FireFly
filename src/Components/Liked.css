@@ -1,7 +1,7 @@
 .PageTitle{
     color: white;
     font-family: "Fira Mono";
-    font-size: 6vh;
+    font-size: 4vw;
     margin-left: 3vw;
     margin-top: 20px;
     text-align: left;
@@ -13,9 +13,14 @@
 }
 
 .SortElement{
-    color: white;
-    font-size: 3vh;
+    color:whitesmoke;
+    font-size: 1.3vw;
     margin: 5px;
+}
+
+.material-icons.SortIcon{
+    color: white;
+    font-size: 1.7vw;
 }
 
 .LikedHeader{
@@ -49,7 +54,8 @@
 .SortMethodElement{
     font-size: 1vw;
     background: none;
-    border: none;
+    border: 0.8px solid transparent;
+    text-align: right;
 }
 
 .material-icons{
@@ -67,4 +73,10 @@
 .Sort:hover .DropdownSortMethods{
     display: flex;
     flex-direction: column;
+}
+
+.SortMethodElement:hover{
+    border: 0.8px solid gray;
+
+    border-radius: 12px;
 }
