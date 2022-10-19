@@ -54,12 +54,18 @@ export default class Film extends React.Component {
           <h1>Most popular movies</h1>
           <ul>
           {movies.map((movie,index) => (
+            
             <ol className='List'>
+              
                 <li key={movie.title}>
-                  <img src={movie.image} alt={movie.title} />
+                <div className='rectangle'>
                   <a href="3">{movie.title} {movie.year} {movie.imDbRating}</a>
+                  <img src={movie.image} alt={movie.title} />
+                </div>
                 </li>
+              
             </ol>
+            
             ))}
           </ul>
         </div>

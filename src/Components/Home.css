@@ -57,6 +57,13 @@ body {
     }
   }
 
+img {
+  height: 8em;
+  width: 6em;
+  border-radius: 10px;
+  margin: 1em;
+}
+/*
 .Film h1 {
     text-align: left;
     font-family: 'Fira Mono', monospace;
@@ -113,3 +120,4 @@ body {
     left: -.5em;
     border-left-color: #9097A2;
     }
+    */
