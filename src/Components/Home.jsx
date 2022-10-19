@@ -1,71 +1,48 @@
 import React from "react";
-import Links from './Variables';
+import Links, { MovieDBLinks } from "./Variables";
 import "./Home.css";
+import Loading from "./Loading.jsx";
 
 export default class Film extends React.Component {
-  constructor(props){
-    super (props);
-    this.state={
+  constructor(props) {
+    super(props);
+    this.state = {
       error: null,
       isLoaded: false,
-      movies: []
+      movies: [],
     };
   }
 
   componentDidMount() {
-    fetch(Links.mpm).then(res=>res.json()).then(
-      (result)=>{
-        this.setState({
-          isLoaded: true,
-          movies: result.items
-        });
-      }, 
-      (error)=>{
-        this.setState({
-          isLoaded: true,
-          error
-        });
-      }
-    )
+    /* здесь надо фиксить, много нового, нихуя не понятно. */
   }
 
   render() {
-    const {error, isLoaded, movies} = this.state;
-    if(error){
-      return <div className='ErrorMessage'><p>Error: {error.message}</p></div>;
-    }
-    else if(isLoaded != true) {
-      return <div class="Loading">
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-      <div class="wave"></div>
-    </div>;
-    }
-    else {
+    const { error, isLoaded, movies } = this.state;
+    if (error) {
       return (
-        <div className='Film'>
+        <div className="ErrorMessage">
+          <p>Error: {error.message}</p>
+        </div>
+      );
+    } else if (isLoaded != true) {
+      return <Loading />;
+    } else {
+      return (
+        <div className="Film">
           <h1>Most popular movies</h1>
           <ul>
-          {movies.map((movie,index) => (
-            
-            <ol className='List'>
-              
+            {movies.map((movie, index) => (
+              <ol className="List">
                 <li key={movie.title}>
-                <div className='rectangle'>
-                  <a href="3">{movie.title} {movie.year} {movie.imDbRating}</a>
-                  <img src={movie.image} alt={movie.title} />
-                </div>
+                  <div className="rectangle">
+                    <a href="3">
+                      {movie.title} {movie.year} {movie.imDbRating}
+                    </a>
+                    <img src={movie.image} alt={movie.title} />
+                  </div>
                 </li>
-              
-            </ol>
-            
+              </ol>
             ))}
           </ul>
         </div>
