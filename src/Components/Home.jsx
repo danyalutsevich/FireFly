@@ -13,7 +13,7 @@ export default class Film extends React.Component {
   }
 
   componentDidMount() {
-    fetch("здесь ссылка на апишку откуда брать предложения").then(res=>res.json()).then(
+    fetch(Links.mpm).then(res=>res.json()).then(
       (result)=>{
         this.setState({
           isLoaded: true,
@@ -35,17 +35,37 @@ export default class Film extends React.Component {
       return <div className='ErrorMessage'><p>Error: {error.message}</p></div>;
     }
     else if(isLoaded != true) {
-      return <div className='LoadingMessage'><p>Loading...</p></div>;
+      return <div class="Loading">
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+      <div class="wave"></div>
+    </div>;
     }
     else {
       return (
         <div className='Film'>
           <h1>Most popular movies</h1>
           <ul>
-            {movies.map(movie => (
-              <li key={movie.title}>
-                {movie.title} {movie.year} {movie.imDbRating}
-              </li>
+          {movies.map((movie,index) => (
+            
+            <ol className='List'>
+              
+                <li key={movie.title}>
+                <div className='rectangle'>
+                  <a href="3">{movie.title} {movie.year} {movie.imDbRating}</a>
+                  <img src={movie.image} alt={movie.title} />
+                </div>
+                </li>
+              
+            </ol>
+            
             ))}
           </ul>
         </div>
