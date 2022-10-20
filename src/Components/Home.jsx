@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Links, { MovieDBLinks } from "./Variables";
 import "./Home.css";
+import pagesStyles from "./pages.css";
 import Loading from "./Loading.jsx";
 import TopFilm from "./TopFilm";
 
@@ -41,11 +42,16 @@ export default function Home() {
           })}
         </tbody>
       </table>
-      <div>
-        <button onClick={() => (page > 1 ? setPage(page - 1) : null)}>
-          Previous
+      <div className="pages">
+        <button
+          className="prevButton"
+          onClick={() => (page > 1 ? setPage(page - 1) : null)}
+        >
+          prev
         </button>
-        <button onClick={() => setPage(page + 1)}>Next</button>
+        <button className="nextButton" onClick={() => setPage(page + 1)}>
+          next
+        </button>
       </div>
     </div>
   );

@@ -1,0 +1,18 @@
+.pages {
+  font-family: "Fira mono", monospace;
+  background-color: #272727;
+  color: #272727;
+}
+
+.prevButton,
+.nextButton {
+  background-color: #272727;
+  border: 2px solid #d24d57;
+}
+.prevButton::after {
+  background: #d24d57;
+  -moz-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  -ms-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  -webkit-transform: translateX(-50%) translateY(-50%) rotate(25deg);
+  transform: translateX(-50%) translateY(-50%) rotate(25deg);
+}
