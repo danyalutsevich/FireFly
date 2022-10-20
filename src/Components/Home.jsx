@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Links, { MovieDBLinks } from "./Variables";
 import "./Home.css";
 import Loading from "./Loading.jsx";
+import TopFilm from "./TopFilm";
+
 
 export default function Home() {
   const [films, setFilms] = useState([]);
@@ -11,9 +13,11 @@ export default function Home() {
     fetch(MovieDBLinks.top_rated(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
+
+    console.log(JSON.stringify(films[0]));
   }, [page]);
 
-  if (films === undefined) {
+  if (films.length === 0) {
     return <Loading />;
   }
 
@@ -21,18 +25,24 @@ export default function Home() {
     <div className="Ratings">
       <a href="/error404">Top Rated</a>
 
-      <div className="TopFilm">
-        <img
-          className="MoviePoster"
-          src={MovieDBLinks.image + films[0].poster_path}
-          alt="movie poster"
-        ></img>
-        <div className="TopFilmInfo">
-          <h1>{films[0].original_title}</h1>
-          <p>{films[0].overview}</p>
-        </div>
-      </div>
+    <TopFilm film = {films[0]}/>
 
+      {/* {films.map((film, index) => {
+        return index == 0 ? (
+          <div className="TopFilm">
+            <img
+              className="MoviePoster"
+              src={MovieDBLinks.image + film.poster_path}
+              alt="movie poster"
+            ></img>
+            <div className="TopFilmInfo">
+              <h1>{film.original_title}</h1>
+              <p>{film.overview}</p>
+            </div>
+          </div>
+        ) : null;
+      })} */}
+      
       <table className="Table">
         <thead>
           <tr>
