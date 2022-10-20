@@ -4,7 +4,6 @@ import "./Home.css";
 import Loading from "./Loading.jsx";
 import TopFilm from "./TopFilm";
 
-
 export default function Home() {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
@@ -25,29 +24,21 @@ export default function Home() {
     <div className="Ratings">
       <a href="/error404">Top Rated</a>
 
-    <TopFilm film = {films[0]}/>
+      <TopFilm film={films[0]} />
       <table className="Table">
-        <thead>
-          <tr>
-            <th>Rank</th>
-            <th>Picture</th>
-            <th>Title</th>
-            <th>Rating</th>
-          </tr>
-        </thead>
         <tbody>
           {films.map((film, index) => {
             return (
               <tr key={film.id}>
-                <td>{index + 1 + (page - 1) * films.length}</td>
                 <td className="imageCell">
                   <img
-                    className="MoviePoster"
+                    className="imageFilm"
                     src={MovieDBLinks.image + film.poster_path}
                     alt={index}
                   />
                 </td>
                 <td>{film.original_title}</td>
+                <td>{film.release_date.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
             );
