@@ -26,23 +26,6 @@ export default function Home() {
       <a href="/error404">Top Rated</a>
 
     <TopFilm film = {films[0]}/>
-
-      {/* {films.map((film, index) => {
-        return index == 0 ? (
-          <div className="TopFilm">
-            <img
-              className="MoviePoster"
-              src={MovieDBLinks.image + film.poster_path}
-              alt="movie poster"
-            ></img>
-            <div className="TopFilmInfo">
-              <h1>{film.original_title}</h1>
-              <p>{film.overview}</p>
-            </div>
-          </div>
-        ) : null;
-      })} */}
-      
       <table className="Table">
         <thead>
           <tr>

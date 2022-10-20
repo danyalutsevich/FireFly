@@ -1,50 +1,47 @@
-*{
-    margin: 0;
-
+* {
+  margin: 0;
 }
 
-.NavElement a{
-    color: black;
-    margin: 10px;
-    text-decoration: none !important;
-    font-family: "Fira Mono";
-    font-size: 2vh;
+.NavElement a {
+  color: black;
+  margin: 10px;
+  text-decoration: none !important;
+  font-family: "Fira Mono";
+  font-size: 2vh;
 }
 
-.Logo a{
-    font-family: "Libre Barcode 39 Text";
-    font-size: 10vh;
+.Logo a {
+  font-family: "Libre Barcode 39 Text";
+  font-size: 10vh;
 }
 
-.NavElement:hover{
-    background-color: gray;
+.NavElement:hover {
+  background-color: gray;
 }
 
-img{
-    height: 8vh;
-    border-radius: 50%;
+img {
+  height: 8vh;
+  border-radius: 50%;
 }
 
-table{
-    font-family: "Fira Mono";
-    font-size: 30px;
-    width: 80vw;
+table {
+  font-family: "Fira Mono";
+  font-size: 30px;
+  width: 80vw;
 }
 
-thead{
-    background-color: brown;
+thead {
+  background-color: brown;
 }
 
-tr{
-    background-color:blue;
+tr {
+  background-color: blue;
 }
 
-.Header{
-
-    width: 100vw;
-    display: flex;
-    background-color: white;
-    justify-content: space-around;
-    align-items: center;
-
+.Header {
+  width: 100vw;
+  display: flex;
+  background-color: white;
+  justify-content: space-around;
+  align-items: center;
 }

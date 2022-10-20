@@ -7,14 +7,21 @@ export default function TopFilm(props) {
 
   return (
     <div className="TopFilm">
-      <img
-        className="MoviePoster"
-        src={MovieDBLinks.image + film.poster_path}
-        alt="movie poster"
-      ></img>
       <div className="TopFilmInfo">
-        <h1>{film.original_title}</h1>
-        <p>{film.overview}</p>
+        <img
+          className="MoviePoster"
+          src={MovieDBLinks.image + film.poster_path}
+          alt="movie poster"
+        ></img>
+        <h1></h1>
+        <h1>
+          {film.original_title} ({film.release_date.slice(0, 4)})
+        </h1>
+        <p>Description: {film.overview}</p>
+        <p>
+          <br />
+          FireFly Rating: {film.vote_average}
+        </p>
       </div>
     </div>
   );
