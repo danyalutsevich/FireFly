@@ -12,8 +12,6 @@ export default function Home() {
     fetch(MovieDBLinks.top_rated(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
-
-    console.log(JSON.stringify(films[0]));
   }, [page]);
 
   if (films.length === 0) {
@@ -22,8 +20,6 @@ export default function Home() {
 
   return (
     <div className="Ratings">
-      <a href="/error404">Top Rated</a>
-
       <TopFilm film={films[0]} />
       <table className="Table">
         <tbody>
