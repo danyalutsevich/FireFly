@@ -1,4 +1,5 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
+import Links,{MovieDBLinks} from './Variables';
 
 import "./Liked.css";
 
@@ -7,6 +8,18 @@ import LikedContentCard from "./Liked/LikedContentCard";
 export default function Liked() {
   const [sortMethod, setSortMethod] = useState("by date added")
   const [icon, setIcon] = useState("arrow_upward")
+
+  const [likedFilms, setLikedFilms] = useState([])
+  const [page, setPage] = useState(1)
+
+  useEffect(() => {
+    fetch(MovieDBLinks.top_rated(page)).then(data => data.json()).then(data => setLikedFilms(data.results))
+  }, [page])
+
+  if (likedFilms.length == 0) {
+    return (<div>Loading...</div>)
+  }
+
   return (
   <div>
     <div className="LikedHeader">
@@ -27,7 +40,16 @@ export default function Liked() {
       </div>
     </div>
     <div className="Divider"></div>
-    <LikedContentCard title = "Hello"/>
+    <div className="liked-content">
+    {
+      likedFilms.map((item) => {
+        return(
+        <LikedContentCard key = {item.id} imgSrc = {MovieDBLinks.image + item.poster_path}/>
+        )
+      })
+    }
+    </div>
+
   </div>
   );
 }
