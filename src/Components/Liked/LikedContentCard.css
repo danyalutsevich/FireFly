@@ -1,7 +1,7 @@
 .content-card{
     background-color: white;
     height: auto;
-    width: 13vw;
+    width: 15vw;
     border-radius: 3vw;
     display: inline-flex;
     flex-direction: column;
@@ -15,7 +15,7 @@
 
 .liked-film-img{
     height: auto;
-    width: 100%;
+    width: auto;
     border-radius: 3vw;
     border-bottom-left-radius: 1vw;
     border-bottom-right-radius: 1vw;

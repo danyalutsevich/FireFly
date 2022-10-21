@@ -20,6 +20,8 @@ function App() {
   // setUsername("Martin Scorsese")
 
   return (
+    <div>
+
     <BrowserRouter>
       <div>
         <Header username={"Martin Scorsese"} />
@@ -29,10 +31,11 @@ function App() {
         <Route path="/liked" element={<Liked/>}  />
         <Route path="/watchList" element={<WatchList/>}  />
         <Route path="/profile" element={<Profile/>}  />
-        <Route path="/error404" element={<Error404/>}  />
+        <Route path="*" element={<Error404/>}  />
       </Routes>
       </div>
     </BrowserRouter>
+    </div>
   );
 }
 
