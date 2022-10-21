@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import Links from './Variables';
+import Links, {MovieDBLinks} from './Variables';
 
 import "./Liked.css";
 
