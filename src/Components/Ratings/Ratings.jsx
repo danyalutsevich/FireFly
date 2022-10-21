@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Links, { MovieDBLinks } from '../../Variables';
+import { MovieDBLinks } from '../../Variables';
 import { NavLink } from 'react-router-dom';
 
 import RatingsCSS from "./Ratings.module.scss";
@@ -47,7 +47,10 @@ export function Ratings() {
           })}
         </tbody>
       </table>
-      
+      <div>
+        <button onClick={() => page > 1 ? setPage(page - 1) : null}>{"<"}</button>
+        <button onClick={() => setPage(page + 1)}>{">"}</button>
+      </div>
     </div>
   );
 }

@@ -16,10 +16,8 @@ import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 
 export function App() {
   return (
-    <div>
 
     <BrowserRouter>
-      <div>
         <Header username={"Martin Scorsese"} />
       <Routes>
         <Route path="/" element={<Home/>}  />
@@ -30,9 +28,7 @@ export function App() {
         <Route path="*" element={<Error404/>}  />
         <Route path="/movie/:title" element={<Movie/>}/>
       </Routes>
-      </div>
     </BrowserRouter>
-    </div>
   );
 }
 

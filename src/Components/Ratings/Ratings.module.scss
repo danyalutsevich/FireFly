@@ -3,39 +3,53 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 100vw;
+
+
+    table {
+        font-family: "Fira Mono";
+        font-size: 24px;
+        align-items: center;
+        justify-content: center;
+        color: white;
+    }
+    
+    a {
+        color: white;
+        margin: 10px;
+        text-align: left !important;
+    }
+
+    thead {
+        background-color: brown;
+    }
+
+    tr {
+        background-color: blue;
+    }
+
+    button{
+        background-color: blue;
+        border: none;
+        font-family: "Fira Mono";
+        border-radius: 10px;
+    }
+
+    button:hover{
+        background-color: brown;
+    }
+
+    td,th {
+        text-align: center;
+        border-radius: 10px;
+        align-items: center;
+        justify-items: center;
+        padding: 10px;
+    }
+
+    img {
+        height: 100px;
+        justify-self: center;
+        border-radius: 10px;
+    }
+
 }
-
-.Ratings table{
-    font-family: "Fira Mono";
-    font-size: 24px;
-    width: 80vw;
-    align-items: center;
-    justify-content: center;
-}
-
-.Ratings a {
-    font-family: "Fira Mono";
-    color: white;
-    margin: 10px;
-    text-align: left !important;
-}
-
-.Ratings thead{
-    background-color: brown;
-}
-
-.Ratings tr{
-    background-color:blue;
-}
-
-.Ratings td{
-    text-align: center;
-    max-width: 50vw;
-}
-
-.Ratings img{
-    height: 100px;
-
-}
-
