@@ -1,12 +1,12 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-import { MovieDBLinks } from "./Variables";
+import { MovieDBLinks } from "../../Variables";
 import { useState, useEffect } from "react";
 
-import MovieCSS from "./Movie.module.css";
+import MovieCSS from "./Movie.module.scss";
 
-export default function Movie(props){
+export function Movie(props){
 
     const [movie, setMovie] = useState(undefined);
     

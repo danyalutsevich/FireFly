@@ -1,8 +1,8 @@
 import React from "react";
-import Links, { MovieDBLinks } from "./Variables";
-import TopFilmCSS from "./TopFilm.module.css";
+import Links, { MovieDBLinks } from "../../Variables";
+import TopFilmCSS from "./TopFilm.module.scss";
 
-export default function TopFilm(props) {
+export function TopFilm(props) {
   const { film } = props;
 
   return (

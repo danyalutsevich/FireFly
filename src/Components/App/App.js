@@ -1,20 +1,20 @@
 import React from 'react';
 
-import Header from './Components/Header';
-import Home from './Components/Home';
-import Ratings from './Components/Ratings';
-import Liked from './Components/Liked';
-import WatchList from './Components/Watchlist';
-import Profile from './Components/Profile';
-import Error404 from './Components/Error404';
-import Movie from './Components/Movie';
+import {Header} from '../Header';
+import {Home} from '../Home';
+import {Ratings} from '../Ratings';
+import {Liked} from '../Liked';
+import {Watchlist} from '../Watchlist';
+import {Profile} from '../Profile';
+import {Error404} from '../Error404';
+import {Movie} from '../Movie';
 
-import "./Components/App.module.css";
+import "./App.module.scss";
 
 import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
 
 
-function App() {
+export function App() {
   return (
     <div>
 
@@ -25,7 +25,7 @@ function App() {
         <Route path="/" element={<Home/>}  />
         <Route path="/ratings" element={<Ratings/>}  />
         <Route path="/liked" element={<Liked/>}  />
-        <Route path="/watchList" element={<WatchList/>}  />
+        <Route path="/watchList" element={<Watchlist/>}  />
         <Route path="/profile" element={<Profile/>}  />
         <Route path="*" element={<Error404/>}  />
         <Route path="/movie/:title" element={<Movie/>}/>
@@ -36,4 +36,4 @@ function App() {
   );
 }
 
-export default App;
+

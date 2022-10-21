@@ -1,9 +1,9 @@
 import React from 'react';
-import Links from './Variables';
-import Error404CSS from "./Error404.module.css";
+import Links from '../../Variables';
+import Error404CSS from "./Error404.module.scss";
 
 
-export default function Error404() {
+export function Error404() {
   return (
     // center a div
     <div className={Error404CSS.Error404}>

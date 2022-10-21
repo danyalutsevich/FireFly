@@ -1,8 +1,8 @@
 import React from 'react';
 
-import ProfileCSS from './Profile.module.css';
+import ProfileCSS from './Profile.module.scss';
 
-export default function Profile() {
+export function Profile() {
   return (
   <div>
     <h2>Profile</h2>

@@ -1,7 +1,7 @@
 import React from "react";
-import LoadingCSS from "./Loading.module.css";
+import LoadingCSS from "./Loading.module.scss";
 
-export default function Loading() {
+export function Loading() {
   return (
     <div class={LoadingCSS.Loading}>
       <div class={LoadingCSS.wave}></div>

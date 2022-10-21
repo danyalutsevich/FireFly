@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import Links, { MovieDBLinks } from "./Variables";
+import Links, { MovieDBLinks } from "../../Variables";
 import { NavLink } from "react-router-dom";
 
-import Loading from "./Loading";
-import TopFilm from "./TopFilm";
+import {Loading} from "../Loading";
+import {TopFilm} from "../TopFilm";
 
-import HomeCSS from "./Home.module.css";
+import HomeCSS from "./Home.module.scss";
 
-export default function Home() {
+export function Home() {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
 

@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import Links, { MovieDBLinks } from './Variables';
+import Links, { MovieDBLinks } from '../../Variables';
 import { NavLink } from 'react-router-dom';
 
-import RatingsCSS from "./Ratings.module.css";
+import RatingsCSS from "./Ratings.module.scss";
 
-export default function Ratings() {
+export function Ratings() {
 
   const [films, setFilms] = useState([])
   const [page, setPage] = useState(1)

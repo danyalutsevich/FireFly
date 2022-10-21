@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 
-import LikedCSS from "./Liked.module.css";
+import LikedCSS from "./Liked.module.scss";
 
-import LikedContentCard from "./Liked/LikedContentCard";
+import {LikedContentCard} from "../LikedContentCard";
 
-export default function Liked() {
+export function Liked() {
   const [sortMethod, setSortMethod] = useState("by date added")
   const [icon, setIcon] = useState("arrow_upward")
 

@@ -1,8 +1,8 @@
 import React from 'react';
 
-import LikedContentCardCSS from "./LikedContentCard.module.css";
+import LikedContentCardCSS from "./LikedContentCard.module.scss";
 
-export default function LikedContentCard(props) {
+export function LikedContentCard(props) {
 
     return (<div>
 

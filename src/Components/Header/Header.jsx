@@ -1,9 +1,9 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
-import HeaderCSS from "./Header.module.css";
+import HeaderCSS from "./Header.module.scss";
 
-export default function Header(props) {
+export function Header(props) {
 
     return (
         <div className={HeaderCSS.Header}>
