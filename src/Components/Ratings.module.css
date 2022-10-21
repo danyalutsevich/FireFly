@@ -1,0 +1,41 @@
+.Ratings {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+}
+
+.Ratings table{
+    font-family: "Fira Mono";
+    font-size: 24px;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
+}
+
+.Ratings a {
+    font-family: "Fira Mono";
+    color: white;
+    margin: 10px;
+    text-align: left !important;
+}
+
+.Ratings thead{
+    background-color: brown;
+}
+
+.Ratings tr{
+    background-color:blue;
+}
+
+.Ratings td{
+    text-align: center;
+    max-width: 50vw;
+}
+
+.Ratings img{
+    height: 100px;
+
+}
+
