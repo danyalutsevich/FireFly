@@ -44,12 +44,12 @@ export default function Home() {
       </table>
       <div className="pages">
         <button
-          className="prevButton"
+          className="prevButton prevButtonWhite prevButtonAnimate"
           onClick={() => (page > 1 ? setPage(page - 1) : null)}
         >
           prev
         </button>
-        <button className="nextButton" onClick={() => setPage(page + 1)}>
+        <button className="nextButton nextButtonWhite nextButtonAnimate" onClick={() => setPage(page + 1)}>
           next
         </button>
       </div>
