@@ -14,5 +14,3 @@ export const MovieDBLinks = {
     top_rated: (page) => `https://api.themoviedb.org/3/movie/top_rated?api_key=${MovieDB_API_KEY}&language=en-US&page=${page}`,
     movie: (id) => `https://api.themoviedb.org/3/movie/${id}?api_key=${MovieDB_API_KEY}&language=en-US`,
 }
-
-export default Links
