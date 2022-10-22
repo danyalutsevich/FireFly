@@ -11,6 +11,7 @@
     justify-content: center;
     color: white;
     width: 100%;
+    border-collapse: collapse;
   }
 
   thead {
@@ -18,15 +19,15 @@
     width: 100%;
   }
   th {
-    border-bottom: 2px solid white;
+    border-bottom: 1px solid white;
   }
 
   td {
     text-align: center;
-    border-radius: 10px;
     align-items: center;
     justify-items: center;
-    padding: 10px;
+    padding: 1em;
+    border-top: 1px solid #343434;
   }
   td:first-child {
     border-right: none;
