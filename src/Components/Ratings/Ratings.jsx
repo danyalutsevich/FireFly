@@ -58,7 +58,9 @@ export function Ratings() {
         </tbody>
       </table>
       <div>
-        <button onClick={() => (page > 1 ? setPage(page - 1) : null)}>
+        <button
+          onClick={() => (page > 1 ? setPage(page - 1) : null)}
+        >
           {"<"}
         </button>
         <button onClick={() => setPage(page + 1)}>{">"}</button>

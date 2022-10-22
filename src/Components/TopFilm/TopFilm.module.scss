@@ -8,56 +8,90 @@
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  align-content: center;
+  display: block;
   color: white;
-}
 
-.MoviePoster {
-  width: 15%;
-  height: 90%;
-  float: right;
-  margin: 0 10px 10px 10px;
-  border: 3px solid white;
-  transform: scale(1);
-  transition: 0.5s;
-  border-radius: 5%;
-}
+  .MoviePoster {
+    width: 15%;
+    height: 90%;
+    float: right;
 
-.MoviePoster:hover {
-  transform: scale(1.1);
-  transition: 0.5s;
-  border-radius: 5%;
-}
-.MoviePoster:active {
-  transform: scale(0.9);
-  transition: 0.5s;
-  border-radius: 5%;
-}
+    border: 3px solid white;
+    transform: scale(1);
+    transition: 0.5s;
+    border-radius: 5%;
+  }
 
-.MoviePoster img {
-  width: 100%;
-  height: 100%;
-  border-radius: 20%;
-}
+  .MoviePoster:hover {
+    transform: scale(1.1);
+    transition: 0.5s;
+    border-radius: 5%;
+  }
+  .MoviePoster:active {
+    transform: scale(0.9);
+    transition: 0.5s;
+    border-radius: 5%;
+  }
 
-.TopFilmInfo h1 {
-  font-family: "Fira mono", monospace;
-  font-size: 2.5em;
-  letter-spacing: 10px;
-  text-align: left;
-  vertical-align: top;
-  width: 100%;
-  height: 100%;
-}
+  .MoviePoster img {
+    width: 100%;
+    height: 100%;
+    border-radius: 20%;
+  }
 
-.TopFilmInfo p {
-  font-family: "Fira mono", monospace;
-  font-size: 1.5em;
-  color: white;
-  margin-left: 20px;
-  margin-bottom: 10px;
+  .TopFilmInfo h1 {
+    margin-top: 0;
+    font-family: "Fira mono", monospace;
+    font-size: 2.5em;
+    letter-spacing: 10px;
+    text-align: left;
+    vertical-align: top;
+    width: 100%;
+    height: 100%;
+    margin-bottom: 10px;
+  }
+
+  .TopFilmInfo p {
+    font-family: "Fira mono", monospace;
+    text-decoration: none;
+    vertical-align: top;
+    font-size: 1.5em;
+    color: white;
+    margin-left: 20px;
+    margin-bottom: 10px;
+
+    button {
+      background-color: #292929;
+      color: white;
+      font-family: "Fira mono", monospace;
+      border-radius: 5px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 16px;
+      margin: 4px 2px;
+      margin-left: 0px;
+      margin-bottom: 10px;
+      padding: 5px 10px;
+      transition-duration: 0.2s;
+      cursor: pointer;
+      border: none;
+    }
+
+    button:hover {
+      background-color: #1e1e1e;
+      color: white;
+      font-size: 16px;
+      transition-duration: 0.2s;
+    }
+
+    button:active {
+      background-color: #272727;
+      color: white;
+      transition-duration: 0.2s;
+    }
+
+    button:focus {
+      outline: none;
+    }
+  }
 }
