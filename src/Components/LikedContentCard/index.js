@@ -1,0 +1,1 @@
+export {LikedContentCard} from "./LikedContentCard";
