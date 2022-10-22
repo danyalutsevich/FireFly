@@ -1,0 +1,32 @@
+.Movie {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .Description {
+        display: flex;
+
+        img {
+            height: 400px;
+            margin: 10px;
+        }
+    }
+
+    pre {
+        color: white
+    }
+
+    .Backdrop {
+        position: absolute;
+        width: 80vw;
+
+        img {
+            width: 100%;
+            filter: blur(0.5px);
+        }
+
+        z-index: -1;
+    }
+
+}
