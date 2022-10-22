@@ -13,8 +13,11 @@ export function TopFilm(props) {
         alt="movie poster"
       ></img>
       <div className={TopFilmCSS.TopFilmInfo}>
-        <h1>{film.original_title}</h1>
-        <p>{film.overview}</p>
+        <h1>
+          {film.original_title} ({film.release_date.slice(0, 4)})
+        </h1>
+        <p>Description: {film.overview}</p>
+        <p>FireFly rating: {film.vote_average}</p>
       </div>
     </div>
   );

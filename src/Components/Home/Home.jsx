@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import Links, { MovieDBLinks } from "../../Variables";
 import { NavLink } from "react-router-dom";
 
-import {Loading} from "../Loading";
-import {TopFilm} from "../TopFilm";
+import { Loading } from "../Loading";
+import { TopFilm } from "../TopFilm";
 
 import HomeCSS from "./Home.module.scss";
 
@@ -24,8 +24,7 @@ export function Home() {
   }
 
   return (
-    <div className={HomeCSS.Ratings}>
-
+    <div className={HomeCSS.Home}>
       <TopFilm film={films[0]} />
 
       <table className={HomeCSS.Table}>
@@ -34,6 +33,7 @@ export function Home() {
             <th>Rank</th>
             <th>Picture</th>
             <th>Title</th>
+            <th>Year</th>
             <th>Rating</th>
           </tr>
         </thead>
@@ -49,7 +49,12 @@ export function Home() {
                     alt={index}
                   />
                 </td>
-                <td>{film.original_title}</td>
+                <td>
+                  <NavLink to={`/movie/${film.id}`} className={HomeCSS.Link}>
+                    {film.original_title}
+                  </NavLink>{" "}
+                </td>
+                <td>{film.release_date.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
             );
