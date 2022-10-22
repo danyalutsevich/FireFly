@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TopFilm } from "../TopFilm";
+import { Footer } from "../Footer/Footer";
 
 import HomeCSS from "./Home.module.scss";
 
@@ -67,6 +68,7 @@ export function Home() {
         </button>
         <button onClick={() => setPage(page + 1)}>Next</button>
       </div>
+      <Footer />
     </div>
   );
 }
