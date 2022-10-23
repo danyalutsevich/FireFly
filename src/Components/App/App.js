@@ -8,6 +8,7 @@ import { Watchlist } from "../Watchlist";
 import { Profile } from "../Profile";
 import { Error404 } from "../Error404";
 import { Movie } from "../Movie";
+import { Footer } from "../Footer";
 
 import "./App.module.scss";
 
