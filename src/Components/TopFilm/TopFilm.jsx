@@ -23,8 +23,7 @@ export function TopFilm(props) {
           <button
             type="button"
             onClick={() => {
-              if (isMore) setIsMore(false);
-              else setIsMore(true);
+              setIsMore(!isMore);
             }}
           >
             {isMore ? "Hide" : "..."}

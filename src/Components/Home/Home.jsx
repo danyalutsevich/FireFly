@@ -26,6 +26,7 @@ export function Home() {
     <div className={HomeCSS.Home}>
       <TopFilm film={films[0]} />
 
+
       <table className={HomeCSS.Table}>
         <thead>
           <tr>
@@ -67,11 +68,13 @@ export function Home() {
         >
           prev
         </button>
-        <button className="nextButton nextButtonWhite nextButtonAnimate" onClick={() => setPage(page + 1)}>
+        <button
+          className="nextButton nextButtonWhite nextButtonAnimate"
+          onClick={() => setPage(page + 1)}
+        >
           next
         </button>
       </div>
-      <Footer />
     </div>
   );
 }
