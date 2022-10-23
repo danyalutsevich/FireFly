@@ -11,6 +11,7 @@ const Links = {
 // API docs https://developers.themoviedb.org/3
 export const MovieDBLinks = {
     image: "https://image.tmdb.org/t/p/w500",
+    image_original: "https://image.tmdb.org/t/p/original",
     top_rated: (page) => `https://api.themoviedb.org/3/movie/top_rated?api_key=${MovieDB_API_KEY}&language=en-US&page=${page}`,
     movie: (id) => `https://api.themoviedb.org/3/movie/${id}?api_key=${MovieDB_API_KEY}&language=en-US`,
 }

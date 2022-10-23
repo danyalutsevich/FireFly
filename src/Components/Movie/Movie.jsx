@@ -10,7 +10,6 @@ import MovieCSS from "./Movie.module.scss";
 export function Movie(props) {
 
     const [movie, setMovie] = useState(undefined);
-    // const [id, setId] = useState(undefined);
 
     const { id } = useParams();
 
@@ -30,23 +29,23 @@ export function Movie(props) {
 
         <div className={MovieCSS.Movie}>
             <div className={MovieCSS.Backdrop}>
-                <img src={MovieDBLinks.image + movie.backdrop_path}></img>
+                <div className={MovieCSS.Blur}></div>
+                <img src={MovieDBLinks.image_original + movie.backdrop_path}/>
             </div>
             <div className={MovieCSS.Description}>
                 <div>
-                    <img src={MovieDBLinks.image + movie.poster_path} alt="poster"></img>
+                    <img  src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>
                 </div>
                 <div>
                     <h1>{movie.title}</h1>
-                    <p>{movie.overview}</p>
-                </div>
-                <div>
-                    {/* <p>Directed by {movie}</p> */}
-                    <p>{movie.release_date.slice(0, 4)}</p>
+                    <h2>{movie.release_date.slice(0, 4)}</h2>
+                    <h2>{movie.overview}</h2>
                 </div>
             </div>
 
-            <pre>{JSON.stringify(movie, undefined, 2)}</pre>
+            {/* <div>
+                <pre>{JSON.stringify(movie, undefined, 2)}</pre>
+            </div> */}
         </div>
     )
 

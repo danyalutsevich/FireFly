@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond&family=Fira+Mono&family=Libre+Barcode+39+Text&display=swap');
+
 .Movie {
 
     display: flex;
@@ -6,10 +8,21 @@
 
     .Description {
         display: flex;
+        margin: 40px;
 
         img {
-            height: 400px;
+            height: 30vw;
             margin: 10px;
+        }
+
+        h1 {
+            font-family: "EB Garamond";
+            color: white;
+        }
+
+        h2 {
+            width: 40vw;
+            font-family: "Fira Mono";
         }
     }
 
@@ -18,15 +31,17 @@
     }
 
     .Backdrop {
-        position: absolute;
-        width: 80vw;
+        width: 60vw;
 
         img {
             width: 100%;
-            filter: blur(0.5px);
         }
 
-        z-index: -1;
+        .Blur {
+            height: 100%;
+            width: 100%;
+            position: relative;
+        }
     }
 
 }
