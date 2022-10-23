@@ -1,59 +1,60 @@
+.Home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-.Film h1 {
-  text-align: left;
-  font-family: "Fira Mono", monospace;
-  font-size: 2.5em;
-  color: white;
-  margin: 10px;
-  vertical-align: middle;
-}
+  Table {
+    font-family: "Fira Mono";
+    font-size: 24px;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 100%;
+    border-collapse: collapse;
+  }
 
-.List {
-  counter-reset: li;
-  list-style: none;
-  font: 14px "Fira Mono", monospace;
-  padding: 0;
-  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
-}
-.List a {
-  position: relative;
-  display: block;
-  padding: 0.4em 0.4em 0.4em 0.8em;
-  margin: 0.5em 0 0.5em 2.5em;
-  background: #d3d4da;
-  color: #444;
-  text-decoration: none;
-  transition: all 0.3s ease-out;
-}
+  thead {
+    margin-right: 20px;
+    width: 100%;
+  }
+  th {
+    border-bottom: 1px solid white;
+  }
 
-.List a:hover {
-  background: #dcdde1;
-}
-.List a:before {
-  content: counter(li);
-  counter-increment: li;
-  position: absolute;
-  left: -2.5em;
-  top: 50%;
-  margin-top: -1em;
-  background: #9097a2;
-  height: 2em;
-  width: 2em;
-  line-height: 2em;
-  text-align: center;
-  font-weight: bold;
-}
+  td {
+    text-align: center;
+    align-items: center;
+    justify-items: center;
+    padding: 1em;
+    border-top: 1px solid #343434;
+  }
+  td:first-child {
+    border-right: none;
+  }
+  td:nth-child(2) {
+    text-align: left;
+  }
 
-.List a:after {
-  position: absolute;
-  content: "";
-  border: 0.5em solid transparent;
-  left: -1em;
-  top: 50%;
-  margin-top: -0.5em;
-  transition: all 0.3s ease-out;
-}
-.List a:hover:after {
-  left: -0.5em;
-  border-left-color: #9097a2;
+  .MoviePoster {
+    height: 150px;
+    border-radius: 10px;
+    width: auto;
+  }
+
+  .Link:hover {
+    border-bottom: 1px solid white;
+  }
+
+  .Link {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: "Fira Mono";
+    margin: 10px;
+  }
+  .Link:visited {
+    color: gray;
+    border-bottom: 1px solid darkgray;
+  }
 }

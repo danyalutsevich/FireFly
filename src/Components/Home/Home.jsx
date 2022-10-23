@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Links, { MovieDBLinks } from "../../Variables";
 import { NavLink } from "react-router-dom";
 
-import {Loading} from "../Loading";
-import {TopFilm} from "../TopFilm";
+import { Loading } from "../Loading";
+import { TopFilm } from "../TopFilm";
+import { Footer } from "../Footer/Footer";
 
 import HomeCSS from "./Home.module.scss";
 
@@ -15,8 +16,6 @@ export function Home() {
     fetch(MovieDBLinks.top_rated(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
-
-    console.log(JSON.stringify(films[0]));
   }, [page]);
 
   if (films.length === 0) {
@@ -24,9 +23,9 @@ export function Home() {
   }
 
   return (
-    <div className={HomeCSS.Ratings}>
-
+    <div className={HomeCSS.Home}>
       <TopFilm film={films[0]} />
+
 
       <table className={HomeCSS.Table}>
         <thead>
@@ -34,6 +33,7 @@ export function Home() {
             <th>Rank</th>
             <th>Picture</th>
             <th>Title</th>
+            <th>Year</th>
             <th>Rating</th>
           </tr>
         </thead>
@@ -49,18 +49,31 @@ export function Home() {
                     alt={index}
                   />
                 </td>
-                <td>{film.original_title}</td>
+                <td>
+                  <NavLink to={`/movie/${film.id}`} className={HomeCSS.Link}>
+                    {film.original_title}
+                  </NavLink>{" "}
+                </td>
+                <td>{film.release_date.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
             );
           })}
         </tbody>
       </table>
-      <div>
-        <button onClick={() => (page > 1 ? setPage(page - 1) : null)}>
-          Previous
+      <div className="pages">
+        <button
+          className="prevButton prevButtonWhite prevButtonAnimate"
+          onClick={() => (page > 1 ? setPage(page - 1) : null)}
+        >
+          prev
         </button>
-        <button onClick={() => setPage(page + 1)}>Next</button>
+        <button
+          className="nextButton nextButtonWhite nextButtonAnimate"
+          onClick={() => setPage(page + 1)}
+        >
+          next
+        </button>
       </div>
     </div>
   );

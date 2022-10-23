@@ -29,12 +29,13 @@ export function Movie(props) {
 
         <div className={MovieCSS.Movie}>
             <div className={MovieCSS.Backdrop}>
-                <div className={MovieCSS.Blur}></div>
-                <img src={MovieDBLinks.image_original + movie.backdrop_path}/>
+                <img src={MovieDBLinks.image_original + movie.backdrop_path} />
+                <div></div>
+
             </div>
             <div className={MovieCSS.Description}>
                 <div>
-                    <img  src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>
+                    <img src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>
                 </div>
                 <div>
                     <h1>{movie.title}</h1>

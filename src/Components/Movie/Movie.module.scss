@@ -31,16 +31,26 @@
     }
 
     .Backdrop {
+
         width: 60vw;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
 
         img {
             width: 100%;
+            // opacity: 0;
+            // filter: blur(1px)
         }
 
-        .Blur {
+        padding: 50px;
+        div {
+            position: absolute;
+            top: 0px;
             height: 100%;
             width: 100%;
-            position: relative;
+            box-shadow: 0 0 80px 150px inset #272727;
         }
     }
 

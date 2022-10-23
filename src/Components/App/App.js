@@ -1,24 +1,23 @@
-import React from 'react';
+import React from "react";
 
-import {Header} from '../Header';
-import {Home} from '../Home';
-import {Ratings} from '../Ratings';
-import {Liked} from '../Liked';
-import {Watchlist} from '../Watchlist';
-import {Profile} from '../Profile';
-import {Error404} from '../Error404';
-import {Movie} from '../Movie';
+import { Header } from "../Header";
+import { Home } from "../Home";
+import { Ratings } from "../Ratings";
+import { Liked } from "../Liked";
+import { Watchlist } from "../Watchlist";
+import { Profile } from "../Profile";
+import { Error404 } from "../Error404";
+import { Movie } from "../Movie";
+import { Footer } from "../Footer";
 
-import "./App.module.scss";
+import AppCSS from "./App.module.scss";
 
-import { BrowserRouter, Route, Routes, NavLink } from 'react-router-dom';
-
+import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
 export function App() {
   return (
-
     <BrowserRouter>
-        <Header username={"Martin Scorsese"} />
+      <Header username={"Martin Scorsese"} />
       <Routes>
         <Route path="/" element={<Home/>}  />
         <Route path="/ratings" element={<Ratings/>}  />
@@ -28,8 +27,7 @@ export function App() {
         <Route path="*" element={<Error404/>}  />
         <Route path="/movie/:id" element={<Movie/>}/>
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }
-
-
