@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { MovieDBLinks } from "../../Variables";
 import { Loading } from "../Loading"
+import { Cast } from "./Cast";
 
 
 import MovieCSS from "./Movie.module.scss";
@@ -30,8 +31,7 @@ export function Movie(props) {
         <div className={MovieCSS.Movie}>
             <div className={MovieCSS.Backdrop}>
                 <img src={MovieDBLinks.image_original + movie.backdrop_path} />
-                <div></div>
-
+                <div className={MovieCSS.EdgeBlur}></div>
             </div>
             <div className={MovieCSS.Description}>
                 <div>
@@ -43,6 +43,7 @@ export function Movie(props) {
                     <h2>{movie.overview}</h2>
                 </div>
             </div>
+            <Cast movie_id={id} />
 
             {/* <div>
                 <pre>{JSON.stringify(movie, undefined, 2)}</pre>

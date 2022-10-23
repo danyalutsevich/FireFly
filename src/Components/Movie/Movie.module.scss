@@ -8,46 +8,44 @@
 
     .Description {
         display: flex;
-        margin: 40px;
 
         img {
-            height: 30vw;
-            margin: 10px;
+            height: 20vw;
+            min-width: auto;
+            margin: 0 40px;
+            border-radius: 5px;
         }
 
         h1 {
             font-family: "EB Garamond";
             color: white;
+            margin: 10px 0;
         }
 
         h2 {
+            margin: 10px 0;
+            color: white;
             width: 40vw;
             font-family: "Fira Mono";
         }
     }
 
-    pre {
-        color: white
-    }
-
     .Backdrop {
 
-        width: 60vw;
+        height: 40vh;
+        min-height: 400px;
         position: relative;
         display: flex;
         align-items: center;
         justify-content: center;
+        padding: 50px;
 
         img {
-            width: 100%;
-            // opacity: 0;
-            // filter: blur(1px)
+            height: 100%;
         }
 
-        padding: 50px;
-        div {
+        .EdgeBlur {
             position: absolute;
-            top: 0px;
             height: 100%;
             width: 100%;
             box-shadow: 0 0 80px 150px inset #272727;
