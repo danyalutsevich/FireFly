@@ -30,7 +30,7 @@ export function Movie(props) {
 
         <div className={MovieCSS.Movie}>
             <div className={MovieCSS.Backdrop}>
-                <img src={MovieDBLinks.image_original + movie.backdrop_path} />
+                <img src={MovieDBLinks.image_original + movie.backdrop_path} alt="backdrop" />
                 <div className={MovieCSS.EdgeBlur}></div>
             </div>
             <div className={MovieCSS.Description}>
@@ -38,16 +38,18 @@ export function Movie(props) {
                     <img src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>
                 </div>
                 <div>
-                    <h1>{movie.title}</h1>
-                    <h2>{movie.release_date.slice(0, 4)}</h2>
-                    <h2>{movie.overview}</h2>
+                    <div className={MovieCSS.Title}>
+                        <h1>{movie.title}</h1>
+                        <h3>{movie.release_date.slice(0, 4)}</h3>
+                        <h2>Rating: {movie.vote_average}</h2>
+                    </div>
+                    <div className={MovieCSS.About}>
+                        <h2>{movie.tagline}</h2>
+                        <h2>{movie.overview}</h2>
+                    </div>
                 </div>
             </div>
-            <Cast movie_id={id} />
-
-            {/* <div>
-                <pre>{JSON.stringify(movie, undefined, 2)}</pre>
-            </div> */}
+            <Cast movie_id={id} companies={movie.production_companies} />
         </div>
     )
 
