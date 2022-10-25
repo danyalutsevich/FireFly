@@ -1,0 +1,58 @@
+.Cast {
+    font-family: "Fira Mono";
+
+    button {
+        padding: 10px;
+        margin: 5px;
+        font-family: "Fira Mono";
+        font-weight: 700;
+        text-decoration: underline;
+        border: 0;
+        border-radius: 10px;
+        background-color: #8b8b8b;
+    }
+
+    button:hover {
+        background-color: #494949;
+    }
+
+    .Tabs {
+        display: flex;
+        width: 80vw;
+        padding: 10px 0;
+        flex-wrap: wrap;
+
+        .Tab {
+
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            background-color: #8b8b8b;
+            border-bottom: 4px solid;
+            border-color: #494949;
+            border-radius: 10px;
+            margin: 5px;
+            padding: 5px;
+
+            img {
+                height: 50px;
+                border-radius: 5px;
+            }
+
+            object {
+                height: 50px;
+                border-radius: 5px;
+                margin-right: 5px;
+            }
+
+            h2 {
+                font-size: 1vw;
+            }
+
+            h3 {
+                font-size: 0.7vw;
+            }
+        }
+
+    }
+}

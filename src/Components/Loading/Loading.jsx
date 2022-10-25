@@ -3,17 +3,17 @@ import LoadingCSS from "./Loading.module.scss";
 
 export function Loading() {
   return (
-    <div class={LoadingCSS.Loading}>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
-      <div class={LoadingCSS.wave}></div>
+    <div className={LoadingCSS.Loading}>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
+      <div className={LoadingCSS.wave}></div>
     </div>
   );
 }

@@ -14,7 +14,7 @@ export function Ratings() {
       .then((data) => setFilms(data.results));
   }, [page]);
 
-  if (films === undefined) {
+  if (films.length === 0) {
     return <div>Loading...</div>;
   }
 

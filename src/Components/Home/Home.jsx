@@ -13,7 +13,7 @@ export function Home() {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
-    fetch(MovieDBLinks.top_rated(page))
+    fetch(MovieDBLinks.popular(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
   }, [page]);

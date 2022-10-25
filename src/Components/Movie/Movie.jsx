@@ -1,27 +1,55 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { MovieDBLinks } from "../../Variables";
-import { useState, useEffect } from "react";
+import { Loading } from "../Loading"
+import { Cast } from "./Cast";
+
 
 import MovieCSS from "./Movie.module.scss";
 
-export function Movie(props){
+export function Movie(props) {
 
     const [movie, setMovie] = useState(undefined);
-    
+
     const { id } = useParams();
 
-    useEffect(()=>{
-        console.log(id);
-        fetch(MovieDBLinks.movie(4935)).then(data => data.json()).then(data => setMovie(data))
-    },[id])
+    useEffect(() => {
+
+        if (id) {
+            fetch(MovieDBLinks.movie(id)).then(data => data.json()).then(data => setMovie(data))
+        }
+    }, [id])
+
+    if (movie === undefined) {
+        return <Loading />
+    }
+
 
     return (
 
-        <div>
-            <h1 className={MovieCSS.title}>Movie</h1>
-            <h2>{JSON.stringify(movie)}</h2>
+        <div className={MovieCSS.Movie}>
+            <div className={MovieCSS.Backdrop}>
+                <img src={MovieDBLinks.image_original + movie.backdrop_path} alt="backdrop" />
+                <div className={MovieCSS.EdgeBlur}></div>
+            </div>
+            <div className={MovieCSS.Description}>
+                <div>
+                    <img src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>
+                </div>
+                <div>
+                    <div className={MovieCSS.Title}>
+                        <h1>{movie.title}</h1>
+                        <h3>{movie.release_date.slice(0, 4)}</h3>
+                        <h2>Rating: {movie.vote_average}</h2>
+                    </div>
+                    <div className={MovieCSS.About}>
+                        <h2>{movie.tagline}</h2>
+                        <h2>{movie.overview}</h2>
+                    </div>
+                </div>
+            </div>
+            <Cast movie_id={id} companies={movie.production_companies} />
         </div>
     )
 
