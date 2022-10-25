@@ -57,4 +57,42 @@
     color: gray;
     border-bottom: 1px solid darkgray;
   }
+
+  .pages button {
+    text-decoration: none;
+    display: inline-block;
+    border: none;
+    width: 140px;
+    height: 45px;
+    line-height: 45px;
+    border-radius: 45px;
+    margin: 10px 20px;
+    font-family: "Fira mono", monospace;
+    font-size: 20px;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+    font-weight: bolder;
+    color: #524f4e;
+    background: white;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+  }
+
+  .pages button:hover {
+    border: none;
+    background: white;
+    box-shadow: 0 15px 20px rgb(67, 67, 67);
+    color: black;
+    font-weight: bold;
+    transform: translateY(-7px);
+  }
+  .pages button:active {
+    border: none;
+    background: white;
+    box-shadow: 0 15px 20px rgb(67, 67, 67);
+    color: black;
+    font-weight: bold;
+    transform: translateY(-7px) scale(0.95);
+  }
 }
