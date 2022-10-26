@@ -9,6 +9,7 @@ import { Profile } from "../Profile";
 import { Error404 } from "../Error404";
 import { Movie } from "../Movie";
 import { Footer } from "../Footer";
+import { Search } from "../Search";
 
 import "./App.module.scss";
 
@@ -20,6 +21,7 @@ export function App() {
       <Header username={"Martin Scorsese"} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="search" element={<Search />} />
         <Route path="/ratings" element={<Ratings />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/watchList" element={<Watchlist />} />
