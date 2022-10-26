@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Header } from "../Header";
 import { Home } from "../Home";
@@ -11,25 +11,29 @@ import { Movie } from "../Movie";
 import { Footer } from "../Footer";
 import { Search } from "../Search";
 
-import AppCSS from "./App.module.scss";
-
+import { FirebaseContextProvider } from "../../firebase-config";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 
+import AppCSS from "./App.module.scss";
+
 export function App() {
+
   return (
-    <BrowserRouter>
-      <Header username={"Martin Scorsese"} />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/search/:searchValue" element={<Search />} />
-        <Route path="/ratings" element={<Ratings />} />
-        <Route path="/liked" element={<Liked />} />
-        <Route path="/watchList" element={<Watchlist />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/movie/:id" element={<Movie />} />
-        <Route path="*" element={<Error404 />} />
-      </Routes>
-      <Footer />
-    </BrowserRouter>
+    <FirebaseContextProvider>
+      <BrowserRouter>
+        <Header username={"Martin Scorsese"} />
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/search/:searchValue" element={<Search />} />
+          <Route path="/ratings" element={<Ratings />} />
+          <Route path="/liked" element={<Liked />} />
+          <Route path="/watchList" element={<Watchlist />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="*" element={<Error404 />} />
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </FirebaseContextProvider>
   );
 }
