@@ -1,90 +1,115 @@
-.PageTitle{
-    color: white;
-    font-family: "Fira Mono";
-    font-size: 4vw;
-    margin-left: 3vw;
-    margin-top: 20px;
-    text-align: left;
-}
+.Liked{
+    h2{
+        color: white;
+        font-family: "Fira Mono";
+        font-size: 4vw;
+        margin-left: 3vw;
+        margin-top: 20px;
+        text-align: left;
+    }
 
-.Sort{
-    margin-right: 3vw;
-    display: inline-block;
-}
+    .Sort{
+        margin-right: 3vw;
+        display: inline-block;
+    }
 
-.SortElement{
-    color:whitesmoke;
-    font-size: 1.3vw;
-    margin: 5px;
-}
+    .Sort{
+        span{
+            color:whitesmoke;
+            font-size: 1.3vw;
+            padding-bottom: 2vw;
+        }
 
-.material-icons.SortIcon{
-    color: white;
-    font-size: 1.7vw;
-}
+        span{
+            i{
+                font-size: 1.3vw;
+                background: none;
+                border: none;
+            }
+        }
 
-.LikedHeader{
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-}
+        div{
+            position: absolute;
+            display: none;
+            background-color: white;
+            border-radius: 10px;
+            margin-right: 10px;
+            right: 0px;
+            padding: 10px;
+            z-index: 1;
 
-.Divider{
-    background-color: white;
-    border-radius: 32px;
-    width: 95%;
-    height: 0.3vh;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    z-index: 0;
-}
+            button{
+                font-size: 1vw;
+                background: none;
+                border: 1px solid transparent;
+                text-align: right;
+                transition: all 700ms;
 
-.DropdownSortMethods{
-    position: absolute;
-    display: none;
-    background-color: white;
-    border-radius: 10px;
-    margin-right: 10px;
-    right: 0px;
-    padding: 10px;
-    z-index: 1;
-    transition: display 2s;
-}
+                i{
+                    font-size: 1vw;;
+                }
+            }
 
-.SortMethodElement{
-    font-size: 1vw;
-    background: none;
-    border: 0.8px solid transparent;
-    text-align: right;
-}
+            button:hover{
+                border: 1px solid gray;
+                border-radius: 12px;
+                scale: 1.1;
+            }
+        }
+    }
 
-.material-icons{
-    font-size: 1vw;
-    background: none;
-    border: none;
-}
+    .SortIcon{
+        color: white;
+        font-size: 2vw;
+        margin-left: 1vw;
+        
+    }
 
-.SortIconBtn{
-    background: none;
-    border: none;
-    display: flex;
-}
+    .Sort:hover .SortBtn{
+        scale: 1.2;
+        color: black;
+    }
 
-.Sort:hover .DropdownSortMethods{
-    display: flex;
-    flex-direction: column;
-}
 
-.SortMethodElement:hover{
-    border: 0.8px solid gray;
-    border-radius: 12px;
-}
+    .SortBtn{
+        background: none;
+        border: none;
+        display: flex;
+        transition: scale 500ms, color 500ms;
+    }
 
-.liked-content{
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    text-align: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    .Sort:hover div{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .Header{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    .Divider{
+        background-color: white;
+        border-radius: 32px;
+        width: 95%;
+        height: 0.3vh;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        z-index: 0;
+    }
+
+    .Liked-content{
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        text-align: center;
+        margin: 5px;
+        a{
+            margin-top: 4vh;
+            margin-bottom: 4vh;
+            width: min-content;
+            justify-self: center;
+        }
+    }
 }
