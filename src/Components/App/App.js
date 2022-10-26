@@ -24,8 +24,8 @@ export function App() {
         <Route path="/liked" element={<Liked/>}  />
         <Route path="/watchList" element={<Watchlist/>}  />
         <Route path="/profile" element={<Profile/>}  />
-        <Route path="*" element={<Error404/>}  />
         <Route path="/movie/:id" element={<Movie/>}/>
+        <Route path="*" element={<Error404/>}  />
       </Routes>
       <Footer />
     </BrowserRouter>
