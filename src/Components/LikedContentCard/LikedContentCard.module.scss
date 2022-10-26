@@ -96,6 +96,10 @@
                 scale: 1.3;
             }
         }
+
+        .save-button:active .save-button > i{
+            color: black;
+        }
     }
 }
 
