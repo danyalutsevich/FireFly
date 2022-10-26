@@ -14,7 +14,7 @@
         margin: 0 10px;
     }
 
-    a:hover{
+    a:hover {
         scale: 1.1;
         transition: 100ms;
     }
@@ -24,17 +24,17 @@
         font-size: 10vh;
     }
 
-    .Search{
+    .Search {
 
         display: flex;
         align-items: center;
 
-        input{
+        input {
             font-size: 3vh;
             font-family: "Fira Mono";
         }
 
-        i{
+        i {
             margin-top: 7px;
             font-size: 4vh;
         }
@@ -55,66 +55,3 @@
     }
 
 }
-
-// .Header {
-
-//     width: 100vw;
-//     display: flex;
-//     background-color: white;
-//     justify-content: space-between;
-//     align-items: center;
-
-//     i{
-//         font-size: 5vh;
-//         margin-top: 5px;
-//         transition: scale 500ms;
-//     }
-
-//     i:hover{
-//         scale: 1.1;
-//     }
-
-//     .Search{
-//         display: flex;
-//         align-items: center;
-
-//         input{
-//             height: 4vh;
-//             font-size: 3vh;
-//             font-family: "Fira Mono";
-//             width: 12vw;
-//             margin-left: 6px;
-//         }
-//     }
-
-//     a {
-//         color: black;
-//         text-decoration: none ;
-//         font-family: "Fira Mono";
-//         font-size: 3vh;
-//         margin: 0 10px;
-//         transition: scale 500ms, border 500ms;
-//     }
-
-//     a:hover {
-//         scale: 1.1;
-//     }
-
-//     img {
-//         height: 4vw;
-//         border-radius: 50%;
-//         margin-left: 10px;
-//     }
-
-//     .Logo {
-//         font-family: "Libre Barcode 39 Text";
-//         font-size: 8vh;
-//     }
-
-//     .Profile {
-//         display: flex;
-//         align-items: center;
-//     }
-
-
-// }
