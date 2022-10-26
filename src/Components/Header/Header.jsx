@@ -9,8 +9,10 @@ export function Header(props) {
         <div className={HeaderCSS.Header}>
             <NavLink className={HeaderCSS.Logo} to="/">FireFly</NavLink>
             <div className={HeaderCSS.Search}>
-                <NavLink to="/search"><button><i className='material-icons'>search</i></button></NavLink>
-                <input type="text" name="seearchInput" value={searchValue} onChange={(event) => setSearchValue(event.target.value)}></input>
+                <input type="text" name="seearchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
+                <NavLink to={`/search/${searchValue}`} >
+                    <i className='material-icons'>search</i>
+                </NavLink>
             </div>
             <NavLink to="/ratings">Ratings</NavLink>
             <NavLink to="/liked">Liked</NavLink>

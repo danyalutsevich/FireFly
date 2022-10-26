@@ -21,13 +21,13 @@ export function App() {
       <Header username={"Martin Scorsese"} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<Search />} />
+        <Route path="/search/:searchValue" element={<Search />} />
         <Route path="/ratings" element={<Ratings />} />
         <Route path="/liked" element={<Liked />} />
         <Route path="/watchList" element={<Watchlist />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/movie/:id" element={<Movie />} />
         <Route path="*" element={<Error404 />} />
-        <Route path="/movie/:title" element={<Movie />} />
       </Routes>
       <Footer />
     </BrowserRouter>
