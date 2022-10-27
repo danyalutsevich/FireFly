@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import {MovieDBLinks} from '../../Variables';
+import { NavLink } from "react-router-dom";
 
 import LikedCSS from "./Liked.module.scss";
 
@@ -22,30 +23,32 @@ export function Liked() {
   }
 
   return (
-  <div>
-    <div className={LikedCSS.LikedHeader}>
-      <h2 className={LikedCSS.PageTitle}>Liked</h2>
+  <div className={LikedCSS.Liked}>
+    <div className={LikedCSS.Header}>
+      <h2>Liked</h2>
       <div className={LikedCSS.Sort}>
         
-        <button className={LikedCSS.SortIconBtn}>
-          <p className={LikedCSS.SortElement}>{sortMethod}<i className="material-icons">{icon}</i></p>
+        <button className={LikedCSS.SortBtn}>
+          <span>{sortMethod}<i className="material-icons">{icon}</i></span>
           <i className={`material-icons ${LikedCSS.SortIcon}`}>sort</i>
         </button>
-        <div className={LikedCSS.DropdownSortMethods}>
-          <button className={LikedCSS.SortMethodElement} onClick={() => {setSortMethod("by date added"); setIcon("arrow_upward")}}>by date added<i className="material-icons">arrow_upward</i></button>
-          <button className={LikedCSS.SortMethodElement} onClick={() => {setSortMethod("by date added"); setIcon("arrow_downward")}}>by date added<i className="material-icons">arrow_downward</i></button>
-          <button className={LikedCSS.SortMethodElement} onClick={() => {setSortMethod("by rating"); setIcon("arrow_upward")}}>by rating<i className="material-icons">arrow_upward</i></button>
-          <button className={LikedCSS.SortMethodElement} onClick={() => {setSortMethod("by rating"); setIcon("arrow_downward")}}>by rating<i className="material-icons">arrow_downward</i></button>
+        <div>
+          <button onClick={() => {setSortMethod("by date added"); setIcon("arrow_upward")}}>by date added<i className="material-icons">arrow_upward</i></button>
+          <button onClick={() => {setSortMethod("by date added"); setIcon("arrow_downward")}}>by date added<i className="material-icons">arrow_downward</i></button>
+          <button onClick={() => {setSortMethod("by rating"); setIcon("arrow_upward")}}>by rating<i className="material-icons">arrow_upward</i></button>
+          <button onClick={() => {setSortMethod("by rating"); setIcon("arrow_downward")}}>by rating<i className="material-icons">arrow_downward</i></button>
 
         </div>
       </div>
     </div>
     <div className={LikedCSS.Divider}></div>
-    <div className={LikedCSS["liked-content"]}>
+    <div className={LikedCSS["Liked-content"]}>
     {
       likedFilms.map((item) => {
         return(
-        <LikedContentCard key = {item.id} imgSrc = {MovieDBLinks.image + item.poster_path}/>
+          <NavLink to={`/movie/${item.id}`}>
+            <LikedContentCard key = {item.id} imgSrc = {MovieDBLinks.image + item.poster_path}/>
+          </NavLink>
         )
       })
     }

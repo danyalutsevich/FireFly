@@ -1,6 +1,8 @@
+import { createContext, useState, useEffect } from "react";
+
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
-import { getAuth } from "firebase/auth";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 
 const firebaseConfig = {
@@ -17,3 +19,20 @@ const firebaseConfig = {
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
+export const FirebaseContext = createContext();
+
+export const FirebaseContextProvider = ({ children }) => {
+
+    const [user,setUser] = useState(null);
+    const [liked_movies,setLikedMovies] = useState([]);
+    useEffect(() => {
+        onAuthStateChanged(auth,setUser)
+    }, []);
+
+    return (
+        <FirebaseContext.Provider value={user}>
+            {children}
+        </FirebaseContext.Provider>
+    );
+
+}
