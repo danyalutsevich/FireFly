@@ -23,7 +23,7 @@ export function App() {
   return (
     <FirebaseContextProvider>
       <BrowserRouter>
-        <Header username={"Martin Scorsese"} />
+        <Header/>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/search/:searchValue" element={<Search />} />

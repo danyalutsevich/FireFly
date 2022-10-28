@@ -1,10 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 import HeaderCSS from "./Header.module.scss";
+import { FirebaseContext } from '../../firebase-config';
+
 
 export function Header(props) {
     const [searchValue, setSearchValue] = useState('');
+
+    const ContextData = useContext(FirebaseContext);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        setUser(ContextData)
+        console.log(ContextData)
+    }, [ContextData]);
+
     return (
         <div className={HeaderCSS.Header}>
             <NavLink className={HeaderCSS.Logo} to="/">FireFly</NavLink>
@@ -17,9 +28,17 @@ export function Header(props) {
             <NavLink to="/ratings">Ratings</NavLink>
             <NavLink to="/liked">Liked</NavLink>
             <NavLink to="/watchList">WatchList</NavLink>
-            <NavLink className={HeaderCSS.Profile} to="/profile">{props.username}
-                <img src='../obama.jpg'></img>
-            </NavLink>
+            {user ?
+                <NavLink to="/profile" className={HeaderCSS.Profile}>
+                    {user.displayName}
+                    <img src={user.photoURL} alt="Profile" />
+                </NavLink> :
+                <div className={HeaderCSS.Auth}>
+                    <NavLink to="/signin" className={HeaderCSS.SignIn}>SignIn</NavLink>
+                    <NavLink to="/signup" className={HeaderCSS.SignUp}>SignUp</NavLink>
+                </div>
+            }
+
         </div>
     );
 }
