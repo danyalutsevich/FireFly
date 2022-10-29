@@ -33,7 +33,7 @@
     text-align: center;
   }
   td:nth-child(3) {
-    min-width: 150px;
+    width: 70%;
   }
 
   .MoviePoster {
@@ -72,10 +72,12 @@
     background-color: #343434;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 5px 2px 5px 2px;
     padding: 10px;
     margin: 20px;
     align-self: center;
+    text-align: center;
+    text-decoration: none;
     font-size: 24px;
     font-family: "Fira Mono";
     text-transform: uppercase;

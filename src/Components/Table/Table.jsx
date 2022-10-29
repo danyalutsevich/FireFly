@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import Links, { MovieDBLinks } from "../../Variables";
-import { NavLink } from "react-router-dom";
+import { MovieDBLinks } from "../../Variables";
+import { NavLink, useParams } from "react-router-dom";
 
 import TableCSS from "../Table/Table.module.scss";
 
@@ -42,20 +42,19 @@ export function Table(props) {
           })}
         </tbody>
       </table>
-
       <div className={TableCSS.Pages}>
-        <button
+        <NavLink
           className={TableCSS.PageButton}
-          onClick={() => (page > 1 ? setPage(page - 1) : null)}
+          to={`/${Number(page) === 1 ? 1 : Number(page) - 1}`}
         >
           prev
-        </button>
-        <button
+        </NavLink>
+        <NavLink
           className={TableCSS.PageButton}
-          onClick={() => setPage(page + 1)}
+          to={`/${Number(page) === 63 ? 63 : Number(page) + 1}`}
         >
           next
-        </button>
+        </NavLink>
       </div>
     </div>
   );
