@@ -1,0 +1,55 @@
+.Table {
+  width: 80vw;
+  margin: 0 auto;
+  table {
+    font-family: "Fira Mono", monospace;
+    font-size: 24px;
+    color: white;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 1200px;
+    min-width: none;
+  }
+
+  thead {
+    margin-right: 20px;
+    width: 100%;
+  }
+  th {
+    border-bottom: 1px solid #ffffff;
+  }
+
+  td {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #343434;
+  }
+  td:first-child {
+    border-right: none;
+  }
+  td:nth-child(2) {
+    text-align: left;
+  }
+
+  .MoviePoster {
+    height: 150px;
+    border-radius: 10px;
+    width: auto;
+  }
+
+  .Link:hover {
+    border-bottom: 1px solid white;
+  }
+
+  .Link {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: "Fira Mono";
+    margin: 10px;
+  }
+  .Link:visited {
+    color: gray;
+    border-bottom: 1px solid darkgray;
+  }
+}
