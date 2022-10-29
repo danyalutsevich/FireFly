@@ -1,0 +1,49 @@
+.SignUp {
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 90vh;
+    font-family: "Libre Barcode 39 Text";
+    font-size: 2.3rem;
+    color: white;
+
+    h3{
+        font-family: "Fira Mono";
+        font-size: 16px;
+        margin: 0 20px;
+    }
+
+    input{
+
+        background-color: lightgray;
+        margin: 20px;
+        font-family: "Fira Mono";
+        font-size: 24px;
+        border-radius: 10px;
+        padding: 10px;
+        border: none;
+    }
+
+    input:focus{
+        scale: 2;
+    }
+
+    button{
+        border-radius: 10px;
+        margin: 10px;
+        padding: 10px;
+        font-family: "Fira Mono";
+        background-color: darkgray;
+        color:black;
+        border:none;
+    }
+
+    button:hover{
+        background-color: rgb(56, 56, 56);
+        color:white;
+    }
+
+
+}

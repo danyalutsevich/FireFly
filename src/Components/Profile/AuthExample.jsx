@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { app, db, auth } from "../../firebase-config"
 
-import { createUserWithEmailAndPassword, onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword,updateProfile,onAuthStateChanged, signOut, signInWithEmailAndPassword } from "firebase/auth";
 
 export function AuthExample() {
 
@@ -29,14 +29,15 @@ export function AuthExample() {
         }
 
     }
+
     const login = async () => {
         try{
-
             signInWithEmailAndPassword(auth, Elogin, Plogin)
         }catch(error){
             console.log(error)
         }
     }
+    
     const logout = async () => {
         signOut(auth)
     }

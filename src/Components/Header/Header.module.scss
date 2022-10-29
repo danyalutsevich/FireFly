@@ -47,11 +47,43 @@
         height: 100%;
 
         img {
-            height: 80%;
+            width: 7vh;
+            height: 7vh;
+            object-fit: fill;
             border-radius: 100%;
             margin-left: 10px;
+
         }
 
     }
 
+    .Auth {
+
+        .SignIn{
+            padding: 8px;
+        }
+        
+        .SignIn:hover {
+            scale: 1.1;
+            transition: 100ms;
+            background-color: black;
+            padding: 8px;
+            border-radius: 10px;
+            color: white;
+        }
+        
+        .SignUp {
+            border: 3px solid black;
+            padding: 5px;
+            border-radius: 10px;
+        }
+        .SignUp:hover{
+            background-color: black;
+            color:white;
+
+        }
+
+    }
+
+   
 }

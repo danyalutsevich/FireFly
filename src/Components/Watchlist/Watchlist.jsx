@@ -1,22 +1,18 @@
-import React,{useEffect,useState} from 'react';
-import {auth} from '../../firebase-config';
+import React,{useEffect,useState,useContext} from 'react';
+import {auth, FirebaseContext} from '../../firebase-config';
 import { onAuthStateChanged } from 'firebase/auth';
+import { CRUDexample } from '../Profile/CRUDexample';
 
 export function Watchlist() {
-  
 
-  const [user, setUser] = useState({})
+  const contextVal = useContext(FirebaseContext)
 
-  useEffect(()=>{
-    onAuthStateChanged(auth,(user)=>{ setUser(user)})
-    setUser(auth.currentUser)
-    console.log(auth.currentUser)
-  },[])
-
+ 
   return (
   <div>
     <h1>WatchList</h1>
-    <h2>{user?.email}</h2>
+    <h2>{JSON.stringify(contextVal)}</h2>
+
   </div>
   );
 }
