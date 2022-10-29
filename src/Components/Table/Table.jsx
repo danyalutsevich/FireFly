@@ -5,7 +5,7 @@ import { NavLink, useParams } from "react-router-dom";
 import TableCSS from "../Table/Table.module.scss";
 
 export function Table(props) {
-  const { films, page, setPage } = props;
+  const { films, page, setPage, url } = props;
   return (
     <div className={TableCSS.Table}>
       <table className={TableCSS.Table}>
@@ -45,13 +45,17 @@ export function Table(props) {
       <div className={TableCSS.Pages}>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${Number(page) === 1 ? 1 : Number(page) - 1}`}
+          to={`/${url == "" ? "" : url + "/"}${
+            Number(page) === 1 ? 1 : Number(page) - 1
+          }`}
         >
           prev
         </NavLink>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${Number(page) === 63 ? 63 : Number(page) + 1}`}
+          to={`/${url == "" ? "" : url + "/"}${
+            Number(page) === 63 ? 63 : Number(page) + 1
+          }`}
         >
           next
         </NavLink>

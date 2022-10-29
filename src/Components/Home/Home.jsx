@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Links, { MovieDBLinks } from "../../Variables";
-import { useParams } from "react-router-dom";
+import { useParams, useQueryParams } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TopFilm } from "../TopFilm";
@@ -13,6 +13,7 @@ export function Home() {
   const [films, setFilms] = useState([]);
   const [page, setPage] = useState(1);
   let Page = useParams().page;
+  console.log(useParams());
   if (Page < 1 || Page === undefined) {
     Page = 1;
   }
@@ -28,11 +29,10 @@ export function Home() {
   if (films.length === 0) {
     return <Loading />;
   }
-
   return (
     <div className={HomeCSS.Home}>
       <TopFilm film={films[0]} />
-      <Table films={films} page={Page} setPage={setPage} />
+      <Table films={films} page={Page} setPage={setPage} url={""} />
     </div>
   );
 }
