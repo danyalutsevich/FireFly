@@ -14,8 +14,13 @@
 
   img {
     text-align: center;
-    width: 25%;
-    height: 25%;
     margin-bottom: 40px;
+  }
+  img.animated-gif {
+    animation: shake 1s;
+    animation-iteration-count: infinite;
+    width: auto;
+    height: 100px;
+    max-height: 800px;
   }
 }
