@@ -19,21 +19,11 @@ export function Home() {
   if (films.length === 0) {
     return <Loading />;
   }
+
   return (
     <div className={HomeCSS.Home}>
       <TopFilm film={films[0]} />
-      <Table films={films} page={page} />
-      <div className="pages">
-        <button
-          className="buttonPage"
-          onClick={() => (page > 1 ? setPage(page - 1) : null)}
-        >
-          prev
-        </button>
-        <button className="buttonPage" onClick={() => setPage(page + 1)}>
-          next
-        </button>
-      </div>
+      <Table films={films} page={page} setPage={setPage} />
     </div>
   );
 }

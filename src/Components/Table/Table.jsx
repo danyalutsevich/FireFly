@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom";
 
 import TableCSS from "../Table/Table.module.scss";
 
-export function Table(prop1, prop2) {
-  const { films } = prop1;
-  const { page } = prop2;
+export function Table(props) {
+  const { films, page, setPage } = props;
   return (
     <div className={TableCSS.Table}>
       <table className={TableCSS.Table}>
@@ -43,6 +42,21 @@ export function Table(prop1, prop2) {
           })}
         </tbody>
       </table>
+
+      <div className={TableCSS.Pages}>
+        <button
+          className={TableCSS.PageButton}
+          onClick={() => (page > 1 ? setPage(page - 1) : null)}
+        >
+          prev
+        </button>
+        <button
+          className={TableCSS.PageButton}
+          onClick={() => setPage(page + 1)}
+        >
+          next
+        </button>
+      </div>
     </div>
   );
 }

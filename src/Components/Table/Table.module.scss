@@ -27,9 +27,13 @@
   }
   td:first-child {
     border-right: none;
+    min-width: 40px;
   }
   td:nth-child(2) {
-    text-align: left;
+    text-align: center;
+  }
+  td:nth-child(3) {
+    min-width: 150px;
   }
 
   .MoviePoster {
@@ -52,5 +56,37 @@
   .Link:visited {
     color: gray;
     border-bottom: 1px solid darkgray;
+  }
+  .Pages {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-flow: row nowrap;
+    order: 0;
+    align-items: flex-start;
+    align-content: center;
+    margin: 20px;
+  }
+  .PageButton {
+    min-width: 75px;
+    background-color: #343434;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 20px;
+    align-self: center;
+    font-size: 24px;
+    font-family: "Fira Mono";
+    text-transform: uppercase;
+  }
+  .PageButton:hover {
+    background-color: #ffffff;
+    color: #343434;
+  }
+  .PageButton:active {
+    background-color: #343434;
+    color: white;
+    border: none;
   }
 }
