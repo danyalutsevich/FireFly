@@ -1,0 +1,94 @@
+.Table {
+  width: 80vw;
+  margin: 0 auto;
+
+  table {
+    font-family: "Fira Mono", monospace;
+    font-size: 24px;
+    color: white;
+    border-collapse: collapse;
+    border-spacing: 0;
+    max-width: 1200px;
+    min-width: none;
+  }
+
+  thead {
+    margin-right: 20px;
+    width: 100%;
+  }
+  th {
+    border-bottom: 1px solid #ffffff;
+  }
+
+  td {
+    text-align: center;
+    padding: 10px;
+    border-top: 1px solid #343434;
+  }
+  td:first-child {
+    border-right: none;
+    min-width: 40px;
+  }
+  td:nth-child(2) {
+    text-align: center;
+  }
+  td:nth-child(3) {
+    width: 70%;
+  }
+
+  .MoviePoster {
+    height: 150px;
+    border-radius: 10px;
+    width: auto;
+  }
+
+  .Link:hover {
+    border-bottom: 1px solid white;
+  }
+
+  .Link {
+    color: white;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: "Fira Mono";
+    margin: 10px;
+  }
+  .Link:visited {
+    color: gray;
+    border-bottom: 1px solid darkgray;
+  }
+  .Pages {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    flex-flow: row nowrap;
+    order: 0;
+    align-items: flex-start;
+    align-content: center;
+    margin: 20px;
+  }
+  .PageButton {
+    min-width: 75px;
+    background-color: #343434;
+    color: white;
+    border: none;
+    border-radius: 5px 2px 5px 2px;
+    padding: 10px;
+    margin: 20px;
+    align-self: center;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: "Fira Mono";
+    text-transform: uppercase;
+  }
+  .PageButton:hover {
+    background-color: #ffffff;
+    color: #343434;
+  }
+  .PageButton:active {
+    background-color: #343434;
+    color: white;
+    border: none;
+  }
+}

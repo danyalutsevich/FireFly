@@ -19,15 +19,15 @@ import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
 import AppCSS from "./App.module.scss";
 
 export function App() {
-
   return (
     <FirebaseContextProvider>
       <BrowserRouter>
-        <Header/>
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/search/:searchValue" element={<Search />} />
-          <Route path="/ratings" element={<Ratings />} />
+          <Route path="/page/:page" element={<Home />} />
+          <Route path="/search/:searchValue/:page" element={<Search />} /> {/* useParams hook will return {searchValue, page} */}
+          <Route path="/ratings/:page" element={<Ratings />} />
           <Route path="/liked" element={<Liked />} />
           <Route path="/watchList" element={<Watchlist />} />
           <Route path="/profile" element={<Profile />} />
