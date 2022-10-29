@@ -5,7 +5,15 @@ import { NavLink, useParams } from "react-router-dom";
 import TableCSS from "../Table/Table.module.scss";
 
 export function Table(props) {
-  const { films, page, setPage, url } = props;
+  // films is an array of objects (films)
+  // page is the current page number
+  // url created for the search page provide here the searchValue
+  const { films, page, url } = props;
+  console.log(Number(page));
+  if (page == NaN || page < 1 || page == undefined) {
+    page = 1;
+  }
+
   return (
     <div className={TableCSS.Table}>
       <table className={TableCSS.Table}>
@@ -45,17 +53,15 @@ export function Table(props) {
       <div className={TableCSS.Pages}>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${
-            Number(page) === 1 ? 1 : Number(page) - 1
-          }`}
+          to={`/${url == "" ? "" : url + "/"}${Number(page) === 1 ? 1 : Number(page) - 1
+            }`}
         >
           prev
         </NavLink>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${
-            Number(page) === 63 ? 63 : Number(page) + 1
-          }`}
+          to={`/${url == "" ? "" : url + "/"}${Number(page) + 1
+            }`}
         >
           next
         </NavLink>

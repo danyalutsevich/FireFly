@@ -24,10 +24,10 @@ export function App() {
       <BrowserRouter>
         <Header />
         <Routes>
-          <Route path="/:page" element={<Home />} />
           <Route path="/" element={<Home />} />
-          <Route path="/search/:searchValue" element={<Search />} />
-          <Route path="/ratings" element={<Ratings />} />
+          <Route path="/page/:page" element={<Home />} />
+          <Route path="/search/:searchValue/:page" element={<Search />} /> {/* useParams hook will return {searchValue, page} */}
+          <Route path="/ratings/:page" element={<Ratings />} />
           <Route path="/liked" element={<Liked />} />
           <Route path="/watchList" element={<Watchlist />} />
           <Route path="/profile" element={<Profile />} />

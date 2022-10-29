@@ -21,11 +21,11 @@ export function Header(props) {
             <NavLink className={HeaderCSS.Logo} to="/">FireFly</NavLink>
             <div className={HeaderCSS.Search}>
                 <input type="text" name="seearchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
-                <NavLink to={`/search/${searchValue}`} >
+                <NavLink to={`/search/${searchValue}/1`} >
                     <i className='material-icons'>search</i>
                 </NavLink>
             </div>
-            <NavLink to="/ratings">Ratings</NavLink>
+            <NavLink to="/ratings/1">Ratings</NavLink>
             <NavLink to="/liked">Liked</NavLink>
             <NavLink to="/watchList">WatchList</NavLink>
             {user ?

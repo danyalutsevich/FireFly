@@ -59,10 +59,10 @@
 
     .Auth {
 
-        .SignIn{
+        .SignIn {
             padding: 8px;
         }
-        
+
         .SignIn:hover {
             scale: 1.1;
             transition: 100ms;
@@ -71,19 +71,20 @@
             border-radius: 10px;
             color: white;
         }
-        
+
         .SignUp {
             border: 3px solid black;
             padding: 5px;
             border-radius: 10px;
         }
-        .SignUp:hover{
+
+        .SignUp:hover {
             background-color: black;
-            color:white;
+            color: white;
 
         }
 
     }
 
-   
+
 }
