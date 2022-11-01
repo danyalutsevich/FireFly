@@ -12,7 +12,6 @@ import TableCSS from "../Table/Table.module.scss";
 export function Home() {
   const [films, setFilms] = useState([]);
   let page = useParams().page;
-  console.log(useParams());
   if (page < 1 || page === undefined) {
     page = 1;
   }

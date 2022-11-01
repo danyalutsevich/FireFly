@@ -9,7 +9,6 @@ export function Table(props) {
   // page is the current page number
   // url created for the search page provide here the searchValue
   const { films, page, url } = props;
-  console.log(Number(page));
   if (page == NaN || page < 1 || page == undefined) {
     page = 1;
   }

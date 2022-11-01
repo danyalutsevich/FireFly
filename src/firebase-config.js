@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -10,8 +10,9 @@ import {
     signInWithEmailAndPassword,
     signOut,
     updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup,
 } from "firebase/auth";
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyAW1QeSbF0Y0_ryBOIm9sZVH-aTNl47Fgs",
@@ -23,11 +24,11 @@ const firebaseConfig = {
     measurementId: "G-JKQFZDWW4P"
 };
 
-
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
+export const provider = new GoogleAuthProvider();
 
 // import this context in your component and use useContex() hook to get the value
 export const FirebaseContext = createContext();
@@ -46,7 +47,7 @@ export const FirebaseContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <FirebaseContext.Provider value={user}>
+        <FirebaseContext.Provider value={{ user, liked_movies }}>
             {children}
         </FirebaseContext.Provider>
     );
@@ -72,6 +73,7 @@ export const login = async (email, password) => {
     if (email && password) {
         try {
             await signInWithEmailAndPassword(auth, email, password)
+            window.open("/", "_self")
             return true
         } catch (error) {
             return error.code
@@ -79,6 +81,12 @@ export const login = async (email, password) => {
     } else {
         alert("Please fill all fields")
     }
+}
+
+export const signInWithGoogle = async () => {
+    signInWithPopup(auth, provider)
+        .then(res => { console.log(res) })
+        .catch(err => { console.log(err) })
 }
 
 export const uploadImage = async (file) => {
@@ -99,6 +107,20 @@ export const uploadImage = async (file) => {
     }
     else {
         alert("Please login to upload a profile picture")
+    }
+}
+
+export const removeImage = async () => {
+    if (auth.currentUser.uid) {
+        try {
+            await updateProfile(auth.currentUser, { photoURL: "" })
+        }
+        catch (error) {
+            alert(error.code)
+        }
+    }
+    else {
+        alert("Please login to remove your profile picture")
     }
 }
 

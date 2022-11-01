@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-
-import { login } from "../../firebase-config";
+import { SignInWithGoogle } from "./SignInWithGoogle";
+import { login, signInWithGoogle } from "../../firebase-config";
 
 import SignInCSS from "./SignIn.module.scss";
 
@@ -33,6 +33,7 @@ export function SignIn() {
                         if (e.key === "Enter") { clickHandler() }
                     }} />
             <button onClick={clickHandler}>Sign In</button>
+            <SignInWithGoogle />
         </div>
     )
 

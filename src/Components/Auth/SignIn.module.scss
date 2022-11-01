@@ -5,11 +5,14 @@
     align-items: center;
     justify-content: center;
     height: 90vh;
-    font-family: "Libre Barcode 39 Text";
-    font-size: 2.3rem;
-    color: white;
 
-    input{
+    h1 {
+        font-family: "Libre Barcode 39 Text";
+        font-size: 60px;
+        color: white;
+    }
+
+    input {
 
         background-color: lightgray;
         margin: 20px;
@@ -20,24 +23,23 @@
         border: none;
     }
 
-    input:focus{
+    input:focus {
         scale: 2;
     }
 
-    button{
+    button {
         border-radius: 10px;
         margin: 10px;
         padding: 10px;
         font-family: "Fira Mono";
+        font-size: 20px;
         background-color: darkgray;
-        color:black;
-        border:none;
+        color: black;
+        border: none;
     }
 
-    button:hover{
+    button:hover {
         background-color: rgb(56, 56, 56);
-        color:white;
+        color: white;
     }
-
-
 }

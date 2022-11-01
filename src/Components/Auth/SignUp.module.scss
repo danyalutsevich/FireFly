@@ -5,14 +5,12 @@
     align-items: center;
     justify-content: center;
     height: 90vh;
-    font-family: "Libre Barcode 39 Text";
-    font-size: 2.3rem;
-    color: white;
 
-    h3{
-        font-family: "Fira Mono";
-        font-size: 16px;
-        margin: 0 20px;
+
+    h1{
+        font-family: "Libre Barcode 39 Text";
+        font-size: 60px;
+        color: white;
     }
 
     input{
@@ -35,6 +33,7 @@
         margin: 10px;
         padding: 10px;
         font-family: "Fira Mono";
+        font-size: 20px;
         background-color: darkgray;
         color:black;
         border:none;
