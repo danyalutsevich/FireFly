@@ -17,7 +17,7 @@ export function Search() {
     .then((data) => data.json())
     .then((data) => {setFilms(data.results); console.log(data); setTotalResults(data.total_results)});
     
-  }, [page]);
+  }, [page,searchValue]);
 
   
   return (

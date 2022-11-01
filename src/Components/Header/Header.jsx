@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import HeaderCSS from "./Header.module.scss";
 import { FirebaseContext } from '../../firebase-config';
@@ -20,8 +20,10 @@ export function Header(props) {
         <div className={HeaderCSS.Header}>
             <NavLink className={HeaderCSS.Logo} to="/">FireFly</NavLink>
             <div className={HeaderCSS.Search}>
-                <input type="text" name="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
-                <NavLink to={`/search/${searchValue}/1`} onClick={() => {setSearchValue('')}}>
+                <input type="text" name="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
+                    onKeyDown={(e) => { if (e.key === 'Enter') { window.location.href = "/search/" + searchValue + "/1" } }}
+                ></input>
+                <NavLink to={`/search/${searchValue}/1`} >
                     <i className='material-icons'>search</i>
                 </NavLink>
             </div>

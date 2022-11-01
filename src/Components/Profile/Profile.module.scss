@@ -55,6 +55,19 @@
             margin: 10px;
             color: white;
         }
-
+        
+        .UserDescription{
+            display: flex;
+            margin: 10px;
+            input{
+                background-color: rgb(56, 56, 56);
+                border-radius: 10px;
+                font-family: "Fira Mono";
+                font-size: 20px;
+                color:white;
+                padding: 0 10px;
+                border: none;
+            }
+        }
     }
 }

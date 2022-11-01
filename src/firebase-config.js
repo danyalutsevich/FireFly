@@ -12,6 +12,7 @@ import {
     updateProfile,
     GoogleAuthProvider,
     signInWithPopup,
+    deleteUser
 } from "firebase/auth";
 
 const firebaseConfig = {
@@ -83,10 +84,30 @@ export const login = async (email, password) => {
     }
 }
 
+export const deleteUserAccount = async () => {
+    try {
+        await deleteUser(auth.currentUser)
+        window.open("/", "_self")
+    }
+    catch (error) {
+        if (error.code === "auth/requires-recent-login") {
+            alert("You need to reauthenticate before deleting your account")
+            window.open("/signin", "_self")
+        }
+        else {
+            alert(error.code)
+        }
+    }
+}
+
 export const signInWithGoogle = async () => {
-    signInWithPopup(auth, provider)
-        .then(res => { console.log(res) })
-        .catch(err => { console.log(err) })
+    try {
+        await signInWithPopup(auth, provider)
+        window.open("/", "_self")
+    }
+    catch (error) {
+        alert(error.code)
+    }
 }
 
 export const uploadImage = async (file) => {
@@ -96,6 +117,7 @@ export const uploadImage = async (file) => {
                 const storageRef = ref(storage, 'profilePictures/' + auth.currentUser.uid);
                 await uploadBytes(storageRef, file);
                 await updateProfile(auth.currentUser, { photoURL: await getDownloadURL(storageRef) })
+                window.location.reload()
             }
             catch (error) {
                 alert(error.code)
@@ -114,6 +136,7 @@ export const removeImage = async () => {
     if (auth.currentUser.uid) {
         try {
             await updateProfile(auth.currentUser, { photoURL: "" })
+            window.location.reload()
         }
         catch (error) {
             alert(error.code)
@@ -124,9 +147,27 @@ export const removeImage = async () => {
     }
 }
 
+export const updateName = async (name) => {
+
+    if (name) {
+        try {
+            await updateProfile(auth.currentUser, { displayName: name })
+            window.location.reload()
+        }
+        catch (error) {
+            alert(error.code)
+        }
+    }
+    else {
+        alert("Please enter a name")
+    }
+
+}
+
 export const logout = async () => {
     try {
         await signOut(auth)
+        window.open("/", "_self")
     } catch (error) {
         alert(error.code)
     }

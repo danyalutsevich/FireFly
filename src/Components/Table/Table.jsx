@@ -31,18 +31,21 @@ export function Table(props) {
               <tr key={film.id}>
                 <td>{index + 1 + (page - 1) * films.length}</td>
                 <td className={TableCSS.imageCell}>
-                  <img
-                    className={TableCSS.MoviePoster}
-                    src={MovieDBLinks.image + film.poster_path}
-                    alt={index}
-                  />
+                  {film.poster_path ?
+                    <img
+                      className={TableCSS.MoviePoster}
+                      src={MovieDBLinks.image + film.poster_path}
+                      alt={index}
+                    /> :
+                    <img className={TableCSS.MoviePoster} src={"/default_userpic.png"} alt={index} />
+                  }
                 </td>
                 <td>
                   <NavLink to={`/movie/${film.id}`} className={TableCSS.Link}>
                     {film.original_title}
                   </NavLink>{" "}
                 </td>
-                <td>{film.release_date.slice(0, 4)}</td>
+                <td>{film.release_date?.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
             );
