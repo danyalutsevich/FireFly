@@ -4,17 +4,17 @@ import FooterCSS from "./Footer.module.scss";
 
 export function Footer() {
   return (
-    <div>
-      <div>
-        <div>
-          <a>IMDb</a>
-          <a>The Movie Database</a>
-        </div>
-        <div>
-          <a>GitHub</a>
-          <a>LinkedIn</a>
-        </div>
+      <div className={FooterCSS.Footer}>
+      <hr/>
+        
+        <p><span>© {new Date().getFullYear()}</span> FireFly,IMDb <a href="https://www.themoviedb.org/">Movie Database</a>
+          </p>
+          <br>
+          </br>
+        <a href="https://github.com/danyalutsevich/FireFly">GitHub</a>&nbsp;<a>LinkedIn</a>
+        
       </div>
-    </div>
+    
+
   );
 }
