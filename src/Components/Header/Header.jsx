@@ -20,8 +20,8 @@ export function Header(props) {
         <div className={HeaderCSS.Header}>
             <NavLink className={HeaderCSS.Logo} to="/">FireFly</NavLink>
             <div className={HeaderCSS.Search}>
-                <input type="text" name="seearchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
-                <NavLink to={`/search/${searchValue}/1`} >
+                <input type="text" name="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}></input>
+                <NavLink to={`/search/${searchValue}/1`} onClick={() => {setSearchValue('')}}>
                     <i className='material-icons'>search</i>
                 </NavLink>
             </div>
