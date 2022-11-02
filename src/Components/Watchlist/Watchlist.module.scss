@@ -1,0 +1,29 @@
+.Watchlist{
+    h2{
+        color: white;
+        font-family: "Fira Mono";
+        font-size: 4vw;
+        margin-left: 3vw;
+        margin-top: 20px;
+        text-align: left;
+        padding-bottom: 1.3vw;
+    }
+
+    .Divider{
+        background-color: white;
+        border-radius: 32px;
+        width: 95%;
+        height: 0.3vh;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        z-index: 0;
+    }
+
+    .Container{
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+        margin: 30px;
+    }
+}
