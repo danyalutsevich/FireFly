@@ -2,16 +2,37 @@ import React, { useState, useEffect } from "react";
 import { MovieDBLinks } from "../../Variables";
 import { NavLink, useParams } from "react-router-dom";
 
+import { Table } from "../Table"
+
 import SearchCSS from "./Search.module.scss";
 
-export function Search(props) {
+export function Search() {
+  const [films, setFilms] = useState([]);
+  const [totalResults, setTotalResults] = useState(0);
 
-  const params = useParams()
-  console.log(params)
+  const {searchValue, page} = useParams();
 
+  useEffect(() => {
+    fetch(MovieDBLinks.search(searchValue, page))
+    .then((data) => data.json())
+    .then((data) => {setFilms(data.results); console.log(data); setTotalResults(data.total_results)});
+    
+  }, [page,searchValue]);
+
+  
   return (
     <div className={SearchCSS.Search}>
-        <h1>{params.searchValue}</h1>
+      <div className={SearchCSS.SearchInfo}>
+        <h1>Search results for
+          <div className={SearchCSS.Divider}></div>
+          <span className={SearchCSS.SearchValue}>{searchValue}</span>
+        </h1>
+        <h2>items
+         <div className={SearchCSS.Divider2}></div>
+          <span className={SearchCSS.TotalResults}>{totalResults}</span>
+        </h2>
+      </div>
+        <Table films={films} page={page} url={"search/" + searchValue}></Table>
     </div>
   );
 }

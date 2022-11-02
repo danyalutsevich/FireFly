@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
@@ -10,8 +10,10 @@ import {
     signInWithEmailAndPassword,
     signOut,
     updateProfile,
+    GoogleAuthProvider,
+    signInWithPopup,
+    deleteUser
 } from "firebase/auth";
-
 
 const firebaseConfig = {
     apiKey: "AIzaSyAW1QeSbF0Y0_ryBOIm9sZVH-aTNl47Fgs",
@@ -23,11 +25,11 @@ const firebaseConfig = {
     measurementId: "G-JKQFZDWW4P"
 };
 
-
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const db = getFirestore(app);
 export const storage = getStorage(app);
+export const provider = new GoogleAuthProvider();
 
 // import this context in your component and use useContex() hook to get the value
 export const FirebaseContext = createContext();
@@ -46,7 +48,7 @@ export const FirebaseContextProvider = ({ children }) => {
     }, []);
 
     return (
-        <FirebaseContext.Provider value={user}>
+        <FirebaseContext.Provider value={{ user, liked_movies }}>
             {children}
         </FirebaseContext.Provider>
     );
@@ -72,12 +74,39 @@ export const login = async (email, password) => {
     if (email && password) {
         try {
             await signInWithEmailAndPassword(auth, email, password)
+            window.open("/", "_self")
             return true
         } catch (error) {
             return error.code
         }
     } else {
         alert("Please fill all fields")
+    }
+}
+
+export const deleteUserAccount = async () => {
+    try {
+        await deleteUser(auth.currentUser)
+        window.open("/", "_self")
+    }
+    catch (error) {
+        if (error.code === "auth/requires-recent-login") {
+            alert("You need to reauthenticate before deleting your account")
+            window.open("/signin", "_self")
+        }
+        else {
+            alert(error.code)
+        }
+    }
+}
+
+export const signInWithGoogle = async () => {
+    try {
+        await signInWithPopup(auth, provider)
+        window.open("/", "_self")
+    }
+    catch (error) {
+        alert(error.code)
     }
 }
 
@@ -88,6 +117,7 @@ export const uploadImage = async (file) => {
                 const storageRef = ref(storage, 'profilePictures/' + auth.currentUser.uid);
                 await uploadBytes(storageRef, file);
                 await updateProfile(auth.currentUser, { photoURL: await getDownloadURL(storageRef) })
+                window.location.reload()
             }
             catch (error) {
                 alert(error.code)
@@ -102,9 +132,42 @@ export const uploadImage = async (file) => {
     }
 }
 
+export const removeImage = async () => {
+    if (auth.currentUser.uid) {
+        try {
+            await updateProfile(auth.currentUser, { photoURL: "" })
+            window.location.reload()
+        }
+        catch (error) {
+            alert(error.code)
+        }
+    }
+    else {
+        alert("Please login to remove your profile picture")
+    }
+}
+
+export const updateName = async (name) => {
+
+    if (name) {
+        try {
+            await updateProfile(auth.currentUser, { displayName: name })
+            window.location.reload()
+        }
+        catch (error) {
+            alert(error.code)
+        }
+    }
+    else {
+        alert("Please enter a name")
+    }
+
+}
+
 export const logout = async () => {
     try {
         await signOut(auth)
+        window.open("/", "_self")
     } catch (error) {
         alert(error.code)
     }

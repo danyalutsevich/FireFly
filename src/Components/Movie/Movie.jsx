@@ -35,7 +35,11 @@ export function Movie(props) {
             </div>
             <div className={MovieCSS.Description}>
                 <div>
-                    <img src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>
+                    {
+                        movie.poster_path ? 
+                        <img src={MovieDBLinks.image_original + movie.poster_path} alt="poster"></img>:
+                        <img src={"/default_userpic.png"} alt="poster"></img>
+                    }
                 </div>
                 <div>
                     <div className={MovieCSS.Title}>
