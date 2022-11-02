@@ -7,13 +7,13 @@
     height: 90vh;
 
 
-    h1{
+    h1 {
         font-family: "Libre Barcode 39 Text";
         font-size: 60px;
         color: white;
     }
 
-    input{
+    input {
 
         background-color: lightgray;
         margin: 20px;
@@ -22,26 +22,29 @@
         border-radius: 10px;
         padding: 10px;
         border: none;
+        transition: 1000ms;
+
     }
 
-    input:focus{
-        scale: 2;
+    input:focus {
+        scale: 1.1;
+        transition: 1000ms;
     }
 
-    button{
+    button {
         border-radius: 10px;
         margin: 10px;
         padding: 10px;
         font-family: "Fira Mono";
         font-size: 20px;
         background-color: darkgray;
-        color:black;
-        border:none;
+        color: black;
+        border: none;
     }
 
-    button:hover{
+    button:hover {
         background-color: rgb(56, 56, 56);
-        color:white;
+        color: white;
     }
 
 

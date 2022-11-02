@@ -21,10 +21,12 @@
         border-radius: 10px;
         padding: 10px;
         border: none;
+        transition: 1000ms;
     }
 
     input:focus {
-        scale: 2;
+        scale: 1.1;
+        transition: 1000ms;
     }
 
     button {

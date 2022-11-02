@@ -20,7 +20,6 @@ export function SignIn() {
         else {
             alert(result);
         }
-
     }
 
     return (
