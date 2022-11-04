@@ -20,7 +20,7 @@ export function Header(props) {
         <div className={HeaderCSS.Header}>
             <NavLink className={HeaderCSS.Logo} to="/">FireFly</NavLink>
             <div className={HeaderCSS.Search}>
-                <input type="text" name="searchInput" value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
+                <input type="search" name="searchInput" className={HeaderCSS.searchInput} value={searchValue} onChange={(e) => setSearchValue(e.target.value)}
                     onKeyDown={(e) => { if (e.key === 'Enter') { window.location.href = "/search/" + searchValue + "/1" } }}
                 ></input>
                 <NavLink to={`/search/${searchValue}/1`} >
