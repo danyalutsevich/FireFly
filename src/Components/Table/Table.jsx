@@ -44,7 +44,11 @@ export function Table(props) {
                     {film.original_title}
                   </NavLink>{" "}
                 </td>
-                {/* <td>здесь фаворит</td> */}
+                <td>
+                  <button className={TableCSS.savebutton}>
+                    <i className={`material-icons`}>favorite</i>
+                  </button>
+                </td>
                 <td>{film.release_date.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
