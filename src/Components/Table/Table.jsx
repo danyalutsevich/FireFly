@@ -22,6 +22,7 @@ export function Table(props) {
             <th>Rank</th>
             <th>Picture</th>
             <th>Title</th>
+            <th></th>
             <th>Year</th>
             <th>Rating</th>
           </tr>
@@ -43,6 +44,7 @@ export function Table(props) {
                     {film.original_title}
                   </NavLink>{" "}
                 </td>
+                {/* <td>здесь фаворит</td> */}
                 <td>{film.release_date.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
@@ -53,15 +55,15 @@ export function Table(props) {
       <div className={TableCSS.Pages}>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${Number(page) === 1 ? 1 : Number(page) - 1
-            }`}
+          to={`/${url == "" ? "" : url + "/"}${
+            Number(page) === 1 ? 1 : Number(page) - 1
+          }`}
         >
           prev
         </NavLink>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${Number(page) + 1
-            }`}
+          to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
         >
           next
         </NavLink>
