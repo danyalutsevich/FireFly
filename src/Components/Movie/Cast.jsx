@@ -34,7 +34,6 @@ export function Cast(props) {
                                 <object data={MovieDBLinks.image + tabItem.profile_path} type="image/jpg">
                                     <object data={MovieDBLinks.image + tabItem.logo_path} type="image/jpg">
                                         <img src={"/default_userpic.png"} alt="profile"></img>
-
                                     </object>
                                 </object>
                                 <div>

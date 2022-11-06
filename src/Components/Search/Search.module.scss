@@ -1,0 +1,42 @@
+.Search{
+    .SearchInfo{
+        width: 85vw;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+    }
+
+    h1, h2{
+        color:azure;
+        margin: 5vh 0px;
+    }
+
+    .Divider{
+        height: 5vh;
+        width: 3px;
+        background-color:yellow;
+        display: inline-block;
+        margin: 0px 20px 0px 10px;
+        vertical-align: middle;
+    }
+
+    .SearchValue{
+        font-size: 1.5em;
+        vertical-align: baseline;
+        color:azure;
+    }
+
+    .Divider2{
+        height: 4vh;
+        width: 3px;
+        background-color:aqua;
+        display: inline-block;
+        margin: 0px 20px 0px 10px;
+        vertical-align: middle;
+    }
+
+    .TotalResults{
+
+    }
+}

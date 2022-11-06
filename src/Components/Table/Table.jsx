@@ -9,7 +9,6 @@ export function Table(props) {
   // page is the current page number
   // url created for the search page provide here the searchValue
   const { films, page, url } = props;
-  console.log(Number(page));
   if (page == NaN || page < 1 || page == undefined) {
     page = 1;
   }
@@ -33,11 +32,14 @@ export function Table(props) {
               <tr key={film.id}>
                 <td>{index + 1 + (page - 1) * films.length}</td>
                 <td className={TableCSS.imageCell}>
-                  <img
-                    className={TableCSS.MoviePoster}
-                    src={MovieDBLinks.image + film.poster_path}
-                    alt={index}
-                  />
+                  {film.poster_path ?
+                    <img
+                      className={TableCSS.MoviePoster}
+                      src={MovieDBLinks.image + film.poster_path}
+                      alt={index}
+                    /> :
+                    <img className={TableCSS.MoviePoster} src={"/default_userpic.png"} alt={index} />
+                  }
                 </td>
                 <td>
                   <NavLink to={`/movie/${film.id}`} className={TableCSS.Link}>
