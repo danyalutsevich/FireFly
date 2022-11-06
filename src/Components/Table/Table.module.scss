@@ -91,4 +91,24 @@
     color: white;
     border: none;
   }
+
+  .savebutton {
+    border: none;
+    background-color: #272727;
+    i {
+      color: red;
+      font-size: 2.5vw;
+      text-align: left;
+      vertical-align: bottom;
+      transition: scale 500ms;
+    }
+
+    i:hover {
+      scale: 1.3;
+    }
+  }
+
+  .savebutton:active .save-button > i {
+    color: black;
+  }
 }
