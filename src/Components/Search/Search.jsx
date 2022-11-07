@@ -9,8 +9,7 @@ import SearchCSS from "./Search.module.scss";
 export function Search() {
   const [films, setFilms] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
-
-  const {searchValue, page} = useParams();
+  const {searchValue, page = 1} = useParams();
 
   useEffect(() => {
     fetch(MovieDBLinks.search(searchValue, page))
@@ -29,7 +28,7 @@ export function Search() {
         </h1>
         <h2>items
          <div className={SearchCSS.Divider2}></div>
-          <span className={SearchCSS.TotalResults}>{totalResults}</span>
+          <span>{totalResults}</span>
         </h2>
       </div>
         <Table films={films} page={page} url={"search/" + searchValue}></Table>
