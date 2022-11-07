@@ -1,7 +1,7 @@
 import { createContext, useState, useEffect, useContext } from "react";
 
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { addDoc, getFirestore, onSnapshot, setDoc, doc, getDoc, collection } from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
     getAuth,
@@ -31,7 +31,7 @@ export const db = getFirestore(app);
 export const storage = getStorage(app);
 export const provider = new GoogleAuthProvider();
 
-// import this context in your component and use useContex() hook to get the value
+// import this context in your component and use useContex(FirebaseContext) hook to get the value
 export const FirebaseContext = createContext();
 
 export const FirebaseContextProvider = ({ children }) => {
@@ -41,18 +41,26 @@ export const FirebaseContextProvider = ({ children }) => {
     // and make additional requests to the database
 
     const [user, setUser] = useState(null);
-    const [liked_movies, setLikedMovies] = useState([]);
+    const [liked, setLikedFilms] = useState([]);
+    const [watchlist, setWatchlistFilms] = useState([]);
 
     useEffect(() => {
-        onAuthStateChanged(auth, setUser)
+        onAuthStateChanged(auth, (currentUser) => {
+            setUser(currentUser)
+            onSnapshot(doc(db, "Liked", currentUser?.uid), (snapshot) => {
+                setLikedFilms(snapshot.data()?.likedFilms);
+            });
+            onSnapshot(doc(db, "Watchlist", currentUser?.uid), (snapshot) => {
+                setWatchlistFilms(snapshot.data()?.watchlistFilms);
+            });
+        })
     }, []);
 
     return (
-        <FirebaseContext.Provider value={{ user, liked_movies }}>
+        <FirebaseContext.Provider value={{ user, liked, watchlist }}> {/* <-- this is the value that will be shared with all components*/}
             {children}
         </FirebaseContext.Provider>
     );
-
 }
 
 export const register = async (email, password, name) => {
@@ -172,3 +180,56 @@ export const logout = async () => {
         alert(error.code)
     }
 }
+
+export const like = async (filmID) => {
+
+    if (auth.currentUser?.uid) {
+
+        const documentRef = doc(db, "Liked", auth.currentUser.uid);
+        const document = await getDoc(documentRef)
+        const likedFilms = document.data()?.likedFilms
+
+        if (likedFilms) {
+            if (likedFilms.includes(filmID)) {
+                likedFilms.splice(likedFilms.indexOf(filmID), 1)
+                await setDoc(documentRef, { likedFilms: [...likedFilms] }, { merge: true });
+            }
+            else {
+                await setDoc(documentRef, { likedFilms: [...likedFilms, filmID] }, { merge: true });
+            }
+        }
+        else {
+            await setDoc(documentRef, { likedFilms: [filmID] }, { merge: true });
+        }
+    }
+    else {
+        alert("Please login to like a film")
+    }
+}
+
+export const watchlistOperation = async (filmID) => {
+
+    if (auth.currentUser?.uid) {
+
+        const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
+        const document = await getDoc(documentRef)
+        const watchlistFilms = document.data()?.watchlistFilms
+
+        if (watchlistFilms) {
+            if (watchlistFilms.includes(filmID)) {
+                watchlistFilms.splice(watchlistFilms.indexOf(filmID), 1)
+                await setDoc(documentRef, { watchlistFilms: [...watchlistFilms] }, { merge: true });
+            }
+            else {
+                await setDoc(documentRef, { watchlistFilms: [...watchlistFilms, filmID] }, { merge: true });
+            }
+        }
+        else {
+            await setDoc(documentRef, { watchlistFilms: [filmID] }, { merge: true });
+        }
+    }
+    else {
+        alert("Please login to add a film to your watchlist")
+    }
+}
+
