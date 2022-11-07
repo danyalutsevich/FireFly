@@ -1,47 +1,57 @@
 .SignIn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 90vh;
 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 90vh;
+  h1 {
+    font-family: "Libre Barcode 39 Text";
+    font-size: 60px;
+    color: white;
+  }
 
-    h1 {
-        font-family: "Libre Barcode 39 Text";
-        font-size: 60px;
-        color: white;
-    }
+  input {
+    background-color: lightgray;
+    margin: 20px;
+    font-family: "Fira Mono";
+    font-size: 24px;
+    border-radius: 10px;
+    padding: 10px;
+    border: none;
+    transition: 1000ms;
+  }
 
-    input {
+  input:focus {
+    scale: 1.1;
+    transition: 1000ms;
+  }
 
-        background-color: lightgray;
-        margin: 20px;
-        font-family: "Fira Mono";
-        font-size: 24px;
-        border-radius: 10px;
-        padding: 10px;
-        border: none;
-        transition: 1000ms;
-    }
+  button {
+    border-radius: 10px;
+    margin: 10px;
+    padding: 10px;
+    font-family: "Fira Mono";
+    font-size: 20px;
+    background-color: darkgray;
+    color: black;
+    border: none;
+  }
 
-    input:focus {
-        scale: 1.1;
-        transition: 1000ms;
-    }
+  button:hover {
+    background-color: rgb(56, 56, 56);
+    color: white;
+  }
 
-    button {
-        border-radius: 10px;
-        margin: 10px;
-        padding: 10px;
-        font-family: "Fira Mono";
-        font-size: 20px;
-        background-color: darkgray;
-        color: black;
-        border: none;
-    }
+  .ErrorWindow {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    margin: 10px;
+    font-family: "Fira Mono";
+    font-size: 20px;
+  }
 
-    button:hover {
-        background-color: rgb(56, 56, 56);
-        color: white;
-    }
+  
 }
