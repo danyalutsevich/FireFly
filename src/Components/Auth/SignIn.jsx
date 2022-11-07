@@ -25,14 +25,15 @@ export function SignIn() {
       });
       window.open("/", "_self");
     } else {
-      // Alert({
-      //   title: result,
-      //   icon: "error",
-      //   timer: 1000,
-      //   timerProgressBar: true,
-      //   showConfirmButton: false,
-      //   text: "Please, try again!",
-      // });
+      console.log(result);
+      Alert({
+        title: result,
+        icon: "error",
+        timer: 1000,
+        timerProgressBar: true,
+        showConfirmButton: false,
+        text: "Please, try again!",
+      });
     }
   };
 
