@@ -22,7 +22,11 @@ export function Liked() {
   }, [contextData])
 
   if (likedFilms.length == 0) {
-    return (<Loading />)
+    return (
+      <div className={LikedCSS.NoLikedFilms}>
+        <h1>Your liked films <br />will appear here</h1>
+      </div>
+    )
   }
 
   return (

@@ -133,6 +133,7 @@ export const deleteUserAccount = async () => {
 export const signInWithGoogle = async () => {
   try {
     await signInWithPopup(auth, provider);
+    await Alert({ title: "Login successful!", icon: "success", text: "" });
     window.open("/", "_self");
   } catch (error) {
     Alert({ title: error.code });
@@ -245,22 +246,7 @@ export const saveToWatchlist = async (filmID) => {
   }
 }
 
-
 export const addRating = async (filmID, rating) => {
-
-  // const A = {
-  //   "1":[680],
-  //   "2":[680],
-  //   "3":[680],
-  //   "4":[680],
-  //   "5":[680],
-  //   "6":[680],
-  //   "7":[680],
-  //   "8":[680],
-  //   "9":[680],
-  //   "10":[680],
-  // }
-
   if (filmID && rating && auth.currentUser?.uid) {
     try {
       const documentRef = doc(db, "Rating", auth.currentUser.uid);

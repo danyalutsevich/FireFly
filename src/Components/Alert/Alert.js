@@ -5,7 +5,7 @@ export function Alert({
   title,
   text = "Please, try again!",
   icon = "error",
-  timer = 5000,
+  timer = 3000,
   timerProgressBar = true,
   showConfirmButton = false,
   showCancelButton = false,
@@ -30,7 +30,7 @@ export function Alert({
     caption = "Invalid Argument";
   } else if (title == "auth/weak-password") {
     caption = "Weak Password";
-    text = "Password should be at least 6 characters";  
+    text = "Password should be at least 6 characters";
   } else if (title == "auth/email-already-in-use") {
     caption = "Email already in use";
   } else {
