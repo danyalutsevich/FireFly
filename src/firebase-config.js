@@ -14,7 +14,8 @@ import {
   signInWithPopup,
   deleteUser,
 } from "firebase/auth";
-import { Alert } from "./Components/Auth/Alert";
+
+import { Alert } from "./Components/Alert";
 
 const firebaseConfig = {
   apiKey: "AIzaSyAW1QeSbF0Y0_ryBOIm9sZVH-aTNl47Fgs",
@@ -61,16 +62,10 @@ export const register = async (email, password, name) => {
       await updateProfile(auth.currentUser, { displayName: name });
       return true;
     } catch (error) {
-      Alert({
-        title: error.code,
-      });
-
-      // alert(error.code);
+      Alert({ title: error.code });
     }
   } else {
-    Alert({
-      title: "Empty fields",
-    });
+    Alert("Empty fields");
     return false;
   }
 };
@@ -85,9 +80,7 @@ export const login = async (email, password) => {
       return error.code;
     }
   } else {
-    Alert({
-      title: "Empty fields",
-    });
+    Alert("Empty fields");
   }
 };
 
@@ -97,14 +90,10 @@ export const deleteUserAccount = async () => {
     window.open("/", "_self");
   } catch (error) {
     if (error.code === "auth/requires-recent-login") {
-      Alert({
-        title: "You need to reauthenticate before deleting your account",
-      });
+      Alert("You need to reauthenticate before deleting your account");
       window.open("/signin", "_self");
     } else {
-      Alert({
-        title: error.code,
-      });
+      Alert({ title: error.code });
     }
   }
 };
@@ -114,9 +103,7 @@ export const signInWithGoogle = async () => {
     await signInWithPopup(auth, provider);
     window.open("/", "_self");
   } catch (error) {
-    Alert({
-      title: error.code,
-    });
+    Alert({ title: error.code });
   }
 };
 
@@ -134,19 +121,13 @@ export const uploadImage = async (file) => {
         });
         window.location.reload();
       } catch (error) {
-        Alert({
-          title: error.code,
-        });
+        Alert({ title: error.code });
       }
     } else {
-      Alert({
-        title: "Please select a file",
-      });
+      Alert("Please select a file");
     }
   } else {
-    Alert({
-      title: "Please login to upload a profile picture",
-    });
+    Alert("Please login to upload a profile picture");
   }
 };
 
@@ -156,14 +137,10 @@ export const removeImage = async () => {
       await updateProfile(auth.currentUser, { photoURL: "" });
       window.location.reload();
     } catch (error) {
-      Alert({
-        title: error.code,
-      });
+      Alert({ title: error.code });
     }
   } else {
-    Alert({
-      title: "Please login to remove your profile picture",
-    });
+    Alert({ title: "Please login to remove your profile picture" });
   }
 };
 
@@ -173,14 +150,10 @@ export const updateName = async (name) => {
       await updateProfile(auth.currentUser, { displayName: name });
       window.location.reload();
     } catch (error) {
-      Alert({
-        title: error.code,
-      });
+      Alert({ title: error.code });
     }
   } else {
-    Alert({
-      title: "Please enter a name",
-    });
+    Alert({ title: "Please enter a name" });
   }
 };
 
@@ -189,8 +162,6 @@ export const logout = async () => {
     await signOut(auth);
     window.open("/", "_self");
   } catch (error) {
-    Alert({
-      title: error.code,
-    });
+    Alert({ title: error.code });
   }
 };

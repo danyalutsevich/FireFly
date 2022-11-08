@@ -1,16 +1,14 @@
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
-import AlertCSS from "./Alert.module.scss";
-
-export function Alert(
+import "./Alert.css";
+export function Alert({
   title,
+  text = "Please, try again!",
   icon = "error",
-  timer = "1000",
+  timer = "2000",
   timerProgressBar = true,
   showConfirmButton = false,
-  text = "Please, try again!"
-) {
+}) {
   const MySwal = withReactContent(Swal);
   let caption;
   if (title === "auth/user-not-found") {
@@ -46,5 +44,4 @@ export function Alert(
     timerProgressBar: timerProgressBar,
     showConfirmButton: showConfirmButton,
   });
-}
 }

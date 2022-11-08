@@ -5,7 +5,7 @@ import { register, uploadImage } from "../../firebase-config";
 import { SignInWithGoogle } from "./SignInWithGoogle";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-
+import { Alert } from "../Alert";
 import SignUpCSS from "./SignUp.module.scss";
 
 export function SignUp() {
@@ -18,12 +18,10 @@ export function SignUp() {
     let result = await register(email, password, name);
 
     if (result === true) {
-      MySwal.fire({
+      Alert({
         title: "Sign Up Successful",
         icon: "success",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
+        text: "You have successfully signed up",
       }).then(() => {
         window.open("/", "_self");
       });

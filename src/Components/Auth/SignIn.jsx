@@ -1,13 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { SignInWithGoogle } from "./SignInWithGoogle";
 import { login, signInWithGoogle } from "../../firebase-config";
-import Swal from "sweetalert2";
-import withReactContent from "sweetalert2-react-content";
-import { Alert, AlertSuccess } from "./Alert";
+import { Alert } from "../Alert";
 import SignInCSS from "./SignIn.module.scss";
 
 export function SignIn() {
-  const MySwal = withReactContent(Swal);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -15,17 +12,10 @@ export function SignIn() {
     let result = await login(email, password);
 
     if (result === true) {
-      Alert({
-        title: "Success",
-        icon: "success",
-        text: "You have successfully logged in",
-      });
+      Alert("Success", "You have successfully signed in", "success");
       window.open("/", "_self");
     } else {
-      console.log(result);
-      Alert({
-        title: result,
-      });
+      Alert({ title: result });
     }
   };
 
