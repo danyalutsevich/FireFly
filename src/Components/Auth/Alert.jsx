@@ -3,14 +3,14 @@ import withReactContent from "sweetalert2-react-content";
 
 import AlertCSS from "./Alert.module.scss";
 
-export function Alert({
+export function Alert(
   title,
-  icon,
-  timer,
-  timerProgressBar,
-  showConfirmButton,
-  text,
-}) {
+  icon = "error",
+  timer = "1000",
+  timerProgressBar = true,
+  showConfirmButton = false,
+  text = "Please, try again!"
+) {
   const MySwal = withReactContent(Swal);
   let caption;
   if (title === "auth/user-not-found") {
@@ -33,6 +33,8 @@ export function Alert({
     caption = "Weak Password";
   } else if (title == "auth/email-already-in-use") {
     caption = "Email already in use";
+  } else {
+    caption = title;
   }
   MySwal.fire({
     title: caption === undefined ? title : caption,
@@ -44,4 +46,5 @@ export function Alert({
     timerProgressBar: timerProgressBar,
     showConfirmButton: showConfirmButton,
   });
+}
 }

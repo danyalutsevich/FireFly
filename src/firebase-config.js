@@ -63,11 +63,6 @@ export const register = async (email, password, name) => {
     } catch (error) {
       Alert({
         title: error.code,
-        text: "Please try again",
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
       });
 
       // alert(error.code);
@@ -75,11 +70,6 @@ export const register = async (email, password, name) => {
   } else {
     Alert({
       title: "Empty fields",
-      text: "Please fill all fields",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
     return false;
   }
@@ -97,11 +87,6 @@ export const login = async (email, password) => {
   } else {
     Alert({
       title: "Empty fields",
-      text: "Please fill all fields",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
   }
 };
@@ -114,21 +99,11 @@ export const deleteUserAccount = async () => {
     if (error.code === "auth/requires-recent-login") {
       Alert({
         title: "You need to reauthenticate before deleting your account",
-        text: "Please fill all fields",
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
       });
       window.open("/signin", "_self");
     } else {
       Alert({
         title: error.code,
-        text: "Please, try again",
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
       });
     }
   }
@@ -141,11 +116,6 @@ export const signInWithGoogle = async () => {
   } catch (error) {
     Alert({
       title: error.code,
-      text: "Please, try again",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
   }
 };
@@ -166,31 +136,16 @@ export const uploadImage = async (file) => {
       } catch (error) {
         Alert({
           title: error.code,
-          text: "Please, try again",
-          icon: "error",
-          timer: 1000,
-          timerProgressBar: true,
-          showConfirmButton: false,
         });
       }
     } else {
       Alert({
         title: "Please select a file",
-        text: "Please, try again",
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
       });
     }
   } else {
     Alert({
       title: "Please login to upload a profile picture",
-      text: "Please, try again",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
   }
 };
@@ -203,21 +158,11 @@ export const removeImage = async () => {
     } catch (error) {
       Alert({
         title: error.code,
-        text: "Please, try again",
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
       });
     }
   } else {
     Alert({
       title: "Please login to remove your profile picture",
-      text: "Please, try again",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
   }
 };
@@ -230,21 +175,11 @@ export const updateName = async (name) => {
     } catch (error) {
       Alert({
         title: error.code,
-        text: "Please, try again",
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
       });
     }
   } else {
     Alert({
       title: "Please enter a name",
-      text: "Please, try again",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
   }
 };
@@ -256,11 +191,6 @@ export const logout = async () => {
   } catch (error) {
     Alert({
       title: error.code,
-      text: "Please, try again",
-      icon: "error",
-      timer: 1000,
-      timerProgressBar: true,
-      showConfirmButton: false,
     });
   }
 };

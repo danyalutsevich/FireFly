@@ -3,7 +3,7 @@ import { SignInWithGoogle } from "./SignInWithGoogle";
 import { login, signInWithGoogle } from "../../firebase-config";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
-import { Alert } from "./Alert";
+import { Alert, AlertSuccess } from "./Alert";
 import SignInCSS from "./SignIn.module.scss";
 
 export function SignIn() {
@@ -18,21 +18,13 @@ export function SignIn() {
       Alert({
         title: "Success",
         icon: "success",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
-        text: "You have successfully logged in!",
+        text: "You have successfully logged in",
       });
       window.open("/", "_self");
     } else {
       console.log(result);
       Alert({
         title: result,
-        icon: "error",
-        timer: 1000,
-        timerProgressBar: true,
-        showConfirmButton: false,
-        text: "Please, try again!",
       });
     }
   };
