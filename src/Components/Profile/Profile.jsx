@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-import { Alert } from '../Alert';
 import ProfileCSS from './Profile.module.scss';
 import { auth, FirebaseContext, logout, uploadImage, removeImage, updateName, deleteUserAccount } from '../../firebase-config';
 
@@ -14,13 +13,8 @@ export function Profile() {
 
   const fileSelected = async (e) => {
     let file = e.target.files[0];
+    await uploadImage(file)
 
-    if (file) {
-      uploadImage(file)
-    }
-    else {
-      Alert("No file selected")
-    }
   }
 
   return (
@@ -30,7 +24,7 @@ export function Profile() {
           <img src={user?.photoURL} alt="Profile" /> :
           <img src={"/defaultUserPic.svg"} alt="ProfileDefault" />
         }
-        <input type='file' id="img" style={{ display: 'none' }} onChange={fileSelected} />
+        <input type='file' accept="image/png, image/jpeg" id="img" style={{ display: 'none' }} onChange={fileSelected} />
         <label htmlFor="img">Change Profile Image</label>
         <button onClick={removeImage}>Remove Image</button>
         <button onClick={deleteUserAccount}>Delete Account</button>

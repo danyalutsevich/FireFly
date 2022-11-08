@@ -45,21 +45,25 @@ export const FirebaseContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [liked, setLikedFilms] = useState([]);
   const [watchlist, setWatchlistFilms] = useState([]);
+  const [ratings, setRatings] = useState({});
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser)
       onSnapshot(doc(db, "Liked", currentUser?.uid), (snapshot) => {
-        setLikedFilms(snapshot.data()?.likedFilms);
+        setLikedFilms(snapshot.data()?.likedFilms || []);
       });
       onSnapshot(doc(db, "Watchlist", currentUser?.uid), (snapshot) => {
-        setWatchlistFilms(snapshot.data()?.watchlistFilms);
+        setWatchlistFilms(snapshot.data()?.watchlistFilms || []);
+      });
+      onSnapshot(doc(db, "Rating", currentUser?.uid), (snapshot) => {
+        setRatings(snapshot.data()?.ratings || {});
       });
     })
   }, []);
 
   return (
-    <FirebaseContext.Provider value={{ user, liked, watchlist }}> {/* <-- this is the value that will be shared with all components*/}
+    <FirebaseContext.Provider value={{ user, liked, watchlist, ratings }}> {/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
   );
@@ -70,13 +74,13 @@ export const register = async (email, password, name) => {
     try {
       await createUserWithEmailAndPassword(auth, email, password);
       await updateProfile(auth.currentUser, { displayName: name });
-      return true;
+      await Alert({ title: "Registration successful!", icon: "success", text: "" });
+      window.open("/", "_self");
     } catch (error) {
       Alert({ title: error.code });
     }
   } else {
-    Alert("Empty fields");
-    return false;
+    Alert({ title: "Empty fields" });
   }
 };
 
@@ -84,13 +88,13 @@ export const login = async (email, password) => {
   if (email && password) {
     try {
       await signInWithEmailAndPassword(auth, email, password);
+      await Alert({ title: "Login successful!", icon: "success", text: "" });
       window.open("/", "_self");
-      return true;
     } catch (error) {
-      return error.code;
+      Alert({ title: error.code });
     }
   } else {
-    Alert("Empty fields");
+    Alert({ title: "Empty fields" });
   }
 };
 
@@ -105,8 +109,17 @@ export const logout = async () => {
 
 export const deleteUserAccount = async () => {
   try {
-    await deleteUser(auth.currentUser);
-    window.open("/", "_self");
+    Alert({ title: "You are going to delete your account.\n\nAre you sure?", text: "This action cannot be undone", icon: "question", timer: false, showConfirmButton: true, showCancelButton: true })
+      .then(async (result) => {
+        if (result.isConfirmed) {
+          await deleteUser(auth.currentUser);
+          await Alert({ title: "Your account succesfully deleted", icon: "success", text: "" });
+          window.open("/", "_self");
+        }
+      }).catch((error) => {
+        Alert({ title: error.code });
+      });
+
   } catch (error) {
     if (error.code === "auth/requires-recent-login") {
       Alert("You need to reauthenticate before deleting your account");
@@ -126,6 +139,17 @@ export const signInWithGoogle = async () => {
   }
 };
 
+export const updateName = async (name) => {
+  if (name) {
+    try {
+      await updateProfile(auth.currentUser, { displayName: name });
+      window.location.reload();
+    } catch (error) {
+      Alert({ title: error.code });
+    }
+  }
+}
+
 export const uploadImage = async (file) => {
   if (auth.currentUser.uid) {
     if (file) {
@@ -143,10 +167,10 @@ export const uploadImage = async (file) => {
         Alert({ title: error.code });
       }
     } else {
-      Alert("Please select a file");
+      Alert({ title: "Please select a file" });
     }
   } else {
-    Alert("Please login to upload a profile picture");
+    Alert({ title: "Please login to upload a profile picture" });
   }
 };
 
@@ -159,23 +183,12 @@ export const removeImage = async () => {
       Alert({ title: error.code });
     }
   } else {
-    Alert("Please login to remove your profile picture");
+    Alert({ title: "Please login to remove your profile picture" });
   }
 };
 
-export const updateName = async (name) => {
-  if (name) {
-    try {
-      await updateProfile(auth.currentUser, { displayName: name });
-      window.location.reload();
-    } catch (error) {
-      Alert({ title: error.code });
-    }
-  }
-}
-
 export const like = async (filmID) => {
-  if (auth.currentUser?.uid) {
+  if (auth.currentUser?.uid && filmID) {
     try {
       const documentRef = doc(db, "Liked", auth.currentUser.uid);
       const document = await getDoc(documentRef)
@@ -183,7 +196,7 @@ export const like = async (filmID) => {
 
       if (likedFilms) {
         if (likedFilms.includes(filmID)) {
-          likedFilms.splice(likedFilms.indexOf(filmID), 1)
+          likedFilms.splice(likedFilms?.indexOf(filmID), 1)
           await setDoc(documentRef, { likedFilms: [...likedFilms] }, { merge: true });
         }
         else {
@@ -199,12 +212,12 @@ export const like = async (filmID) => {
     }
   }
   else {
-    Alert("Please login to like films");
+    Alert({ title: "Please login to like films" });
   }
 }
 
-export const watchlistOperation = async (filmID) => {
-  if (auth.currentUser?.uid) {
+export const saveToWatchlist = async (filmID) => {
+  if (auth.currentUser?.uid && filmID) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef)
@@ -212,7 +225,7 @@ export const watchlistOperation = async (filmID) => {
 
       if (watchlistFilms) {
         if (watchlistFilms.includes(filmID)) {
-          watchlistFilms.splice(watchlistFilms.indexOf(filmID), 1)
+          watchlistFilms.splice(watchlistFilms?.indexOf(filmID), 1)
           await setDoc(documentRef, { watchlistFilms: [...watchlistFilms] }, { merge: true });
         }
         else {
@@ -228,8 +241,48 @@ export const watchlistOperation = async (filmID) => {
     }
   }
   else {
-    Alert("Please login to add a film to your watchlist")
+    Alert({ title: "Please login to add a film to your watchlist" })
   }
 }
 
 
+export const addRating = async (filmID, rating) => {
+
+  // const A = {
+  //   "1":[680],
+  //   "2":[680],
+  //   "3":[680],
+  //   "4":[680],
+  //   "5":[680],
+  //   "6":[680],
+  //   "7":[680],
+  //   "8":[680],
+  //   "9":[680],
+  //   "10":[680],
+  // }
+
+  if (filmID && rating && auth.currentUser?.uid) {
+    try {
+      const documentRef = doc(db, "Rating", auth.currentUser.uid);
+      const document = await getDoc(documentRef)
+      const ratings = document.data()?.ratings
+
+      if (ratings) {
+        if (ratings[filmID]) {
+          ratings[filmID] = rating
+          await setDoc(documentRef, { ratings: { ...ratings } }, { merge: true });
+        }
+        else {
+          await setDoc(documentRef, { ratings: { ...ratings, [filmID]: rating } }, { merge: true });
+        }
+      }
+      else {
+        await setDoc(documentRef, { ratings: { [filmID]: rating } }, { merge: true });
+      }
+    }
+    catch (error) {
+      Alert({ title: error.code })
+    }
+  }
+
+}

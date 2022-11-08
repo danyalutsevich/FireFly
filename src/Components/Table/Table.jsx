@@ -3,8 +3,10 @@ import { MovieDBLinks } from "../../Variables";
 import { NavLink, useParams } from "react-router-dom";
 
 import TableCSS from "../Table/Table.module.scss";
-import { like, FirebaseContext, watchlistOperation } from "../../firebase-config";
+import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
 import { useContext } from "react";
+import { TableOperations } from "./TableOperations";
+
 
 export function Table(props) {
   // films is an array of objects (films)
@@ -17,11 +19,15 @@ export function Table(props) {
 
   const contextData = useContext(FirebaseContext);
   const [liked, setLiked] = useState([]);
-  const [watchList, setWatchList] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [user, setUser] = useState(null);
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
     setLiked(contextData.liked)
-    setWatchList(contextData.watchlist)
+    setWatchlist(contextData.watchlist)
+    setUser(contextData.user)
+    setRatings(contextData.ratings)
   }, [contextData]);
 
   return (
@@ -55,15 +61,14 @@ export function Table(props) {
                 <td>
                   <NavLink to={`/movie/${film.id}`} className={TableCSS.Link}>
                     {film.original_title}
-                  </NavLink>{" "}
+                  </NavLink>
                 </td>
-                <td >
-                  <div className={TableCSS.SaveTab}>
-                    <span className={`material-symbols-outlined ${liked?.includes(film.id) ? TableCSS.Active : TableCSS.NonActive}`}
-                      onClick={() => { like(film.id) }}>favorite</span>
-                    <span className={`material-symbols-outlined ${watchList?.includes(film.id) ? TableCSS.Active : TableCSS.NonActive}`}
-                      onClick={() => { watchlistOperation(film.id) }}>bookmark</span>
-                  </div>
+                <td>
+                  {user ? <TableOperations filmID={film.id}
+                    liked={liked?.includes(film.id)}
+                    watchlist={watchlist?.includes(film.id)}
+                    rating={ratings[film.id]}
+                  /> : null}
                 </td>
                 <td>{film.release_date?.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>

@@ -103,31 +103,5 @@
     border: none;
   }
 
-  .SaveTab {
-    display: flex;
-    height: 100%;
-    cursor: pointer;
-    font-size: 60px;
-
-    .NonActive {
-      font-variation-settings:
-        'FILL' 0,
-        'wght' 500,
-        'GRAD' 0,
-        'opsz' 48
-    }
-
-    .NonActive:hover {
-      opacity: .6;
-      scale: 1.1;
-    }
-
-    .Active {
-      font-variation-settings:
-        'FILL' 1,
-        'wght' 500,
-        'GRAD' 0,
-        'opsz' 48
-    }
-  }
+  
 }
