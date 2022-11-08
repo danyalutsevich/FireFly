@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext, useRef } from 'react';
-
+import { Alert } from '../Alert';
 import ProfileCSS from './Profile.module.scss';
 import { auth, FirebaseContext, logout, uploadImage, removeImage, updateName, deleteUserAccount } from '../../firebase-config';
 
@@ -19,7 +19,7 @@ export function Profile() {
       uploadImage(file)
     }
     else {
-      alert("No file selected")
+      Alert("No file selected")
     }
   }
 
