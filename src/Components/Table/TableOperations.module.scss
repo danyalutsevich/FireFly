@@ -1,0 +1,39 @@
+.SaveTab {
+    display: flex;
+    // flex-direction: column;
+    align-items: center;
+    justify-content: end;
+    height: 100%;
+    cursor: pointer;
+    font-size: 24px;
+
+    .NonActive {
+        font-variation-settings:
+            'FILL' 0,
+            'wght' 500,
+            'GRAD' 0,
+            'opsz' 48
+    }
+
+    .NonActive:hover {
+        opacity: .6;
+        scale: 1.1;
+    }
+
+    .Active {
+        font-variation-settings:
+            'FILL' 1,
+            'wght' 500,
+            'GRAD' 0,
+            'opsz' 48
+    }
+
+    .Save {
+        display: flex;
+    }
+
+    .Stars {
+        display: flex;
+
+    }
+}

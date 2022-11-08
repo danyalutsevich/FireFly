@@ -3,6 +3,10 @@ import { MovieDBLinks } from "../../Variables";
 import { NavLink, useParams } from "react-router-dom";
 
 import TableCSS from "../Table/Table.module.scss";
+import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
+import { useContext } from "react";
+import { TableOperations } from "./TableOperations";
+
 
 export function Table(props) {
   // films is an array of objects (films)
@@ -12,6 +16,19 @@ export function Table(props) {
   if (page == NaN || page < 1 || page == undefined) {
     page = 1;
   }
+
+  const contextData = useContext(FirebaseContext);
+  const [liked, setLiked] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [user, setUser] = useState(null);
+  const [ratings, setRatings] = useState([]);
+
+  useEffect(() => {
+    setLiked(contextData.liked)
+    setWatchlist(contextData.watchlist)
+    setUser(contextData.user)
+    setRatings(contextData.ratings)
+  }, [contextData]);
 
   return (
     <div className={TableCSS.Table}>
@@ -44,14 +61,16 @@ export function Table(props) {
                 <td>
                   <NavLink to={`/movie/${film.id}`} className={TableCSS.Link}>
                     {film.original_title}
-                  </NavLink>{" "}
+                  </NavLink>
                 </td>
                 <td>
-                  <button className={TableCSS.savebutton}>
-                    <i className={`material-icons`}>favorite</i>
-                  </button>
+                  {user ? <TableOperations filmID={film.id}
+                    liked={liked?.includes(film.id)}
+                    watchlist={watchlist?.includes(film.id)}
+                    rating={ratings[film.id]}
+                  /> : null}
                 </td>
-                <td>{film.release_date.slice(0, 4)}</td>
+                <td>{film.release_date?.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
               </tr>
             );
@@ -61,9 +80,8 @@ export function Table(props) {
       <div className={TableCSS.Pages}>
         <NavLink
           className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${
-            Number(page) === 1 ? 1 : Number(page) - 1
-          }`}
+          to={`/${url == "" ? "" : url + "/"}${Number(page) === 1 ? 1 : Number(page) - 1
+            }`}
         >
           prev
         </NavLink>

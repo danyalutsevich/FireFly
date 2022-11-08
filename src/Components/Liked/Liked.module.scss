@@ -1,5 +1,24 @@
-.Liked{
-    h2{
+.NoLikedFilms {
+
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: white;
+        font-family: "Fira Mono";
+        font-size: 50px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
+
+.Liked {
+
+    h2 {
         color: white;
         font-family: "Fira Mono";
         font-size: 4vw;
@@ -8,27 +27,27 @@
         text-align: left;
     }
 
-    .Sort{
+    .Sort {
         margin-right: 3vw;
         display: inline-block;
     }
 
-    .Sort{
-        span{
-            color:whitesmoke;
+    .Sort {
+        span {
+            color: whitesmoke;
             font-size: 1.3vw;
             padding-bottom: 2vw;
         }
 
-        span{
-            i{
+        span {
+            i {
                 font-size: 1.3vw;
                 background: none;
                 border: none;
             }
         }
 
-        div{
+        div {
             position: absolute;
             display: none;
             background-color: white;
@@ -38,19 +57,20 @@
             padding: 10px;
             z-index: 1;
 
-            button{
+            button {
                 font-size: 1vw;
                 background: none;
                 border: 1px solid transparent;
                 text-align: right;
                 transition: all 700ms;
 
-                i{
-                    font-size: 1vw;;
+                i {
+                    font-size: 1vw;
+                    ;
                 }
             }
 
-            button:hover{
+            button:hover {
                 border: 1px solid gray;
                 border-radius: 12px;
                 scale: 1.1;
@@ -58,38 +78,38 @@
         }
     }
 
-    .SortIcon{
+    .SortIcon {
         color: white;
         font-size: 2vw;
         margin-left: 1vw;
-        
+
     }
 
-    .Sort:hover .SortBtn{
+    .Sort:hover .SortBtn {
         scale: 1.2;
         color: black;
     }
 
 
-    .SortBtn{
+    .SortBtn {
         background: none;
         border: none;
         display: flex;
         transition: scale 500ms, color 500ms;
     }
 
-    .Sort:hover div{
+    .Sort:hover div {
         display: flex;
         flex-direction: column;
     }
 
-    .Header{
+    .Header {
         display: flex;
         justify-content: space-between;
         align-items: baseline;
     }
 
-    .Divider{
+    .Divider {
         background-color: white;
         border-radius: 32px;
         width: 95%;
@@ -100,12 +120,13 @@
         z-index: 0;
     }
 
-    .Liked-content{
+    .Liked-content {
         display: grid;
         grid-template-columns: repeat(5, 1fr);
         text-align: center;
         margin: 5px;
-        a{
+
+        a {
             margin-top: 4vh;
             margin-bottom: 4vh;
             width: min-content;

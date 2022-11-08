@@ -28,8 +28,8 @@ export function Header(props) {
                 </NavLink>
             </div>
             <NavLink to="/ratings/1">Ratings</NavLink>
-            <NavLink to="/liked">Liked</NavLink>
-            <NavLink to="/watchList">WatchList</NavLink>
+            {user ? <NavLink to="/liked">Liked</NavLink> : null}
+            {user ? <NavLink to="/watchList">WatchList</NavLink> : null}
             {user ?
                 <NavLink to="/profile" className={HeaderCSS.Profile}>
                     {user.displayName}

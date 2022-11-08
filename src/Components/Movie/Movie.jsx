@@ -11,11 +11,9 @@ import MovieCSS from "./Movie.module.scss";
 export function Movie(props) {
 
     const [movie, setMovie] = useState(undefined);
-
     const { id } = useParams();
 
     useEffect(() => {
-
         if (id) {
             fetch(MovieDBLinks.movie(id)).then(data => data.json()).then(data => setMovie(data))
         }
