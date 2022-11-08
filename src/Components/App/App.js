@@ -26,6 +26,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/page/:page" element={<Home />} />
+          <Route path="/search/:searchValue" element={<Search />} />
           <Route path="/search/:searchValue/:page" element={<Search />} /> {/* useParams hook will return {searchValue, page} */}
           <Route path="/ratings/:page" element={<Ratings />} />
           <Route path="/liked" element={<Liked />} />
