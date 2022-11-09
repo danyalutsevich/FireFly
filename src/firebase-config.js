@@ -189,23 +189,24 @@ export const removeImage = async () => {
 };
 
 export const like = async (filmID) => {
-  if (auth.currentUser?.uid && filmID) {
+  const id = Number(filmID)
+  if (auth.currentUser?.uid && id) {
     try {
       const documentRef = doc(db, "Liked", auth.currentUser.uid);
       const document = await getDoc(documentRef)
       const likedFilms = document.data()?.likedFilms
 
       if (likedFilms) {
-        if (likedFilms.includes(filmID)) {
-          likedFilms.splice(likedFilms?.indexOf(filmID), 1)
+        if (likedFilms.includes(id)) {
+          likedFilms.splice(likedFilms?.indexOf(id), 1)
           await setDoc(documentRef, { likedFilms: [...likedFilms] }, { merge: true });
         }
         else {
-          await setDoc(documentRef, { likedFilms: [...likedFilms, filmID] }, { merge: true });
+          await setDoc(documentRef, { likedFilms: [...likedFilms, id] }, { merge: true });
         }
       }
       else {
-        await setDoc(documentRef, { likedFilms: [filmID] }, { merge: true });
+        await setDoc(documentRef, { likedFilms: [id] }, { merge: true });
       }
     }
     catch (error) {
@@ -218,23 +219,24 @@ export const like = async (filmID) => {
 }
 
 export const saveToWatchlist = async (filmID) => {
-  if (auth.currentUser?.uid && filmID) {
+  const id = Number(filmID)
+  if (auth.currentUser?.uid && id) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef)
       const watchlistFilms = document.data()?.watchlistFilms
 
       if (watchlistFilms) {
-        if (watchlistFilms.includes(filmID)) {
-          watchlistFilms.splice(watchlistFilms?.indexOf(filmID), 1)
+        if (watchlistFilms.includes(id)) {
+          watchlistFilms.splice(watchlistFilms?.indexOf(id), 1)
           await setDoc(documentRef, { watchlistFilms: [...watchlistFilms] }, { merge: true });
         }
         else {
-          await setDoc(documentRef, { watchlistFilms: [...watchlistFilms, filmID] }, { merge: true });
+          await setDoc(documentRef, { watchlistFilms: [...watchlistFilms, id] }, { merge: true });
         }
       }
       else {
-        await setDoc(documentRef, { watchlistFilms: [filmID] }, { merge: true });
+        await setDoc(documentRef, { watchlistFilms: [id] }, { merge: true });
       }
     }
     catch (error) {
