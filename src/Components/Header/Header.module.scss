@@ -21,6 +21,7 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     // scale: 1.1;
     color: black;
     text-shadow: 0px 1px 12px rgba(0, 0, 0, 0.83);
+    -webkit-transform: rotate(5deg);
     transition: 100ms;
   }
 
