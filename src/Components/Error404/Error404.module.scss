@@ -1,3 +1,4 @@
+@import "../Header/Header.module.scss";
 .Error404 {
   display: flex;
   flex-direction: column;
@@ -6,7 +7,7 @@
   color: white;
   height: 100vh;
   max-width: 1800px;
-  font-family: "Libre Barcode 39 Text";
+  font-family: $font-for-title;
   font-stretch: condensed;
   font-size: 4em;
   text-align: center;

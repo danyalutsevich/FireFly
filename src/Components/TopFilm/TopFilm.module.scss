@@ -1,3 +1,4 @@
+@import "../Header/Header.module.scss";
 .TopFilm {
   border-radius: 10px;
   background-color: #1e1e1e;
@@ -42,7 +43,7 @@
 
   .TopFilmInfo h1 {
     margin-top: 0;
-    font-family: "Fira mono", monospace;
+    font-family: $font-for-text;
     font-size: 2.5em;
     letter-spacing: 10px;
     text-align: left;
@@ -53,7 +54,7 @@
   }
 
   .TopFilmInfo p {
-    font-family: "Fira mono", monospace;
+    font-family: $font-for-text;
     text-decoration: none;
     vertical-align: top;
     font-size: 1.5em;
@@ -64,7 +65,7 @@
     button {
       background-color: #292929;
       color: white;
-      font-family: "Fira mono", monospace;
+      font-family: $font-for-text;
       border-radius: 5px;
       text-align: center;
       text-decoration: none;
