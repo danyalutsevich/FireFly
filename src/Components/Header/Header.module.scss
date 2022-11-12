@@ -17,11 +17,8 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     margin: 0 10px;
   }
 
-  a:hover:not(.Logo, .Profile) {
-    // scale: 1.1;
-    color: black;
-    text-shadow: 0px 1px 12px rgba(0, 0, 0, 0.83);
-    -webkit-transform: rotate(2deg);
+  a:hover {
+    scale: 1.1;
     transition: 100ms;
   }
 
@@ -30,11 +27,6 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     font-size: 10vh;
   }
   .Logo:hover {
-    color: black;
-    scale: 1.03;
-    transition: 100ms;
-  }
-  .Profile:hover {
     color: black;
     scale: 1.03;
     transition: 100ms;
