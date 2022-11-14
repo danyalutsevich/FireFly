@@ -13,6 +13,7 @@ export function SignIn() {
 
   const clickHandler = async () => {
     resetPassword ? await resetPasword(email) : await login(email, password);
+    setResetPassword(false);
   };
 
   return (
