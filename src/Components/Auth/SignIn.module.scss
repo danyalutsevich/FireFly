@@ -1,3 +1,5 @@
+@import "../Header/Header.module.scss";
+
 .SignIn {
   display: flex;
   flex-direction: column;
@@ -6,7 +8,7 @@
   height: 90vh;
 
   h1 {
-    font-family: "Libre Barcode 39 Text";
+    font-family: $font-for-title;
     font-size: 60px;
     color: white;
   }
@@ -14,7 +16,7 @@
   input {
     background-color: lightgray;
     margin: 20px;
-    font-family: "Fira Mono";
+    font-family: $font-for-text;
     font-size: 24px;
     border-radius: 10px;
     padding: 10px;
@@ -31,7 +33,7 @@
     border-radius: 10px;
     margin: 10px;
     padding: 10px;
-    font-family: "Fira Mono";
+    font-family: $font-for-text;
     font-size: 20px;
     background-color: darkgray;
     color: black;
@@ -49,7 +51,7 @@
     padding: 10px;
     border-radius: 10px;
     margin: 10px;
-    font-family: "Fira Mono";
+    font-family: $font-for-text;
     font-size: 20px;
   }
 }
