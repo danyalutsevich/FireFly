@@ -1,136 +1,132 @@
+@import "../Header/Header.module.scss";
 .NoLikedFilms {
+  display: flex;
+  flex-direction: column;
+  height: 80vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 
-    display: flex;
-    flex-direction: column;
-    height: 80vh;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-
-    h1 {
-        color: white;
-        font-family: "Fira Mono";
-        font-size: 50px;
-        text-transform: uppercase;
-        text-align: center;
-    }
+  h1 {
+    color: white;
+    font-family: $font-for-text;
+    font-size: 50px;
+    text-transform: uppercase;
+    text-align: center;
+  }
 }
-
 .Liked {
+  h2 {
+    color: white;
+    font-family: $font-for-text;
+    font-size: 4vw;
+    margin-left: 3vw;
+    margin-top: 20px;
+    text-align: left;
+  }
 
-    h2 {
-        color: white;
-        font-family: "Fira Mono";
-        font-size: 4vw;
-        margin-left: 3vw;
-        margin-top: 20px;
-        text-align: left;
+  .Sort {
+    margin-right: 3vw;
+    display: inline-block;
+  }
+
+  .Sort {
+    span {
+      color: whitesmoke;
+      font-size: 1.3vw;
+      padding-bottom: 2vw;
     }
 
-    .Sort {
-        margin-right: 3vw;
-        display: inline-block;
-    }
-
-    .Sort {
-        span {
-            color: whitesmoke;
-            font-size: 1.3vw;
-            padding-bottom: 2vw;
-        }
-
-        span {
-            i {
-                font-size: 1.3vw;
-                background: none;
-                border: none;
-            }
-        }
-
-        div {
-            position: absolute;
-            display: none;
-            background-color: white;
-            border-radius: 10px;
-            margin-right: 10px;
-            right: 0px;
-            padding: 10px;
-            z-index: 1;
-
-            button {
-                font-size: 1vw;
-                background: none;
-                border: 1px solid transparent;
-                text-align: right;
-                transition: all 700ms;
-
-                i {
-                    font-size: 1vw;
-                    ;
-                }
-            }
-
-            button:hover {
-                border: 1px solid gray;
-                border-radius: 12px;
-                scale: 1.1;
-            }
-        }
-    }
-
-    .SortIcon {
-        color: white;
-        font-size: 2vw;
-        margin-left: 1vw;
-
-    }
-
-    .Sort:hover .SortBtn {
-        scale: 1.2;
-        color: black;
-    }
-
-
-    .SortBtn {
+    span {
+      i {
+        font-size: 1.3vw;
         background: none;
         border: none;
-        display: flex;
-        transition: scale 500ms, color 500ms;
+      }
     }
 
-    .Sort:hover div {
-        display: flex;
-        flex-direction: column;
-    }
+    div {
+      position: absolute;
+      display: none;
+      background-color: white;
+      border-radius: 10px;
+      margin-right: 10px;
+      right: 0px;
+      padding: 10px;
+      z-index: 1;
 
-    .Header {
-        display: flex;
-        justify-content: space-between;
-        align-items: baseline;
-    }
+      button {
+        font-size: 1vw;
+        background: none;
+        border: 1px solid transparent;
+        text-align: right;
+        transition: all 700ms;
 
-    .Divider {
-        background-color: white;
-        border-radius: 32px;
-        width: 95%;
-        height: 0.3vh;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        z-index: 0;
-    }
-
-    .Liked-content {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        text-align: center;
-        margin: 5px;
-
-        a {
-            margin-top: 4vh;
-            margin-bottom: 4vh;
-            width: min-content;
-            justify-self: center;
+        i {
+          font-size: 1vw;
         }
+      }
+
+      button:hover {
+        border: 1px solid gray;
+        border-radius: 12px;
+        scale: 1.1;
+      }
     }
+  }
+
+  .SortIcon {
+    color: white;
+    font-size: 2vw;
+    margin-left: 1vw;
+  }
+
+  .Sort:hover .SortBtn {
+    scale: 1.2;
+    color: black;
+  }
+
+  .SortBtn {
+    background: none;
+    border: none;
+    display: flex;
+    transition: scale 500ms, color 500ms;
+  }
+
+  .Sort:hover div {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    background-color: #272727;
+  }
+
+  .Divider {
+    background-color: white;
+    border-radius: 32px;
+    width: 95%;
+    height: 0.3vh;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    z-index: 0;
+  }
+
+  .Liked-content {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    text-align: center;
+    margin: 5px;
+
+    a {
+      margin-top: 4vh;
+      margin-bottom: 4vh;
+      width: min-content;
+      justify-self: center;
+    }
+  }
 }
