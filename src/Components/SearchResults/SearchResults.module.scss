@@ -1,0 +1,49 @@
+.SearchResults {
+  position: absolute;
+  z-index: 100;
+  display:grid;
+  border-radius: 4px;
+  width: 40vh;
+  margin: 0px;
+  background-color: #373737;;
+
+  a:nth-child(odd){
+    background-color: #454545;
+  }
+
+  a:nth-child(even){
+    background-color: #373737;
+  }
+
+  a:first-child{
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+  }
+
+  a{
+    color: white;
+    padding: 5px;
+  }
+
+  a:last-child{
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+    background: #373737;
+    color: lightgray;
+  }
+
+  a:hover{
+    background-color: gray;
+  }
+  
+  .Divider{
+    height: 1px;
+    width: 80%;
+    align-self: center;
+    background-color:gainsboro;
+  }
+
+  span{
+    font-size: 0.7em;
+  }
+}

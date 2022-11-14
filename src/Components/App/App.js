@@ -30,7 +30,7 @@ export function App() {
           <Route path="/search/:searchValue/:page" element={<Search />} /> {/* useParams hook will return {searchValue, page} */}
           <Route path="/ratings/:page" element={<Ratings />} />
           <Route path="/liked" element={<Liked />} />
-          <Route path="/watchList" element={<Watchlist />} />
+          <Route path="/watchlist" element={<Watchlist />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/movie/:id" element={<Movie />} />
           <Route path="/signin" element={<SignIn />} />
