@@ -3,7 +3,10 @@ import { useEffect } from 'react';
 import { NavLink } from "react-router-dom";
 import { MovieDBLinks } from '../../Variables';
 
+import { like } from "../../firebase-config";
+
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
+import { click } from '@testing-library/user-event/dist/click';
 
 export function LikedContentCard(props) {
 
@@ -15,11 +18,14 @@ export function LikedContentCard(props) {
 
     return (
         <div className={LikedContentCardCSS["Content-card"]}>
+            <NavLink style={{margin:'0'}} to={`/movie/${film.id}`} key={film}>
             {
                 film.poster_path ?
                     <img src={MovieDBLinks.image + film?.poster_path} alt="poster"></img> :
                     <img src={"/default_userpic.png"} alt="poster"></img>
             }
+            </NavLink>
+            
             <div>
                 <span className={LikedContentCardCSS["more-info"]}>
                     <button className={LikedContentCardCSS["more-info-button"]}><i className="material-icons">more_horiz</i></button>
@@ -28,7 +34,7 @@ export function LikedContentCard(props) {
                         <button className={LikedContentCardCSS["more-info-element"]}>Перейти куда-то еще</button>
                     </span>
                 </span>
-                <button className={LikedContentCardCSS["save-button"]}><i className={`material-icons`}>favorite</i></button>
+                <button className={LikedContentCardCSS["save-button"]} onClick={() => like(props.id)}><i className={`material-icons`}>favorite</i></button>
             </div>
         </div>);
 }

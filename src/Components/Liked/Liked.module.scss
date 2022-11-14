@@ -23,6 +23,7 @@
     margin-left: 3vw;
     margin-top: 20px;
     text-align: left;
+    padding-bottom: 1.3vw;
   }
 
   .Sort {
@@ -110,6 +111,7 @@
     border-radius: 32px;
     width: 95%;
     height: 0.3vh;
+    margin-top: 1.3vw;
     margin-left: auto;
     margin-right: auto;
     position: relative;
@@ -121,12 +123,10 @@
     grid-template-columns: repeat(5, 1fr);
     text-align: center;
     margin: 5px;
+  }
 
-    a {
-      margin-top: 4vh;
-      margin-bottom: 4vh;
-      width: min-content;
-      justify-self: center;
-    }
+  .Liked-content > div {
+    justify-self: center;
+    margin: 10px;
   }
 }
