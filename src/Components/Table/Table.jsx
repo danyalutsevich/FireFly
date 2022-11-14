@@ -7,7 +7,6 @@ import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
 import { useContext } from "react";
 import { TableOperations } from "./TableOperations";
 
-
 export function Table(props) {
   // films is an array of objects (films)
   // page is the current page number
@@ -22,14 +21,13 @@ export function Table(props) {
   const [watchlist, setWatchlist] = useState([]);
   const [user, setUser] = useState(null);
   const [ratings, setRatings] = useState([]);
-
+  const pages = 500;
   useEffect(() => {
-    setLiked(contextData.liked)
-    setWatchlist(contextData.watchlist)
-    setUser(contextData.user)
-    setRatings(contextData.ratings)
+    setLiked(contextData.liked);
+    setWatchlist(contextData.watchlist);
+    setUser(contextData.user);
+    setRatings(contextData.ratings);
   }, [contextData]);
-
   return (
     <div className={TableCSS.Table}>
       <table className={TableCSS.Table}>
@@ -49,14 +47,19 @@ export function Table(props) {
               <tr key={film.id}>
                 <td>{index + 1 + (page - 1) * films.length}</td>
                 <td className={TableCSS.imageCell}>
-                  {film.poster_path ?
+                  {film.poster_path ? (
                     <img
                       className={TableCSS.MoviePoster}
                       src={MovieDBLinks.image + film.poster_path}
                       alt={index}
-                    /> :
-                    <img className={TableCSS.MoviePoster} src={"/default_userpic.png"} alt={index} />
-                  }
+                    />
+                  ) : (
+                    <img
+                      className={TableCSS.MoviePoster}
+                      src={"/default_userpic.png"}
+                      alt={index}
+                    />
+                  )}
                 </td>
                 <td>
                   <NavLink to={`/movie/${film.id}`} className={TableCSS.Link}>
@@ -64,11 +67,14 @@ export function Table(props) {
                   </NavLink>
                 </td>
                 <td>
-                  {user ? <TableOperations filmID={film.id}
-                    liked={liked?.includes(film.id)}
-                    watchlist={watchlist?.includes(film.id)}
-                    rating={ratings[film.id]}
-                  /> : null}
+                  {user ? (
+                    <TableOperations
+                      filmID={film.id}
+                      liked={liked?.includes(film.id)}
+                      watchlist={watchlist?.includes(film.id)}
+                      rating={ratings[film.id]}
+                    />
+                  ) : null}
                 </td>
                 <td>{film.release_date?.slice(0, 4)}</td>
                 <td>{film.vote_average}</td>
@@ -77,21 +83,55 @@ export function Table(props) {
           })}
         </tbody>
       </table>
-      <div className={TableCSS.Pages}>
-        <NavLink
-          className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${Number(page) === 1 ? 1 : Number(page) - 1
+      {page == pages ? (
+        <div className={TableCSS.Pages}>
+          <NavLink
+            className={TableCSS.PageButton}
+            to={`/${url == "" ? "" : url + "/"}${
+              Number(page) === 1 ? 1 : Number(page) - 1
             }`}
-        >
-          prev
-        </NavLink>
-        <NavLink
-          className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
-        >
-          next
-        </NavLink>
-      </div>
+          >
+            prev
+          </NavLink>
+        </div>
+      ) : page > 1 ? (
+        <div className={TableCSS.Pages}>
+          <NavLink
+            className={TableCSS.PageButton}
+            to={`/${url == "" ? "" : url + "/"}${
+              Number(page) === 1 ? 1 : Number(page) - 1
+            }`}
+          >
+            prev
+          </NavLink>
+          <NavLink
+            className={TableCSS.PageButton}
+            to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
+          >
+            next
+          </NavLink>
+        </div>
+      ) : page == 1 ? (
+        <div className={TableCSS.Pages}>
+          <NavLink
+            className={TableCSS.PageButton}
+            to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
+          >
+            next
+          </NavLink>
+        </div>
+      ) : page == pages ? (
+        <div className={TableCSS.Pages}>
+          <NavLink
+            className={TableCSS.PageButton}
+            to={`/${url == "" ? "" : url + "/"}${
+              Number(page) === 1 ? 1 : Number(page) - 1
+            }`}
+          >
+            prev
+          </NavLink>
+        </div>
+      ) : null}
     </div>
   );
 }

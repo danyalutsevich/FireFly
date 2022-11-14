@@ -15,9 +15,6 @@ export function Home() {
   if (page < 1 || page === undefined) {
     page = 1;
   }
-  if (page > 63) {
-    page = 63;
-  }
 
   useEffect(() => {
     fetch(MovieDBLinks.popular(page))
