@@ -280,6 +280,7 @@ export const resetPasword = async (email) => {
 
   try {
     await sendPasswordResetEmail(auth, email)
+    Alert({ title: "Email was sent\nFollow the link in the email\nCheck your inbox or spam", text: "", icon: "success", showConfirmButton: true, timer: false })
   }
   catch (error) {
     Alert({ title: error.code })
