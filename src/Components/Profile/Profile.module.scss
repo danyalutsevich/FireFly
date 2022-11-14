@@ -32,7 +32,7 @@
   button {
     background-color: darkgray;
     color: black;
-    font-family: "Fira Mono";
+    font-family: $font-for-text;
     font-size: 15px;
     border: none;
     border-radius: 10px;
@@ -47,7 +47,7 @@
   }
 
   .UserInfo {
-    font-family: "Fira Mono";
+    font-family: $font-for-text;
 
     h2 {
       margin: 10px;
@@ -60,7 +60,7 @@
       input {
         background-color: rgb(56, 56, 56);
         border-radius: 10px;
-        font-family: "Fira Mono";
+        font-family: $font-for-text;
         font-size: 20px;
         color: white;
         padding: 0 10px;
