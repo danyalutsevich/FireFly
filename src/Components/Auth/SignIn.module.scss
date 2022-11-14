@@ -38,6 +38,7 @@
     background-color: darkgray;
     color: black;
     border: none;
+    cursor: pointer;
   }
 
   button:hover {
@@ -54,4 +55,16 @@
     font-family: $font-for-text;
     font-size: 20px;
   }
+
+  .ResetPassword {
+    cursor: pointer;
+    font-family: $font-for-text;
+    margin: 10px;
+    color: #bdbdbd;
+  }
+
+  .ResetPassword:hover{
+    color: white;
+  }
+
 }

@@ -6,12 +6,13 @@ $google-blue: #4285f4;
 $button-active-blue: #1669f2;
 
 .GoogleSignIn {
-  width: 184px;
-  height: 42px;
-  background-color: $google-blue;
-  border-radius: 2px;
-  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, 0.25);
-  margin: 20px;
+    width: 184px;
+    height: 42px;
+    background-color: $google-blue;
+    border-radius: 2px;
+    box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
+    margin: 20px;
+    cursor: pointer;
 
   .Wrapper {
     position: absolute;
@@ -41,9 +42,9 @@ $button-active-blue: #1669f2;
     font-weight: 700;
   }
 
-  &:hover {
-    box-shadow: 0 0 6px $google-blue;
-  }
+    &:hover {
+        box-shadow: 0 0 6px $google-blue;
+    }
 
   &:active {
     background: $button-active-blue;

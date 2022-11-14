@@ -13,6 +13,7 @@ import {
   GoogleAuthProvider,
   signInWithPopup,
   deleteUser,
+  sendPasswordResetEmail,
 } from "firebase/auth";
 
 import { Alert } from "./Components/Alert";
@@ -271,6 +272,17 @@ export const addRating = async (filmID, rating) => {
     catch (error) {
       Alert({ title: error.code })
     }
+  }
+
+}
+
+export const resetPasword = async (email) => {
+
+  try {
+    await sendPasswordResetEmail(auth, email)
+  }
+  catch (error) {
+    Alert({ title: error.code })
   }
 
 }
