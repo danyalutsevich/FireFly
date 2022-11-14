@@ -5,7 +5,7 @@
     align-items: center;
     justify-content: center;
     height: 90vh;
-
+   
 
     h1 {
         font-family: "Libre Barcode 39 Text";
@@ -40,6 +40,7 @@
         background-color: darkgray;
         color: black;
         border: none;
+        cursor: pointer;
     }
 
     button:hover {

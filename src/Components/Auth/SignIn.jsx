@@ -2,6 +2,9 @@ import React, { useState, useEffect } from "react";
 import { SignInWithGoogle } from "./SignInWithGoogle";
 import { login } from "../../firebase-config";
 import SignInCSS from "./SignIn.module.scss";
+import { NavLink } from "react-router-dom";
+import { resetPasword } from '../../firebase-config';
+
 
 export function SignIn() {
   const [email, setEmail] = useState("");
@@ -29,6 +32,7 @@ export function SignIn() {
           }
         }}
       />
+      <p className={SignInCSS.ResetPassword} onClick={() => { resetPasword(email) }}>Forgot you password?</p>
       <button onClick={clickHandler}>Sign In</button>
       <SignInWithGoogle />
     </div>

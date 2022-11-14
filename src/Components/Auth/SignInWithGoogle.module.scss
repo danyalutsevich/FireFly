@@ -12,6 +12,7 @@ $button-active-blue: #1669F2;
     border-radius: 2px;
     box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .25);
     margin: 20px;
+    cursor: pointer;
 
     .Wrapper {
         position: absolute;
@@ -40,6 +41,7 @@ $button-active-blue: #1669F2;
         font-family: "Roboto";
         font-weight: 700;
     }
+
 
     &:hover {
         box-shadow: 0 0 6px $google-blue;

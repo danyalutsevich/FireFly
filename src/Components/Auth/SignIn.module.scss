@@ -36,6 +36,7 @@
     background-color: darkgray;
     color: black;
     border: none;
+    cursor: pointer;
   }
 
   button:hover {
@@ -51,5 +52,10 @@
     margin: 10px;
     font-family: "Fira Mono";
     font-size: 20px;
+  }
+
+  .ResetPassword {
+    cursor: pointer;
+    // font-family: ;
   }
 }
