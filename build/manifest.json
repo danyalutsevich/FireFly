@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "FireFly",
+  "name": "FireFly rate your favorite films",
   "icons": [
     {
       "src": "favicon.ico",
