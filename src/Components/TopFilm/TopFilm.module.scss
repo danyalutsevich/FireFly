@@ -41,7 +41,9 @@
     border-radius: 20%;
   }
 
-  .TopFilmInfo h1 {
+  .TopFilmInfo .Link {
+    text-decoration: none;
+    color: white;
     margin-top: 0;
     font-family: $font-for-text;
     font-size: 2.5em;
@@ -51,6 +53,20 @@
     width: 100%;
     height: 100%;
     margin-bottom: 10px;
+  }
+
+  .TopFilmInfo .Link:hover {
+    color: gray;
+    transition: 0.3s;
+  }
+
+  .TopFilmInfo .Link:visited {
+    color: white;
+  }
+
+  .TopFilmInfo .Link:hover:visited {
+    color: gray;
+    transition: 0.3s;
   }
 
   .TopFilmInfo p {
