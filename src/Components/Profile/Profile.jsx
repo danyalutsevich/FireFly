@@ -1,46 +1,102 @@
-import React, { useState, useEffect, useContext, useRef } from 'react';
-import ProfileCSS from './Profile.module.scss';
-import { auth, FirebaseContext, logout, uploadImage, removeImage, updateName, deleteUserAccount } from '../../firebase-config';
+import React, { useState, useEffect, useContext, useRef } from "react";
+import ProfileCSS from "./Profile.module.scss";
+import {
+  auth,
+  FirebaseContext,
+  logout,
+  uploadImage,
+  removeImage,
+  updateName,
+  deleteUserAccount,
+} from "../../firebase-config";
 
 export function Profile() {
-
-  const { user } = useContext(FirebaseContext)
+  const { user } = useContext(FirebaseContext);
   const [name, setName] = useState(user?.displayName);
 
   useEffect(() => {
-    setName(user?.displayName)
+    setName(user?.displayName);
   }, [user]);
 
   const fileSelected = async (e) => {
     let file = e.target.files[0];
-    await uploadImage(file)
-
-  }
+    await uploadImage(file);
+  };
 
   return (
     <div className={ProfileCSS.Profile}>
-      <div className={ProfileCSS.ProfilePic}>
-        {user?.photoURL ?
-          <img src={user?.photoURL} alt="Profile" /> :
+      <div className={ProfileCSS.LeftArea}>
+        {user?.photoURL ? (
+          <img src={user?.photoURL} alt="Profile" />
+        ) : (
           <img src={"/defaultUserPic.svg"} alt="ProfileDefault" />
-        }
-        <input type='file' accept="image/png, image/jpeg" id="img" style={{ display: 'none' }} onChange={fileSelected} />
-        <label htmlFor="img">Change Profile Image</label>
-        <button onClick={removeImage}>Remove Image</button>
-        <button onClick={deleteUserAccount}>Delete Account</button>
+        )}
+        <input
+          type="file"
+          accept="image/png, image/jpeg"
+          id="img"
+          style={{ display: "none" }}
+          onChange={fileSelected}
+        />
+        <label htmlFor="img">
+          <b>Change profile photo</b>
+        </label>
+        <button onClick={removeImage}>
+          <b>Remove Image</b>
+        </button>
+        <button onClick={deleteUserAccount}>
+          <b>Delete Account</b>
+        </button>
       </div>
-      <div className={ProfileCSS.UserInfo}>
-        <div className={ProfileCSS.UserDescription} >
-          <h2>Name :</h2>
-          <input value={name} onChange={e => { setName(e.target.value) }} />
-          <button onClick={() => { updateName(name) }}>Change</button>
+      <div className={ProfileCSS.RightArea}>
+        <div className={ProfileCSS.UserDescription}>
+          <h2>
+            <b>Name :</b>
+          </h2>
+          <input
+            value={name}
+            onChange={(e) => {
+              setName(e.target.value);
+            }}
+          />
+          <button
+            onClick={() => {
+              updateName(name);
+            }}
+          >
+            Change
+          </button>
         </div>
         <div className={ProfileCSS.UserDescription}>
-          <h2>Email:</h2>
+          <h2>
+            <b>Email:</b>
+          </h2>
           <input value={user?.email} disabled={true} />
         </div>
-        <button onClick={logout}>Sign Out</button>
+        <button className={ProfileCSS.SignOutBtn} onClick={logout}>
+          Sign Out
+        </button>
       </div>
     </div>
-  )
+
+    // ------------------ Profile old ------------------
+    // <div className={ProfileCSS.Profile}>
+    //   <div className={ProfileCSS.ProfilePic}>
+    //     {user?.photoURL ? (
+    //       <img src={user?.photoURL} alt="Profile" />
+    //     ) : (
+    //       <img src={"/defaultUserPic.svg"} alt="ProfileDefault" />
+    //     )}
+    //     <input
+    //       type="file"
+    //       accept="image/png, image/jpeg"
+    //       id="img"
+    //       style={{ display: "none" }}
+    //       onChange={fileSelected}
+    //     />
+    //     <label htmlFor="img">Change Profile Image</label>
+    //     <button onClick={removeImage}>Remove Image</button>
+    //     <button onClick={deleteUserAccount}>Delete Account</button>
+    //   </div>
+  );
 }
