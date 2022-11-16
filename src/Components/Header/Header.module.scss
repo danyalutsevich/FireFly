@@ -11,13 +11,16 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
   height: 10vh;
   letter-spacing: 3px;
 
-  a {
-    color: black;
-    text-decoration: none;
-    margin: 0 10px;
-  }
+    a{
+        text-decoration: none;
+    }
 
-  a:hover {
+    .MenuItem, .Logo, .Profile, .SignIn, .SignUp{
+        color: black;
+        margin: 0 10px;
+    }
+
+  .MenuItem:hover {
     scale: 1.1;
     transition: 100ms;
   }
@@ -33,12 +36,18 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
   }
 
   .Search {
-    display: flex;
-    align-items: center;
+
+        .SearchInput{
+        display: flex;
+        align-items: center;
+        }
 
     input {
       font-size: 3vh;
+            height: 5vh;
       font-family: $font-for-text;
+            width: 40vh;
+
     }
 
     input::-webkit-search-cancel-button {

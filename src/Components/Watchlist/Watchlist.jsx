@@ -17,7 +17,6 @@ export function Watchlist() {
       <h2>WatchList</h2>
       <div className={WatchlistCSS.Divider}></div>
       <div className={WatchlistCSS.Container}>
-        <button onClick={() => { resetPasword() }}>Send reset password</button>
         <WatchlistFolder title="Family Movies" color="#34abeb"></WatchlistFolder>
         <WatchlistFolder title="Scary Movies" color="#eb4034"></WatchlistFolder>
         <WatchlistFolder title="Party Movies" color="#8d996a"></WatchlistFolder>

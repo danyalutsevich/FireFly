@@ -35,7 +35,7 @@ export function SignIn() {
         }}
       />}
       <p className={SignInCSS.ResetPassword} onClick={() => { setResetPassword(!resetPassword) }}>
-        {resetPassword ? "Sign in " : "Forgot you password?"}
+        {resetPassword ? "Sign in " : "Forgot your password?"}
       </p>
       <button onClick={clickHandler}>
         {resetPassword ? "Send email" : "Sign in"}

@@ -34,6 +34,8 @@ export function Alert({
     text = "Password should be at least 6 characters";
   } else if (title == "auth/email-already-in-use") {
     caption = "Email already in use";
+  } else if (title == "auth/missing-email") {
+    caption = "Missing Email";
   } else {
     caption = title;
   }
