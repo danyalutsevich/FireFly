@@ -105,7 +105,10 @@
       margin: 20px;
       border-radius: 10px;
       box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
-      // поставить его внизу блока
+    }
+    .SignOutBtn:hover {
+      background-color: #373737;
+      border: 3px solid #606060;
     }
   }
 }

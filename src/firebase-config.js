@@ -215,8 +215,19 @@ export const uploadImage = async (file) => {
 export const removeImage = async () => {
   if (auth.currentUser.uid) {
     try {
-      await updateProfile(auth.currentUser, { photoURL: "" });
-      window.location.reload();
+      Alert({
+        title: "Are you sure you want to remove your profile picture?",
+        text: "This action cannot be undone",
+        icon: "question",
+        showCancelButton: true,
+        showConfirmButton: true,
+        timer: false,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await updateProfile(auth.currentUser, { photoURL: "" });
+          window.location.reload();
+        }
+      });
     } catch (error) {
       Alert({ title: error.code });
     }
