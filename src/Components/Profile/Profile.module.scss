@@ -97,6 +97,7 @@
         border: 3px solid #606060;
       }
     }
+
     .SignOutBtn {
       font-family: $font-for-text;
       font-size: 1.5rem;
@@ -106,7 +107,7 @@
       margin: 20px 20px 20px 0px;
       border-radius: 10px;
       box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.5);
-      width: 40vh;
+      width: 20vh;
     }
     .SignOutBtn:hover {
       background-color: #373737;
