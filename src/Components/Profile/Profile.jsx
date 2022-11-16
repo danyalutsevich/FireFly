@@ -78,25 +78,5 @@ export function Profile() {
         </button>
       </div>
     </div>
-
-    // ------------------ Profile old ------------------
-    // <div className={ProfileCSS.Profile}>
-    //   <div className={ProfileCSS.ProfilePic}>
-    //     {user?.photoURL ? (
-    //       <img src={user?.photoURL} alt="Profile" />
-    //     ) : (
-    //       <img src={"/defaultUserPic.svg"} alt="ProfileDefault" />
-    //     )}
-    //     <input
-    //       type="file"
-    //       accept="image/png, image/jpeg"
-    //       id="img"
-    //       style={{ display: "none" }}
-    //       onChange={fileSelected}
-    //     />
-    //     <label htmlFor="img">Change Profile Image</label>
-    //     <button onClick={removeImage}>Remove Image</button>
-    //     <button onClick={deleteUserAccount}>Delete Account</button>
-    //   </div>
   );
 }
