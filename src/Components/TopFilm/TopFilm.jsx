@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Links, { MovieDBLinks } from "../../Variables";
 import TopFilmCSS from "./TopFilm.module.scss";
+import { NavLink } from "react-router-dom";
 
 export function TopFilm(props) {
   const { film } = props;
@@ -15,9 +16,9 @@ export function TopFilm(props) {
         alt="movie poster"
       ></img>
       <div className={TopFilmCSS.TopFilmInfo}>
-        <h1>
+        <NavLink to={`/movie/${film.id}`} className={TopFilmCSS.Link}>
           {film.original_title} ({film.release_date.slice(0, 4)})
-        </h1>
+        </NavLink>
         <p>
           {isMore ? film.overview : film.overview.slice(0, 100)}
           <button
