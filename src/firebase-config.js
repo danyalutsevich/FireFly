@@ -1,7 +1,15 @@
 import { createContext, useState, useEffect, useContext } from "react";
 
 import { initializeApp } from "firebase/app";
-import { addDoc, getFirestore, onSnapshot, setDoc, doc, getDoc, collection } from "firebase/firestore";
+import {
+  addDoc,
+  getFirestore,
+  onSnapshot,
+  setDoc,
+  doc,
+  getDoc,
+  collection,
+} from "firebase/firestore";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import {
   getAuth,
@@ -38,9 +46,8 @@ export const provider = new GoogleAuthProvider();
 export const FirebaseContext = createContext();
 
 export const FirebaseContextProvider = ({ children }) => {
-
   // this is the state that will be shared with all components
-  // so you dont need to create a new state for each component 
+  // so you dont need to create a new state for each component
   // and make additional requests to the database
 
   const [user, setUser] = useState(null);
@@ -50,7 +57,7 @@ export const FirebaseContextProvider = ({ children }) => {
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser)
+      setUser(currentUser);
       onSnapshot(doc(db, "Liked", currentUser?.uid), (snapshot) => {
         setLikedFilms(snapshot.data()?.likedFilms || []);
       });
@@ -60,25 +67,45 @@ export const FirebaseContextProvider = ({ children }) => {
       onSnapshot(doc(db, "Rating", currentUser?.uid), (snapshot) => {
         setRatings(snapshot.data()?.ratings || {});
       });
-    })
+    });
   }, []);
 
   return (
-    <FirebaseContext.Provider value={{ user, liked, watchlist, ratings }}> {/* <-- this is the value that will be shared with all components*/}
+    <FirebaseContext.Provider value={{ user, liked, watchlist, ratings }}>
+      {" "}
+      {/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
   );
-}
+};
 
 export const register = async (email, password, name) => {
   if (email && password && name) {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, { displayName: name });
-      await Alert({ title: "Registration successful!", icon: "success", text: "" });
-      window.open("/", "_self");
-    } catch (error) {
-      Alert({ title: error.code });
+    const pswdreq = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    );
+    if (pswdreq.test(password)) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(auth.currentUser, { displayName: name });
+        await Alert({
+          title: "Registration successful!",
+          icon: "success",
+          text: "",
+        });
+        window.open("/", "_self");
+      } catch (error) {
+        Alert({ title: error.code });
+      }
+    } else {
+      Alert({
+        title:
+          "Password must contain at least 8 characters, one uppercase, one lowercase, one special character and one number",
+        icon: "error",
+        text: "Please, try again!",
+        timer: false,
+        showConfirmButton: true,
+      });
     }
   } else {
     Alert({ title: "Empty fields" });
@@ -106,21 +133,32 @@ export const logout = async () => {
   } catch (error) {
     Alert({ title: error.code });
   }
-}
+};
 
 export const deleteUserAccount = async () => {
   try {
-    Alert({ title: "You are going to delete your account.\n\nAre you sure?", text: "This action cannot be undone", icon: "question", timer: false, showConfirmButton: true, showCancelButton: true })
+    Alert({
+      title: "You are going to delete your account.\n\nAre you sure?",
+      text: "This action cannot be undone",
+      icon: "question",
+      timer: false,
+      showConfirmButton: true,
+      showCancelButton: true,
+    })
       .then(async (result) => {
         if (result.isConfirmed) {
           await deleteUser(auth.currentUser);
-          await Alert({ title: "Your account succesfully deleted", icon: "success", text: "" });
+          await Alert({
+            title: "Your account succesfully deleted",
+            icon: "success",
+            text: "",
+          });
           window.open("/", "_self");
         }
-      }).catch((error) => {
+      })
+      .catch((error) => {
         Alert({ title: error.code });
       });
-
   } catch (error) {
     if (error.code === "auth/requires-recent-login") {
       Alert("You need to reauthenticate before deleting your account");
@@ -150,7 +188,7 @@ export const updateName = async (name) => {
       Alert({ title: error.code });
     }
   }
-}
+};
 
 export const uploadImage = async (file) => {
   if (auth.currentUser.uid) {
@@ -190,100 +228,120 @@ export const removeImage = async () => {
 };
 
 export const like = async (filmID) => {
-  const id = Number(filmID)
+  const id = Number(filmID);
   if (auth.currentUser?.uid && id) {
     try {
       const documentRef = doc(db, "Liked", auth.currentUser.uid);
-      const document = await getDoc(documentRef)
-      const likedFilms = document.data()?.likedFilms
+      const document = await getDoc(documentRef);
+      const likedFilms = document.data()?.likedFilms;
 
       if (likedFilms) {
         if (likedFilms.includes(id)) {
-          likedFilms.splice(likedFilms?.indexOf(id), 1)
-          await setDoc(documentRef, { likedFilms: [...likedFilms] }, { merge: true });
+          likedFilms.splice(likedFilms?.indexOf(id), 1);
+          await setDoc(
+            documentRef,
+            { likedFilms: [...likedFilms] },
+            { merge: true }
+          );
+        } else {
+          await setDoc(
+            documentRef,
+            { likedFilms: [...likedFilms, id] },
+            { merge: true }
+          );
         }
-        else {
-          await setDoc(documentRef, { likedFilms: [...likedFilms, id] }, { merge: true });
-        }
-      }
-      else {
+      } else {
         await setDoc(documentRef, { likedFilms: [id] }, { merge: true });
       }
-    }
-    catch (error) {
+    } catch (error) {
       Alert({ title: error.code });
     }
-  }
-  else {
+  } else {
     Alert({ title: "Please login to like films" });
   }
-}
+};
 
 export const saveToWatchlist = async (filmID) => {
-  const id = Number(filmID)
+  const id = Number(filmID);
   if (auth.currentUser?.uid && id) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
-      const document = await getDoc(documentRef)
-      const watchlistFilms = document.data()?.watchlistFilms
+      const document = await getDoc(documentRef);
+      const watchlistFilms = document.data()?.watchlistFilms;
 
       if (watchlistFilms) {
         if (watchlistFilms.includes(id)) {
-          watchlistFilms.splice(watchlistFilms?.indexOf(id), 1)
-          await setDoc(documentRef, { watchlistFilms: [...watchlistFilms] }, { merge: true });
+          watchlistFilms.splice(watchlistFilms?.indexOf(id), 1);
+          await setDoc(
+            documentRef,
+            { watchlistFilms: [...watchlistFilms] },
+            { merge: true }
+          );
+        } else {
+          await setDoc(
+            documentRef,
+            { watchlistFilms: [...watchlistFilms, id] },
+            { merge: true }
+          );
         }
-        else {
-          await setDoc(documentRef, { watchlistFilms: [...watchlistFilms, id] }, { merge: true });
-        }
-      }
-      else {
+      } else {
         await setDoc(documentRef, { watchlistFilms: [id] }, { merge: true });
       }
+    } catch (error) {
+      Alert({ title: error.code });
     }
-    catch (error) {
-      Alert({ title: error.code })
-    }
+  } else {
+    Alert({ title: "Please login to add a film to your watchlist" });
   }
-  else {
-    Alert({ title: "Please login to add a film to your watchlist" })
-  }
-}
+};
 
 export const addRating = async (filmID, rating) => {
   if (filmID && rating && auth.currentUser?.uid) {
     try {
       const documentRef = doc(db, "Rating", auth.currentUser.uid);
-      const document = await getDoc(documentRef)
-      const ratings = document.data()?.ratings
+      const document = await getDoc(documentRef);
+      const ratings = document.data()?.ratings;
 
       if (ratings) {
         if (ratings[filmID]) {
-          ratings[filmID] = rating
-          await setDoc(documentRef, { ratings: { ...ratings } }, { merge: true });
+          ratings[filmID] = rating;
+          await setDoc(
+            documentRef,
+            { ratings: { ...ratings } },
+            { merge: true }
+          );
+        } else {
+          await setDoc(
+            documentRef,
+            { ratings: { ...ratings, [filmID]: rating } },
+            { merge: true }
+          );
         }
-        else {
-          await setDoc(documentRef, { ratings: { ...ratings, [filmID]: rating } }, { merge: true });
-        }
+      } else {
+        await setDoc(
+          documentRef,
+          { ratings: { [filmID]: rating } },
+          { merge: true }
+        );
       }
-      else {
-        await setDoc(documentRef, { ratings: { [filmID]: rating } }, { merge: true });
-      }
-    }
-    catch (error) {
-      Alert({ title: error.code })
+    } catch (error) {
+      Alert({ title: error.code });
     }
   }
-
-}
+};
 
 export const resetPasword = async (email) => {
-
   try {
-    await sendPasswordResetEmail(auth, email)
-    Alert({ title: "Email was sent\nFollow the link in the email\nCheck your inbox or spam", text: "", icon: "success", showConfirmButton: true, timer: false })
+    await sendPasswordResetEmail(auth, email);
+    Alert({
+      title:
+        "Email was sent\nFollow the link in the email\nCheck your inbox or spam",
+      text: "",
+      icon: "success",
+      showConfirmButton: true,
+      timer: false,
+    });
+  } catch (error) {
+    Alert({ title: error.code });
   }
-  catch (error) {
-    Alert({ title: error.code })
-  }
-
-}
+};
