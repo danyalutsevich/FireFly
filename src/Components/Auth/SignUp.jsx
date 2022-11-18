@@ -16,17 +16,23 @@ export function SignUp() {
   return (
     <div className={SignUpCSS.SignUp}>
       <h1>SignUp</h1>
-      <input type="text" placeholder="Enter your email"
+      <input
+        type="text"
+        placeholder="Enter your email"
         onChange={(e) => {
           setEmail(e.target.value);
         }}
       />
-      <input type="text" placeholder="Enter your name"
+      <input
+        type="text"
+        placeholder="Enter your name"
         onChange={(e) => {
           setName(e.target.value);
         }}
       />
-      <input type="password" placeholder="Enter your password"
+      <input
+        type="password"
+        placeholder="Enter your password"
         onChange={(e) => {
           setPassword(e.target.value);
         }}

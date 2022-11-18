@@ -63,7 +63,7 @@ export function Header(props) {
       ) : null}
       {user ? (
         <NavLink className={HeaderCSS.MenuItem} to="/watchlist">
-          WatchList
+          Watchlist
         </NavLink>
       ) : null}
       {user ? (
@@ -86,26 +86,6 @@ export function Header(props) {
           </div>
         </div>
       ) : (
-        // <div className={HeaderCSS.Profile}>
-        //   <button className={HeaderCSS.DropDownBtn}>
-        //     {user.displayName}{" "}
-        //     <object data={user.photoURL || "https://"} type="image/jpg">
-        //       // <img src={"/defaultUserPic.svg"} alt="Profile" />
-        //       //{" "}
-        //     </object>
-        //   </button>
-        //   <div class={HeaderCSS.DropDownContent}>
-        //     <a href="#">Ссылка 1</a>
-        //     <a href="#">Ссылка 2</a>
-        //     <a href="#">Ссылка 3</a>
-        //   </div>
-        // </div>
-        // <NavLink to="/profile" className={HeaderCSS.Profile}>
-        //   {user.displayName}
-        //   <object data={user.photoURL || "https://"} type="image/jpg">
-        //     <img src={"/defaultUserPic.svg"} alt="Profile" />
-        //   </object>
-        // </NavLink>
         <div className={HeaderCSS.Auth}>
           <NavLink to="/signin" className={HeaderCSS.SignIn}>
             SignIn

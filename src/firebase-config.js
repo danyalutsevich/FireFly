@@ -72,7 +72,6 @@ export const FirebaseContextProvider = ({ children }) => {
 
   return (
     <FirebaseContext.Provider value={{ user, liked, watchlist, ratings }}>
-      {" "}
       {/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
