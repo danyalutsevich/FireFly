@@ -80,17 +80,31 @@ export const FirebaseContextProvider = ({ children }) => {
 
 export const register = async (email, password, name) => {
   if (email && password && name) {
-    try {
-      await createUserWithEmailAndPassword(auth, email, password);
-      await updateProfile(auth.currentUser, { displayName: name });
-      await Alert({
-        title: "Registration successful!",
-        icon: "success",
-        text: "",
+    const pswdreq = new RegExp(
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])(?=.{8,})"
+    );
+    if (pswdreq.test(password)) {
+      try {
+        await createUserWithEmailAndPassword(auth, email, password);
+        await updateProfile(auth.currentUser, { displayName: name });
+        await Alert({
+          title: "Registration successful!",
+          icon: "success",
+          text: "",
+        });
+        window.open("/", "_self");
+      } catch (error) {
+        Alert({ title: error.code });
+      }
+    } else {
+      Alert({
+        title:
+          "Password must contain at least 8 characters, one uppercase, one lowercase, one special character and one number",
+        icon: "error",
+        text: "Please, try again!",
+        timer: false,
+        showConfirmButton: true,
       });
-      window.open("/", "_self");
-    } catch (error) {
-      Alert({ title: error.code });
     }
   } else {
     Alert({ title: "Empty fields" });
