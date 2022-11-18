@@ -72,7 +72,6 @@ export const FirebaseContextProvider = ({ children }) => {
 
   return (
     <FirebaseContext.Provider value={{ user, liked, watchlist, ratings }}>
-      {" "}
       {/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
@@ -128,8 +127,20 @@ export const login = async (email, password) => {
 
 export const logout = async () => {
   try {
-    await signOut(auth);
-    window.open("/", "_self");
+    Alert({
+      title: "You are going to sign out from your account.\n\nAre you sure?",
+      icon: "question",
+      confirmButtonText: "Sign out",
+      timer: false,
+      showConfirmButton: true,
+      showCancelButton: true,
+    }).then(async (result) => {
+      if (result.isConfirmed) {
+        await signOut(auth);
+        await Alert({ title: "Logout successful!", icon: "success", text: "" });
+        window.open("/", "_self");
+      }
+    });
   } catch (error) {
     Alert({ title: error.code });
   }
@@ -217,8 +228,19 @@ export const uploadImage = async (file) => {
 export const removeImage = async () => {
   if (auth.currentUser.uid) {
     try {
-      await updateProfile(auth.currentUser, { photoURL: "" });
-      window.location.reload();
+      Alert({
+        title: "Are you sure you want to remove your profile picture?",
+        text: "This action cannot be undone",
+        icon: "question",
+        showCancelButton: true,
+        showConfirmButton: true,
+        timer: false,
+      }).then(async (result) => {
+        if (result.isConfirmed) {
+          await updateProfile(auth.currentUser, { photoURL: "" });
+          window.location.reload();
+        }
+      });
     } catch (error) {
       Alert({ title: error.code });
     }

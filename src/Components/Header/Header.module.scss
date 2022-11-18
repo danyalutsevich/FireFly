@@ -7,18 +7,21 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
   align-items: center;
   justify-content: space-around;
   font-family: $font-for-text;
-  font-size: 2.5vh;
+  font-size: 2.7vh;
   height: 10vh;
-  letter-spacing: 3px;
 
-    a{
-        text-decoration: none;
-    }
+  a {
+    text-decoration: none;
+  }
 
-    .MenuItem, .Logo, .Profile, .SignIn, .SignUp{
-        color: black;
-        margin: 0 10px;
-    }
+  .MenuItem,
+  .Logo,
+  .Profile,
+  .SignIn,
+  .SignUp {
+    color: black;
+    margin: 0 10px;
+  }
 
   .MenuItem:hover {
     scale: 1.1;
@@ -36,18 +39,16 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
   }
 
   .Search {
-
-        .SearchInput{
-        display: flex;
-        align-items: center;
-        }
+    .SearchInput {
+      display: flex;
+      align-items: center;
+    }
 
     input {
       font-size: 3vh;
-            height: 5vh;
+      height: 5vh;
       font-family: $font-for-text;
-            width: 40vh;
-
+      width: 40vh;
     }
 
     input::-webkit-search-cancel-button {
@@ -70,20 +71,61 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
       font-size: 4vh;
     }
   }
-
-  .Profile {
-    display: flex;
-    align-items: center;
-    height: 100%;
-
-    img,
-    object {
-      width: 7vh;
-      height: 7vh;
-      object-fit: fill;
-      border-radius: 100%;
-      margin-left: 10px;
+  .Dropdown {
+    .Profile {
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
+
+    button {
+      border: none;
+      background-color: white;
+      font-family: $font-for-text;
+      font-size: 2.5vh;
+      height: 10vh;
+      img,
+      object {
+        width: 7vh;
+        height: 7vh;
+        object-fit: fill;
+        border-radius: 100%;
+        margin-left: 10px;
+      }
+    }
+
+    .DropdownContent {
+      display: none;
+      position: absolute;
+      top: 10vh;
+      right: 0;
+      width: 15vw;
+      background-color: white;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+
+      a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      a:first-child {
+        border-bottom: 1px solid #343434;
+        font-size: 2vh;
+      }
+      a:hover:not(a:first-child) {
+        background-color: #ddd;
+      }
+    }
+  }
+
+  .Dropdown:hover .DropdownContent {
+    display: block;
+  }
+  .Dropdown:hover .Profile {
+    background-color: white;
   }
 
   .Auth {
