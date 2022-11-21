@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { useEffect } from 'react';
+import React, { useState } from "react";
+import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
-import { MovieDBLinks } from '../../Variables';
+import { MovieDBLinks } from "../../Variables";
 
 import { like } from "../../firebase-config";
 
@@ -9,9 +9,14 @@ import LikedContentCardCSS from "./LikedContentCard.module.scss";
 import { click } from '@testing-library/user-event/dist/click';
 
 export function LikedContentCard(props) {
+  const [film, setFilm] = useState({});
 
-    const [film, setFilm] = useState({})
-
+  useEffect(() => {
+    fetch(MovieDBLinks.movie(props.id))
+      .then((data) => data.json())
+      .then((data) => setFilm(data));
+  }, []);
+  
     useEffect(() => {
         fetch(MovieDBLinks.movie(props.id)).then(data => data.json()).then(data => setFilm(data))
     }, [])
