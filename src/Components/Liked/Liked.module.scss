@@ -103,6 +103,7 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
+    height: auto;
     background-color: #272727;
   }
 
@@ -111,7 +112,6 @@
     border-radius: 32px;
     width: 95%;
     height: 0.3vh;
-    margin-top: 1.3vw;
     margin-left: auto;
     margin-right: auto;
     position: relative;
