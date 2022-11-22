@@ -1,22 +1,23 @@
 @import url(https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200);
 @import "../Header/Header.module.scss";
-.Table {
-  width: 80vw;
-  margin: 0 auto;
 
+.Table {
+
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: scroll;
+  
   table {
+    width: 90%;
     font-family: "Fira Mono", monospace;
     font-size: 24px;
     color: white;
     border-collapse: collapse;
     border-spacing: 0;
     max-width: 1200px;
-    min-width: none;
-  }
-
-  thead {
-    margin-right: 20px;
-    width: 100%;
+    min-width: 625px;
   }
 
   th {
@@ -31,7 +32,6 @@
 
   td:first-child {
     border-right: none;
-    min-width: 40px;
   }
 
   td:nth-child(2) {
@@ -45,7 +45,6 @@
   .MoviePoster {
     height: 150px;
     border-radius: 10px;
-    width: auto;
   }
 
   .Link:hover {
@@ -77,7 +76,6 @@
   }
 
   .PageButton {
-    min-width: 75px;
     background-color: #343434;
     color: white;
     border: none;

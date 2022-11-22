@@ -3,12 +3,14 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
 
 .Header {
   display: flex;
+  flex-wrap: wrap;
   background-color: white;
   align-items: center;
   justify-content: space-around;
   font-family: $font-for-text;
   font-size: 2.7vh;
-  height: 10vh;
+  // height: 10vh;
+  width: 100%;
 
   a {
     text-decoration: none;
@@ -47,8 +49,10 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     input {
       font-size: 3vh;
       height: 5vh;
+      border-radius: 10px;
       font-family: $font-for-text;
       width: 40vh;
+      border: 2px solid black;
     }
 
     input::-webkit-search-cancel-button {

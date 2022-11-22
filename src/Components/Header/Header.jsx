@@ -56,15 +56,14 @@ export function Header(props) {
       <NavLink className={HeaderCSS.MenuItem} to="/ratings/1">
         Ratings
       </NavLink>
-      {user ? (
+      {user ? (<>
         <NavLink className={HeaderCSS.MenuItem} to="/liked">
           Liked
         </NavLink>
-      ) : null}
-      {user ? (
         <NavLink className={HeaderCSS.MenuItem} to="/watchlist">
           Watchlist
         </NavLink>
+      </>
       ) : null}
       {user ? (
         <div className={HeaderCSS.Dropdown}>
