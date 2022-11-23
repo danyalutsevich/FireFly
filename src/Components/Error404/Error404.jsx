@@ -6,7 +6,7 @@ export function Error404() {
   return (
     <div className={Error404CSS.Error404}>
       <h2>Error404 Page not found</h2>
-      <img className={Error404CSS.monkey} src="/monkey404.gif" alt="404"></img>
+      <img className={Error404CSS.monkey} src="/monkey404.gif" alt="404 gif"></img>
     </div>
   );
 }

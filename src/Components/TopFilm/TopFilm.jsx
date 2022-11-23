@@ -13,7 +13,8 @@ export function TopFilm(props) {
       <img
         className={TopFilmCSS.MoviePoster}
         src={MovieDBLinks.image + film.poster_path}
-        alt="movie poster"
+        alt={film.original_title + " poster"}
+        srcSet={MovieDBLinks.image_original + film.poster_path}
       ></img>
       <div className={TopFilmCSS.TopFilmInfo}>
         <NavLink to={`/movie/${film.id}`} className={TopFilmCSS.Link}>
