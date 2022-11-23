@@ -20,6 +20,7 @@ export function LikedContentCard(props) {
         <img
           src={MovieDBLinks.image + film?.poster_path}
           alt={film?.title + " poster"}
+          srcSet={MovieDBLinks.image_original + film?.poster_path}
         ></img>
       ) : (
         <img src={"/default_userpic.png"} alt={film?.title + " poster"}></img>

@@ -53,6 +53,7 @@ export function Table(props) {
                       className={TableCSS.MoviePoster}
                       src={MovieDBLinks.image + film.poster_path}
                       alt={film.original_title + " poster"}
+                      srcSet={MovieDBLinks.image_original + film.poster_path}
                     />
                   ) : (
                     <img
