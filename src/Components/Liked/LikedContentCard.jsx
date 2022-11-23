@@ -5,8 +5,8 @@ import { MovieDBLinks } from "../../Variables";
 
 import { like } from "../../firebase-config";
 
+
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
-import { click } from '@testing-library/user-event/dist/click';
 
 export function LikedContentCard(props) {
   const [film, setFilm] = useState({});
@@ -16,10 +16,6 @@ export function LikedContentCard(props) {
       .then((data) => data.json())
       .then((data) => setFilm(data));
   }, []);
-  
-    useEffect(() => {
-        fetch(MovieDBLinks.movie(props.id)).then(data => data.json()).then(data => setFilm(data))
-    }, [])
 
   return (
     <div className={LikedContentCardCSS["Content-card"]}>
@@ -48,9 +44,7 @@ export function LikedContentCard(props) {
             </button>
           </span>
         </span>
-        <button className={LikedContentCardCSS["save-button"]}>
-          <i className={`material-icons`}>favorite</i>
-        </button>
+        <button className={LikedContentCardCSS["save-button"]} onClick={() => like(props.id)}><i className={`material-icons`}>favorite</i></button>
       </div>
     </div>
   );

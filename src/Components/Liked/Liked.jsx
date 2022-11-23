@@ -53,7 +53,7 @@ export function Liked() {
         {
           likedFilms.map((film) => {
             return (
-                <LikedContentCard id={film} key={film} />
+                <LikedContentCard id={film} key={film}/>
             )
           })
         }
