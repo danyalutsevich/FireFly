@@ -1,111 +1,108 @@
-.Content-card {
-  background-color: white;
-//   height: auto;
-//   width: 15vw;
-  border-radius: 3vw;
-  display: inline-flex;
-  flex-direction: column;
-  // margin-top: 20px;
-  // margin-bottom: 20px;
-  border: 4px solid white;
-  border-bottom-left-radius: 2vw;
-  border-bottom-right-radius: 2vw;
-  transition: scale 500ms;
-
-    img {
-    //   height: auto;
-    //   width: 15vw;
-    width: 100%;
+.Content-card{
+    background-color: white;
     height: auto;
-      border-radius: 3vw;
-      border-bottom-left-radius: 1vw;
-      border-bottom-right-radius: 1vw;
-      margin: 0px;
+    width: 15vw;
+    border-radius: 3vw;
+    display: inline-flex;
+    flex-direction: column;
+    // margin-top: 20px;
+    // margin-bottom: 20px;
+    border: 4px solid white;
+    border-bottom-left-radius: 2vw;
+    border-bottom-right-radius: 2vw;
+    transition: scale 500ms;
+
+    img{
+        height: auto;
+        width: 15vw;
+        border-radius: 3vw;
+        border-bottom-left-radius: 1vw;
+        border-bottom-right-radius: 1vw;
+        margin: 0px;
     }
 
-  div {
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    div{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
 
-    .more-info {
-      padding: 0px;
-    }
-
-    .more-info-button,
-    .save-button {
-      background: none;
-      border: none;
-    }
-
-    .more-info {
-      .more-info-button {
-        i {
-          color: black;
-          font-size: 2vw;
-          text-align: left;
-          margin: 0.2vw 0vw 0.2vw 0.5vw;
-          scale: 1;
-          transition: scale 500ms, color 500ms;
+        .more-info{
+            padding: 0px;
         }
-      }
 
-      .dropdown {
-        display: none;
-        background-color: black;
-        position: absolute;
-        border-radius: 4px;
-        padding: 5px;
-      }
+        .more-info-button, .save-button{
+            background: none;
+            border: none;
+        }
 
-      .more-info-element {
-        color: white;
-        font-size: 1vw;
-        background: none;
-        border: 0.8px solid transparent;
-        text-align: center;
-        margin: 2px;
-        transition: all 700ms;
-      }
+        .more-info{
+            .more-info-button{
+                i{
+                    color: black;
+                    font-size: 2vw;
+                    text-align: left;
+                    margin: 0.2vw 0vw 0.2vw 0.5vw;
+                    scale: 1;
+                    transition: scale 500ms, color 500ms;
+                }
+            }
 
-      .more-info-element:hover {
-        border: 0.8px solid white;
-        border-radius: 4px;
-        scale: 1.1;
-      }
+            .dropdown{
+                display: none;
+                background-color: black;
+                position: absolute;
+                border-radius: 4px;
+                padding: 5px;
+            }
+            
+            .more-info-element{
+                color: white;
+                font-size: 1vw;
+                background: none;
+                border: 0.8px solid transparent;
+                text-align: center;
+                margin: 2px;
+                transition: all 700ms;
+            }
+            
+            .more-info-element:hover{
+                border: 0.8px solid white;
+                border-radius: 4px;
+                scale: 1.1;
+            }
+        }
+
+        .more-info:hover .more-info-button > i{
+            scale: 1.4;
+            color: blue;
+        }
+
+        .more-info:hover .dropdown{
+            display: flex;
+            flex-direction: column;
+        }
+
+        .save-button{
+            i{
+                color: red;
+                font-size: 2vw;
+                text-align: right;
+                margin: 0.2vw 0.5vw 0.2vw 0vw;
+                transition: scale 500ms;
+            }
+            
+            i:hover{
+                scale: 1.3;
+            }
+        }
+
+        .save-button:active .save-button > i{
+            color: black;
+        }
     }
-
-    .more-info:hover .more-info-button > i {
-      scale: 1.4;
-      color: blue;
-    }
-
-    .more-info:hover .dropdown {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .save-button {
-      i {
-        color: red;
-        font-size: 2vw;
-        text-align: right;
-        margin: 0.2vw 0.5vw 0.2vw 0vw;
-        transition: scale 500ms;
-      }
-
-      i:hover {
-        scale: 1.3;
-      }
-    }
-
-    .save-button:active .save-button > i {
-      color: black;
-    }
-  }
 }
 
-.Content-card:hover {
-  scale: 1.05;
+.Content-card:hover{
+    scale: 1.05;
 }
