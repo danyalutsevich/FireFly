@@ -27,9 +27,9 @@ export function Profile() {
     <div className={ProfileCSS.Profile}>
       <div className={ProfileCSS.LeftArea}>
         {user?.photoURL ? (
-          <img src={user?.photoURL} alt="Profile" />
+          <img src={user?.photoURL} alt={user.displayName + " profile pic"} />
         ) : (
-          <img src={"/defaultUserPic.svg"} alt="ProfileDefault" />
+          <img src={"/defaultUserPic.svg"} alt="Profile Default Picture" />
         )}
         <input
           type="file"
