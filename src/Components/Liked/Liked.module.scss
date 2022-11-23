@@ -23,7 +23,6 @@
     margin-left: 3vw;
     margin-top: 20px;
     text-align: left;
-    padding-bottom: 1.3vw;
   }
 
   .Sort {
@@ -103,7 +102,6 @@
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    height: auto;
     background-color: #272727;
   }
 
@@ -123,10 +121,12 @@
     grid-template-columns: repeat(5, 1fr);
     text-align: center;
     margin: 5px;
-  }
 
-  .Liked-content > div {
-    justify-self: center;
-    margin: 10px;
+    a {
+      margin-top: 4vh;
+      margin-bottom: 4vh;
+      width: min-content;
+      justify-self: center;
+    }
   }
 }

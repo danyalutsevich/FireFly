@@ -53,7 +53,9 @@ export function Liked() {
         {
           likedFilms.map((film) => {
             return (
-                <LikedContentCard id={film} key={film} />
+              <NavLink to={`/movie/${film}`} key={film}>
+                <LikedContentCard id={film} />
+              </NavLink>
             )
           })
         }
