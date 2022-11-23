@@ -70,7 +70,10 @@ export function Header(props) {
           <button>
             <div className={HeaderCSS.Profile}>
               <object data={user.photoURL || "https://"} type="image/jpg">
-                <img src={"/defaultUserPic.svg"} alt="Profile" />
+                <img
+                  src={"/defaultUserPic.svg"}
+                  alt={user.displayName + " profile pic"}
+                />
               </object>
             </div>
           </button>

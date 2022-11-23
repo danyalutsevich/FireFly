@@ -17,9 +17,13 @@ export function LikedContentCard(props) {
   return (
     <div className={LikedContentCardCSS["Content-card"]}>
       {film.poster_path ? (
-        <img src={MovieDBLinks.image + film?.poster_path} alt="poster"></img>
+        <img
+          src={MovieDBLinks.image + film?.poster_path}
+          alt={film?.title + " poster"}
+          srcSet={MovieDBLinks.image_original + film?.poster_path}
+        ></img>
       ) : (
-        <img src={"/default_userpic.png"} alt="poster"></img>
+        <img src={"/default_userpic.png"} alt={film?.title + " poster"}></img>
       )}
       <div>
         <span className={LikedContentCardCSS["more-info"]}>
