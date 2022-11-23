@@ -3,7 +3,10 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { MovieDBLinks } from "../../Variables";
 
+import { like } from "../../firebase-config";
+
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
+import { click } from '@testing-library/user-event/dist/click';
 
 export function LikedContentCard(props) {
   const [film, setFilm] = useState({});
@@ -13,9 +16,14 @@ export function LikedContentCard(props) {
       .then((data) => data.json())
       .then((data) => setFilm(data));
   }, []);
+  
+    useEffect(() => {
+        fetch(MovieDBLinks.movie(props.id)).then(data => data.json()).then(data => setFilm(data))
+    }, [])
 
   return (
     <div className={LikedContentCardCSS["Content-card"]}>
+      <NavLink style={{margin:'0'}} to={`/movie/${film.id}`} key={film}>
       {film.poster_path ? (
         <img
           src={MovieDBLinks.image + film?.poster_path}
@@ -25,6 +33,7 @@ export function LikedContentCard(props) {
       ) : (
         <img src={"/default_userpic.png"} alt={film?.title + " poster"}></img>
       )}
+      </NavLink>
       <div>
         <span className={LikedContentCardCSS["more-info"]}>
           <button className={LikedContentCardCSS["more-info-button"]}>
