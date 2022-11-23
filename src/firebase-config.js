@@ -375,27 +375,18 @@ export const addSearch = async (search) => {
 
   const documentRef = doc(db, "Search", auth.currentUser.uid);
   const document = await getDoc(documentRef);
-  const searches = document.data()?.searches;
+  const searches = document.data()?.searches || [];
 
   try {
-    if (!search) {
+    if (search == "") {
       return
     }
-    else if (searches) {
-
-      if (searches.includes(search)) {
-        searches.splice(searches?.indexOf(search), 1);
-      }
-      await setDoc(documentRef, { searches: [...searches, search] }, { merge: true });
-    }
     else {
-      await setDoc(documentRef, { searches: [search] }, { merge: true });
+      await setDoc(documentRef, { searches: [search, ...searches] }, { merge: true });
     }
   }
   catch (error) {
     Alert({ title: error.code });
   }
-
-
 }
 

@@ -35,20 +35,16 @@ export function Header(props) {
               setTimeout(() => setInputIsFocused(false), 200);
             }}
             onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={(e) => {
+            onKeyDown={async (e) => {
               if (e.key === "Enter" && searchValue !== "") {
+                await addSearch(searchValue);
                 window.location.href = "/search/" + searchValue + "/1";
-                addSearch(searchValue);
-                console.log("sdfasdjhlkj")
               }
             }}
           ></input>
           <NavLink
             className={HeaderCSS.MenuItem}
             to={searchValue === "" ? "#" : `/search/${searchValue}/1`}
-            onClick={() => {
-              addSearch(searchValue);
-            }}
           >
             <i className="material-icons">search</i>
           </NavLink>

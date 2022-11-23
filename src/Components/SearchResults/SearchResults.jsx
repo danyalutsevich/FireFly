@@ -10,24 +10,24 @@ export function SearchResults(props) {
 
   const { searches } = useContext(FirebaseContext);
 
-  console.log(searches)
-
   useEffect(() => {
-    fetch(MovieDBLinks.search(props.searchValue, 1))
-      .then((data) => data.json())
-      .then((data) => {
-        setFilms(data.results.slice(0, 5));
-      });
-  });
+    if (props.searchValue != "") {
+      fetch(MovieDBLinks.search(props.searchValue, 1))
+        .then((data) => data.json())
+        .then((data) => {
+          setFilms(data.results.slice(0, 5));
+        });
+    }
+  }, [props.searchValue]);
+
   return (
     <div style={{ display: props.isActive === false ? 'none' : 'grid' }} className={SearchResultsCSS.SearchResults} >
       {props.searchValue === '' ?
-        searches?.slice(0, 5).map((search) => {
+        searches?.slice(0, 5).map((search, index) => {
           return (
-            <NavLink to={"/search/" + search + "/1"} className={SearchResultsCSS.SearchResult}>
+            <NavLink to={"/search/" + search + "/1"} className={SearchResultsCSS.SearchResult} key={search + index}>
               <div className={SearchResultsCSS.SearchResultText}>
                 {search}
-                
               </div>
             </NavLink>
           )
