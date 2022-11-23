@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import HeaderCSS from "./Header.module.scss";
-import { FirebaseContext, logout } from "../../firebase-config";
+import { FirebaseContext, logout, addSearch } from "../../firebase-config";
 import { SearchResults } from "../SearchResults";
 
 export function Header(props) {
@@ -38,12 +38,17 @@ export function Header(props) {
             onKeyDown={(e) => {
               if (e.key === "Enter" && searchValue !== "") {
                 window.location.href = "/search/" + searchValue + "/1";
+                addSearch(searchValue);
+                console.log("sdfasdjhlkj")
               }
             }}
           ></input>
           <NavLink
             className={HeaderCSS.MenuItem}
             to={searchValue === "" ? "#" : `/search/${searchValue}/1`}
+            onClick={() => {
+              addSearch(searchValue);
+            }}
           >
             <i className="material-icons">search</i>
           </NavLink>

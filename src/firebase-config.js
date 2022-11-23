@@ -54,6 +54,7 @@ export const FirebaseContextProvider = ({ children }) => {
   const [liked, setLikedFilms] = useState([]);
   const [watchlist, setWatchlistFilms] = useState([]);
   const [ratings, setRatings] = useState({});
+  const [searches, setSearches] = useState([]);
 
   useEffect(() => {
     onAuthStateChanged(auth, (currentUser) => {
@@ -67,12 +68,14 @@ export const FirebaseContextProvider = ({ children }) => {
       onSnapshot(doc(db, "Rating", currentUser?.uid), (snapshot) => {
         setRatings(snapshot.data()?.ratings || {});
       });
+      onSnapshot(doc(db, "Search", currentUser?.uid), (snapshot) => {
+        setSearches(snapshot.data()?.searches || []);
+      });
     });
   }, []);
 
   return (
-    <FirebaseContext.Provider value={{ user, liked, watchlist, ratings }}>
-      {/* <-- this is the value that will be shared with all components*/}
+    <FirebaseContext.Provider value={{ user, liked, watchlist, ratings, searches }}>{/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
   );
@@ -367,3 +370,32 @@ export const resetPasword = async (email) => {
     Alert({ title: error.code });
   }
 };
+
+export const addSearch = async (search) => {
+
+  const documentRef = doc(db, "Search", auth.currentUser.uid);
+  const document = await getDoc(documentRef);
+  const searches = document.data()?.searches;
+
+  try {
+    if (!search) {
+      return
+    }
+    else if (searches) {
+
+      if (searches.includes(search)) {
+        searches.splice(searches?.indexOf(search), 1);
+      }
+      await setDoc(documentRef, { searches: [...searches, search] }, { merge: true });
+    }
+    else {
+      await setDoc(documentRef, { searches: [search] }, { merge: true });
+    }
+  }
+  catch (error) {
+    Alert({ title: error.code });
+  }
+
+
+}
+
