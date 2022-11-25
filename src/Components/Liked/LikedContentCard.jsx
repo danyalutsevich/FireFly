@@ -41,14 +41,16 @@ export function LikedContentCard(props) {
           <img src={"/default_userpic.png"} alt={film?.title + " poster"}></img>
         }
       </NavLink>
-      {user ? (
-        <TableOperations
-          filmID={filmID}
-          liked={liked}
-          watchlist={watchlist}
-          rating={ratings[id]}
-        />
-      ) : null}
+      <div className={LikedContentCardCSS.LikeOptions}>
+        {user ? (
+          <TableOperations
+            filmID={filmID}
+            liked={liked}
+            watchlist={watchlist}
+            rating={rating}
+          />
+        ) : null}
+      </div>
     </div>
   );
 }

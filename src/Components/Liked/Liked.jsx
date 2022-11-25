@@ -41,7 +41,6 @@ export function Liked() {
       <div className={LikedCSS.Header}>
         <h2>Liked</h2>
         <div className={LikedCSS.Sort}>
-
           <button className={LikedCSS.SortBtn}>
             <span>{sortMethod}<i className="material-icons">{icon}</i></span>
             <i className={`material-icons ${LikedCSS.SortIcon}`}>sort</i>
@@ -51,7 +50,6 @@ export function Liked() {
             <button onClick={() => { setSortMethod("by date added"); setIcon("arrow_downward") }}>by date added<i className="material-icons">arrow_downward</i></button>
             <button onClick={() => { setSortMethod("by rating"); setIcon("arrow_upward") }}>by rating<i className="material-icons">arrow_upward</i></button>
             <button onClick={() => { setSortMethod("by rating"); setIcon("arrow_downward") }}>by rating<i className="material-icons">arrow_downward</i></button>
-
           </div>
         </div>
       </div>

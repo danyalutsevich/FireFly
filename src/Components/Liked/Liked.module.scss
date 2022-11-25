@@ -17,7 +17,7 @@
 }
 .Liked {
 
-  height: 100vh;
+  // height: 100vh;
 
   h2 {
     color: white;
@@ -122,5 +122,7 @@
   .Liked-content {
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 }

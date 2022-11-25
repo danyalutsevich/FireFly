@@ -1,10 +1,23 @@
-.LikedFilm{
+.LikedFilm {
 
     margin: 10px;
     border-radius: 10px;
-    img{
+    --display-options: "none";
+    --scale-options: 0;
+
+    img {
         border-radius: 10px;
-        height: 150px;
+        width: 300px;
+    }
+
+    &:hover {
+        background-color: gray;
+        --scale-options: 1;
+    }
+
+    .LikeOptions {
+        scale: var(--scale-options);
+        padding: 10px 0;
     }
 
 }
