@@ -13,21 +13,28 @@ export function Liked() {
   const [sortMethod, setSortMethod] = useState("by date added")
   const [icon, setIcon] = useState("arrow_upward")
 
-  const [likedFilms, setLikedFilms] = useState([])
 
   const contextData = useContext(FirebaseContext)
+  const [liked, setLiked] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [user, setUser] = useState(null);
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
-    setLikedFilms(contextData?.liked)
-  }, [contextData])
+    setLiked(contextData.liked);
+    setWatchlist(contextData.watchlist);
+    setUser(contextData.user);
+    setRatings(contextData.ratings);
+  }, [contextData]);
 
-  if (likedFilms.length == 0) {
+  if (liked.length == 0) {
     return (
       <div className={LikedCSS.NoLikedFilms}>
         <h1>Your liked films <br />will appear here</h1>
       </div>
     )
   }
+
 
   return (
     <div className={LikedCSS.Liked}>
@@ -51,11 +58,16 @@ export function Liked() {
       <div className={LikedCSS.Divider}></div>
       <div className={LikedCSS["Liked-content"]}>
         {
-          likedFilms.map((film) => {
+          liked.map((id) => {
             return (
-              <NavLink to={`/movie/${film}`} key={film}>
-                <LikedContentCard id={film} />
-              </NavLink>
+              <LikedContentCard 
+              filmID={id}
+              liked={liked?.includes(Number(id))}
+              watchlist={watchlist?.includes(Number(id))}
+              rating={ratings[id]}
+              user={user}
+              key={id}
+              />
             )
           })
         }

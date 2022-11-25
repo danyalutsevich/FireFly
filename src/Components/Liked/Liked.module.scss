@@ -16,6 +16,9 @@
   }
 }
 .Liked {
+
+  height: 100vh;
+
   h2 {
     color: white;
     font-family: $font-for-text;
@@ -117,16 +120,7 @@
   }
 
   .Liked-content {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    text-align: center;
-    margin: 5px;
-
-    a {
-      margin-top: 4vh;
-      margin-bottom: 4vh;
-      width: min-content;
-      justify-self: center;
-    }
+    display: flex;
+    flex-wrap: wrap;
   }
 }

@@ -2,47 +2,53 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { MovieDBLinks } from "../../Variables";
+import { TableOperations } from "../Table";
+
+
+import { like } from "../../firebase-config";
+
 
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
 
 export function LikedContentCard(props) {
+
+  const {
+    filmID,
+    liked,
+    watchlist,
+    rating,
+    user,
+  } = props;
+
   const [film, setFilm] = useState({});
 
   useEffect(() => {
-    fetch(MovieDBLinks.movie(props.id))
+    fetch(MovieDBLinks.movie(filmID))
       .then((data) => data.json())
       .then((data) => setFilm(data));
   }, []);
 
   return (
-    <div className={LikedContentCardCSS["Content-card"]}>
-      {film.poster_path ? (
-        <img
-          src={MovieDBLinks.image + film?.poster_path}
-          alt={film?.title + " poster"}
-          srcSet={MovieDBLinks.image_original + film?.poster_path}
-        ></img>
-      ) : (
-        <img src={"/default_userpic.png"} alt={film?.title + " poster"}></img>
-      )}
-      <div>
-        <span className={LikedContentCardCSS["more-info"]}>
-          <button className={LikedContentCardCSS["more-info-button"]}>
-            <i className="material-icons">more_horiz</i>
-          </button>
-          <span className={LikedContentCardCSS["dropdown"]}>
-            <button className={LikedContentCardCSS["more-info-element"]}>
-              Перейти куда-то
-            </button>
-            <button className={LikedContentCardCSS["more-info-element"]}>
-              Перейти куда-то еще
-            </button>
-          </span>
-        </span>
-        <button className={LikedContentCardCSS["save-button"]}>
-          <i className={`material-icons`}>favorite</i>
-        </button>
-      </div>
+    <div className={LikedContentCardCSS.LikedFilm}>
+      <NavLink to={`/movie/${film.id}`} key={film}>
+        {film.poster_path ?
+          <img
+            src={MovieDBLinks.image_original + film?.poster_path}
+            alt={film?.title + " poster"}
+            srcSet={MovieDBLinks.image + film?.poster_path}
+          />
+          :
+          <img src={"/default_userpic.png"} alt={film?.title + " poster"}></img>
+        }
+      </NavLink>
+      {user ? (
+        <TableOperations
+          filmID={filmID}
+          liked={liked}
+          watchlist={watchlist}
+          rating={ratings[id]}
+        />
+      ) : null}
     </div>
   );
 }
