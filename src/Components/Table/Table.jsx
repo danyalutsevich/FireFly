@@ -31,7 +31,7 @@ export function Table(props) {
 
   return (
     <div className={TableCSS.Table}>
-      <table className={TableCSS.Table}>
+      <table>
         <thead>
           <tr>
             <th>Rank</th>

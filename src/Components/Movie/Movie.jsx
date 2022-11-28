@@ -14,12 +14,6 @@ export function Movie(props) {
   const [movie, setMovie] = useState(undefined);
   const { id } = useParams();
 
-  const contextData = useContext(FirebaseContext);
-  const [liked, setLiked] = useState([]);
-  const [watchlist, setWatchlist] = useState([]);
-  const [user, setUser] = useState(null);
-  const [ratings, setRatings] = useState([]);
-
   useEffect(() => {
     if (id) {
       fetch(MovieDBLinks.movie(id))
@@ -27,6 +21,12 @@ export function Movie(props) {
         .then((data) => setMovie(data));
     }
   }, [id]);
+
+  const contextData = useContext(FirebaseContext);
+  const [liked, setLiked] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [user, setUser] = useState(null);
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
     setLiked(contextData.liked);
