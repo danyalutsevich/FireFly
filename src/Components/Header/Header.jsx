@@ -70,7 +70,7 @@ export function Header(props) {
       ) : null}
       {user ? (
         <div className={HeaderCSS.Dropdown}>
-          <button>
+          <button onClick={() => (window.location.href = "/profile")}>
             <div className={HeaderCSS.Profile}>
               <object data={user.photoURL || "https://"} type="image/jpg">
                 <img

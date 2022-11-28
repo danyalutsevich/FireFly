@@ -192,5 +192,11 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
         display: none;
       }
     }
+    .Auth {
+      margin: 20px;
+    }
+    .Dropdown:hover .DropdownContent {
+      display: none;
+    }
   }
 }
