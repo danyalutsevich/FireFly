@@ -102,4 +102,19 @@
     color: white;
     border: none;
   }
+
+  @media (max-width: 767px) {
+    .Table {
+      width: 100vw;
+    }
+    .MoviePoster {
+      height: 100px;
+    }
+    .Pages {
+      flex-direction: column;
+      .PageButton {
+        margin: 10px;
+      }
+    }
+  }
 }
