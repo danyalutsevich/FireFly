@@ -2,13 +2,12 @@
 @import "../Header/Header.module.scss";
 
 .Table {
-
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   // overflow: scroll;
-  
+
   table {
     width: 90%;
     font-family: "Fira Mono", monospace;
@@ -114,5 +113,4 @@
       }
     }
   }
-}
 }
