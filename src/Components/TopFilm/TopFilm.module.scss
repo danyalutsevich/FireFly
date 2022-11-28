@@ -111,4 +111,17 @@
       outline: none;
     }
   }
+  @media (max-width: 768px) {
+    .MoviePoster {
+      width: 30%;
+      height: 50%;
+      float: right;
+    }
+    .TopFilmInfo .Link {
+      font-size: 1.5em;
+    }
+    .TopFilmInfo p {
+      font-size: 1em;
+    }
+  }
 }
