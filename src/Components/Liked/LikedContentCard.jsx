@@ -3,13 +3,22 @@ import { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { MovieDBLinks } from "../../Variables";
 
-import { like } from "../../firebase-config";
+import { like, FirebaseContext } from "../../firebase-config";
+
+import { useContext } from "react";
 
 
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
 
 export function LikedContentCard(props) {
   const [film, setFilm] = useState({});
+
+  const contextData = useContext(FirebaseContext);
+  const [liked, setLiked] = useState([]);
+
+  useEffect(() => {
+    setLiked(contextData.liked);
+  }, [contextData]);
 
   useEffect(() => {
     fetch(MovieDBLinks.movie(props.id))
@@ -44,7 +53,8 @@ export function LikedContentCard(props) {
             </button>
           </span>
         </span>
-        <button className={LikedContentCardCSS["save-button"]} onClick={() => like(props.id)}><i className={`material-icons`}>favorite</i></button>
+        <span className={`material-symbols-outlined ${liked.includes(film.id) ? LikedContentCardCSS.Liked : LikedContentCardCSS.NonLiked}`}
+                    onClick={() => { like(film.id) }}>favorite</span>
       </div>
     </div>
   );
