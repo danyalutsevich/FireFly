@@ -2,13 +2,11 @@
 @import "../Header/Header.module.scss";
 
 .Table {
-
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  // overflow: scroll;
-  
+  overflow: scroll;
   table {
     width: 90%;
     font-family: "Fira Mono", monospace;
@@ -17,7 +15,6 @@
     border-collapse: collapse;
     border-spacing: 0;
     max-width: 1200px;
-    min-width: 625px;
   }
 
   th {
@@ -102,6 +99,7 @@
   }
   @media (max-width: 767px) {
     .Table {
+      overflow: scroll;
       width: 100vw;
     }
     .MoviePoster {
@@ -114,5 +112,4 @@
       }
     }
   }
-}
 }

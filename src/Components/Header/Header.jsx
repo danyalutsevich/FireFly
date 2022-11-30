@@ -28,6 +28,7 @@ export function Header(props) {
             className={HeaderCSS.searchInput}
             value={searchValue}
             autoComplete="off"
+            placeholder="Type to search..."
             onFocus={() => {
               setInputIsFocused(true);
             }}
@@ -57,18 +58,19 @@ export function Header(props) {
       <NavLink className={HeaderCSS.MenuItem} to="/ratings/1">
         Ratings
       </NavLink>
-      {user ? (<>
-        <NavLink className={HeaderCSS.MenuItem} to="/liked">
-          Liked
-        </NavLink>
-        <NavLink className={HeaderCSS.MenuItem} to="/watchlist">
-          Watchlist
-        </NavLink>
-      </>
+      {user ? (
+        <>
+          <NavLink className={HeaderCSS.MenuItem} to="/liked">
+            Liked
+          </NavLink>
+          <NavLink className={HeaderCSS.MenuItem} to="/watchlist">
+            Watchlist
+          </NavLink>
+        </>
       ) : null}
       {user ? (
         <div className={HeaderCSS.Dropdown}>
-          <button>
+          <button onClick={() => (window.location.href = "/profile")}>
             <div className={HeaderCSS.Profile}>
               <object data={user.photoURL || "https://"} type="image/jpg">
                 <img

@@ -22,7 +22,7 @@
       height: 4vh;
       margin: 30px;
       padding: 10px;
-      box-shadow: 10px 10px 5px 0px rgba(0, 0, 0, 0.55);
+      box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.55);
       a {
         display: flex;
         align-items: center;
@@ -51,6 +51,15 @@
     font-size: 1.5rem;
     color: white;
     padding-bottom: 10px;
+  }
+  .Issue {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50vw;
+    font-family: $font-for-text;
+    font-size: 1.5rem;
+    color: #505050;
   }
 
   @media (max-width: 768px) {

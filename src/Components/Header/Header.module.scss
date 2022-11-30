@@ -45,7 +45,11 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
       display: flex;
       align-items: center;
     }
-
+    input::placeholder {
+      font-size: 3vh;
+      padding: 5px;
+      opacity: 0.5;
+    }
     input {
       font-size: 3vh;
       height: 5vh;
@@ -155,6 +159,44 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     .SignUp:hover {
       background-color: black;
       color: white;
+    }
+  }
+
+  @media (max-width: 768px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 3vh;
+
+    .Logo {
+      font-size: 10vh;
+      margin: 10px;
+    }
+
+    .MenuItem {
+      margin: 5px;
+    }
+
+    .Search {
+      margin: 5px;
+      input {
+        width: 70vw;
+      }
+      input::placeholder {
+        font-size: 3vh;
+        padding: 5px;
+        opacity: 0.5;
+      }
+      i {
+        display: none;
+      }
+    }
+    .Auth {
+      margin: 20px;
+    }
+    .Dropdown:hover .DropdownContent {
+      display: none;
     }
   }
 }
