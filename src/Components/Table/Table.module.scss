@@ -6,7 +6,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: scroll;
   table {
     width: 90%;
     font-family: "Fira Mono", monospace;
@@ -100,15 +99,18 @@
   @media (max-width: 767px) {
     .Table {
       overflow: scroll;
-      width: 100vw;
-    }
-    .MoviePoster {
-      height: 100px;
-    }
-    .Pages {
-      flex-direction: column;
-      .PageButton {
-        margin: 10px;
+      table {
+        width: 100%;
+      }
+
+      .MoviePoster {
+        height: 100px;
+      }
+      .Pages {
+        flex-direction: column;
+        .PageButton {
+          margin: 10px;
+        }
       }
     }
   }
