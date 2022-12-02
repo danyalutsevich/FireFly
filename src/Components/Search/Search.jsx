@@ -11,8 +11,6 @@ export function Search() {
   const [totalResults, setTotalResults] = useState(0);
   const { searchValue, page = 1 } = useParams();
 
-  console.log(searchValue);
-
   useEffect(() => {
     if (searchValue != "") {
       fetch(MovieDBLinks.search(searchValue, page))

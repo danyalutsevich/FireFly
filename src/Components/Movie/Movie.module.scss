@@ -1,10 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Fira+Mono&family=Libre+Barcode+39+Text&display=swap");
 @import "../Header/Header.module.scss";
+
 .Movie {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: $font-for-text;
+
+  .Video {
+    width: 60vw;
+    height: 60vh;
+    margin: 2rem 0 2rem 0;
+  }
 
   .Backdrop {
     height: 40vh;

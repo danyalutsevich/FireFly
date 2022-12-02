@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
-
+import Iframe from 'react-iframe'
 import { MovieDBLinks } from "../../Variables";
 import { Loading } from "../Loading";
 import { Cast } from "./Cast";
@@ -9,10 +9,23 @@ import { TableOperations } from "../Table/TableOperations";
 import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
 
 import MovieCSS from "./Movie.module.scss";
+import { useInsertionEffect } from "react";
 
 export function Movie(props) {
   const [movie, setMovie] = useState(undefined);
   const { id } = useParams();
+  const [VideoId, setVideoId] = useState(undefined);
+  
+  useEffect(()=>{
+    if(id) {
+      fetch(MovieDBLinks.video(id))
+      .then(res => res.json())
+      .then(data => {
+        setVideoId(data.results)
+      })
+
+    }
+  })
 
   useEffect(() => {
     if (id) {
@@ -27,7 +40,7 @@ export function Movie(props) {
   const [watchlist, setWatchlist] = useState([]);
   const [user, setUser] = useState(null);
   const [ratings, setRatings] = useState([]);
-
+  
   useEffect(() => {
     setLiked(contextData.liked);
     setWatchlist(contextData.watchlist);
@@ -38,7 +51,8 @@ export function Movie(props) {
   if (movie === undefined) {
     return <Loading />;
   }
-
+  let trailer = VideoId.find((video) => video.type === "Trailer");
+  console.log(trailer.type);
   return (
     <div className={MovieCSS.Movie}>
       <div className={MovieCSS.Backdrop}>
@@ -82,6 +96,19 @@ export function Movie(props) {
           <div className={MovieCSS.About}>
             <h2>{movie.tagline}</h2>
             <h2>{movie.overview}</h2>
+          </div>
+          <br/><br/>
+          <div className={MovieCSS.Video}>
+            <Iframe
+             url={"https://www.youtube.com/embed/" + trailer.key}
+             width="100%"
+             height="100%"
+             id="Trailer"
+              className="video"
+              display="initial"
+              position="relative"
+              allowFullScreen
+            />
           </div>
         </div>
       </div>
