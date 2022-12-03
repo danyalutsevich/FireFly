@@ -100,7 +100,6 @@ export function Movie(props) {
             {trailer === "undefined" ? <br/> : 
             <Iframe 
             url={"https://www.youtube.com/embed/" + trailer} 
-            width="100%" height="100%" 
             className={MovieCSS.Trailer}
             align="center"
             allowFullScreen/>}
