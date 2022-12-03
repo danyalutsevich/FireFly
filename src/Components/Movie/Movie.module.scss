@@ -8,9 +8,14 @@
   font-family: $font-for-text;
 
   .Video {
-    width: 60vw;
+    display:block;
+    position: relative;
+    margin: 2em 0;
+    padding: 2em 0;
+    .Trailer {
+      width: 60vw;
     height: 60vh;
-    margin: 2rem 0 2rem 0;
+    }
   }
 
   .Backdrop {

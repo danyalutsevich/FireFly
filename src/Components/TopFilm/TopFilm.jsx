@@ -15,6 +15,10 @@ export function TopFilm(props) {
         src={MovieDBLinks.image + film.poster_path}
         alt={film.original_title + " poster"}
         srcSet={MovieDBLinks.image_original + film.poster_path}
+        onClick={() => {
+          window.location.href= "/movie/" + film.id;
+        }
+        }
       ></img>
       <div className={TopFilmCSS.TopFilmInfo}>
         <NavLink to={`/movie/${film.id}`} className={TopFilmCSS.Link}>
