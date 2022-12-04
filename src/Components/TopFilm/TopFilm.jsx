@@ -35,7 +35,7 @@ export function TopFilm(props) {
             {isMore ? "Hide" : "..."}
           </button>
         </p>
-        <p>FireFly rating: {film.vote_average}</p>
+        <p>Rating: {film.vote_average}</p>
       </div>
     </div>
   );
