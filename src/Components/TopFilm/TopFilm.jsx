@@ -15,6 +15,10 @@ export function TopFilm(props) {
         src={MovieDBLinks.image + film.poster_path}
         alt={film.original_title + " poster"}
         srcSet={MovieDBLinks.image_original + film.poster_path}
+        onClick={() => {
+          window.location.href= "/movie/" + film.id;
+        }
+        }
       ></img>
       <div className={TopFilmCSS.TopFilmInfo}>
         <NavLink to={`/movie/${film.id}`} className={TopFilmCSS.Link}>
@@ -31,7 +35,7 @@ export function TopFilm(props) {
             {isMore ? "Hide" : "..."}
           </button>
         </p>
-        <p>FireFly rating: {film.vote_average}</p>
+        <p>Rating: {film.vote_average}</p>
       </div>
     </div>
   );

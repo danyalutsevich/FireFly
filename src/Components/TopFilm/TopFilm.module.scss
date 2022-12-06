@@ -17,17 +17,20 @@
     width: 15%;
     height: 90%;
     float: right;
-
-    border: 3px solid white;
-    transform: scale(1);
-    transition: 0.5s;
+    scale: 1;
+    -webkit-transition: 1s ease; /* Safari and Chrome */
+    -moz-transition: 1s ease; /* Firefox 4 */
+    -o-transition: 1s ease; /* Opera */
+    border: 2px solid white;
     border-radius: 5%;
+    box-shadow: 0 0 10px #ffffff77;
   }
 
   .MoviePoster:hover {
-    transform: scale(1.1);
-    transition: 0.5s;
-    border-radius: 5%;
+    scale: 1.05;
+    -webkit-transition: 1s ease; /* Safari and Chrome */
+    -moz-transition: 1s ease; /* Firefox 4 */
+    -o-transition: 1s ease; /* Opera */
   }
   .MoviePoster:active {
     transform: scale(0.9);
@@ -46,7 +49,7 @@
     color: white;
     margin-top: 0;
     font-family: $font-for-text;
-    font-size: 2.5em;
+    font-size: 2.5rem;
     text-align: left;
     vertical-align: top;
     width: 100%;
@@ -76,7 +79,6 @@
     color: white;
     margin-left: 20px;
     margin-bottom: 10px;
-
     button {
       background-color: #292929;
       color: white;

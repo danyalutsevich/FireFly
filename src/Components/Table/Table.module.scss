@@ -41,6 +41,22 @@
   .MoviePoster {
     height: 150px;
     border-radius: 10px;
+    scale: 1;
+    -webkit-transition: 2s ease; /* Safari and Chrome */
+    -moz-transition: 2s ease; /* Firefox 4 */
+    -o-transition: 2s ease; /* Opera */
+  }
+  .MoviePoster:hover {
+    cursor: pointer;
+    scale: 1.1;
+    transition: all 2s ease-in-out;
+  }
+  .MoviePoster::before {
+    cursor: pointer;
+    scale: 1;
+    -webkit-transition: 2s ease; /* Safari and Chrome */
+    -moz-transition: 2s ease; /* Firefox 4 */
+    -o-transition: 2s ease; /* Opera */
   }
 
   .Link:hover {

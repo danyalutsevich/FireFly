@@ -1,10 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond&family=Fira+Mono&family=Libre+Barcode+39+Text&display=swap");
 @import "../Header/Header.module.scss";
+
 .Movie {
   display: flex;
   flex-direction: column;
   align-items: center;
   font-family: $font-for-text;
+
+  .Video {
+    display:block;
+    position: relative;
+    margin: 2em 0;
+    padding: 2em 0;
+    .Trailer {
+      width: 60vw;
+    height: 60vh;
+    }
+  }
 
   .Backdrop {
     height: 40vh;
@@ -67,6 +79,45 @@
         color: #afafaf;
         font-size: 20px;
         margin: 30px 0px;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .Description {
+      flex-direction: column;
+      align-items: center;
+
+      img {
+        margin: 20px;
+      }
+
+      .Title {
+        flex-direction: column;
+        align-items: center;
+
+        h1 {
+          font-size: 50px;
+        }
+
+        h2 {
+          font-size: 20px;
+          margin: 0;
+        }
+
+        h3 {
+          font-size: 15px;
+        }
+      }
+      .Video {
+        .Trailer {
+          width: 80vw;
+          height: 80vh;
+          margin:0 20px;
+        }
+     }
+      .About {
+        width: 80vw;
       }
     }
   }
