@@ -31,7 +31,7 @@ export function Table(props) {
 
   return (
     <div className={TableCSS.Table}>
-      <table className={TableCSS.Table}>
+      <table>
         <thead>
           <tr>
             <th>Rank</th>
@@ -54,6 +54,11 @@ export function Table(props) {
                       src={MovieDBLinks.image + film.poster_path}
                       alt={film.original_title + " poster"}
                       srcSet={MovieDBLinks.image_original + film.poster_path}
+                      onClick={
+                        () => {
+                        window.location.href= "/movie/" + film.id;
+                      }
+                    }
                     />
                   ) : (
                     <img
@@ -73,7 +78,7 @@ export function Table(props) {
                     <TableOperations
                       filmID={film.id}
                       liked={liked?.includes(film.id)}
-                      watchlist={watchlist?.includes(film.id)}
+                      watchlist={Object.values(watchlist).flat().includes(film.id)}
                       rating={ratings[film.id]}
                     />
                   ) : null}

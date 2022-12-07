@@ -6,7 +6,6 @@ import { CRUDexample } from "../Profile/CRUDexample";
 import WatchlistFolderCSS from "./WatchlistFolder.module.scss";
 
 export function WatchlistFolder(props) {
-  // const [showPopUp, setShowPopUp] = useState(false);
 
   return (
     <div onClick={props.showPopUp}

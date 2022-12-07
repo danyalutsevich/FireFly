@@ -10,8 +10,8 @@
   }
 
   .Content {
-    width: 75vw;
-    height: 50vw;
+    width: 85vw;
+    height: 95vh;
     position: fixed;
     z-index: 10;
     left: 50%;
@@ -49,9 +49,10 @@
   }
 
   .ContentFilms {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     column-gap: 20px;
-    grid-template-columns: repeat(auto-fill, 17vw);
+    grid-template-columns: repeat(auto-fill, 10vw);
     text-align: center;
     justify-content: center;
     margin: 5px;

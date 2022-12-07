@@ -11,11 +11,12 @@ const Links = {
 // API docs https://developers.themoviedb.org/3
 export const MovieDBLinks = {
     image: "https://image.tmdb.org/t/p/w500",
-    credits: (movie_id)=>`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${MovieDB_API_KEY}&language=en-US`,
     image_original: "https://image.tmdb.org/t/p/original",
+    credits: (movie_id)=>`https://api.themoviedb.org/3/movie/${movie_id}/credits?api_key=${MovieDB_API_KEY}&language=en-US`,
     top_rated: (page) => `https://api.themoviedb.org/3/movie/top_rated?api_key=${MovieDB_API_KEY}&language=en-US&page=${page}`,
     movie: (movie_id) => `https://api.themoviedb.org/3/movie/${movie_id}?api_key=${MovieDB_API_KEY}&language=en-US`,
     popular: (page) => `https://api.themoviedb.org/3/movie/popular?api_key=${MovieDB_API_KEY}&language=en-US&page=${page}`,
     trending: (page) => `https://api.themoviedb.org/3/trending/movie/day?api_key=${MovieDB_API_KEY}&page=${page}`,
-    search: (query, page) => `https://api.themoviedb.org/3/search/movie?api_key=${MovieDB_API_KEY}&language=en-US&query=${query}&page=${page}`
+    search: (query, page) => `https://api.themoviedb.org/3/search/movie?api_key=${MovieDB_API_KEY}&language=en-US&query=${query}&page=${page}`,
+    video: (movie_id) => `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${MovieDB_API_KEY}&language=en-US`,
 }

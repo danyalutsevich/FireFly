@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink, Link } from "react-router-dom";
 import HeaderCSS from "./Header.module.scss";
-import { FirebaseContext, logout } from "../../firebase-config";
+import { FirebaseContext, logout, addSearch } from "../../firebase-config";
 import { SearchResults } from "../SearchResults";
 
 export function Header(props) {
@@ -28,6 +28,7 @@ export function Header(props) {
             className={HeaderCSS.searchInput}
             value={searchValue}
             autoComplete="off"
+            placeholder="Type to search..."
             onFocus={() => {
               setInputIsFocused(true);
             }}
@@ -35,8 +36,9 @@ export function Header(props) {
               setTimeout(() => setInputIsFocused(false), 200);
             }}
             onChange={(e) => setSearchValue(e.target.value)}
-            onKeyDown={(e) => {
+            onKeyDown={async (e) => {
               if (e.key === "Enter" && searchValue !== "") {
+                await addSearch(searchValue);
                 window.location.href = "/search/" + searchValue + "/1";
               }
             }}
@@ -57,18 +59,18 @@ export function Header(props) {
         Ratings
       </NavLink>
       {user ? (
-        <NavLink className={HeaderCSS.MenuItem} to="/liked">
-          Liked
-        </NavLink>
-      ) : null}
-      {user ? (
-        <NavLink className={HeaderCSS.MenuItem} to="/watchlist">
-          Watchlist
-        </NavLink>
+        <>
+          <NavLink className={HeaderCSS.MenuItem} to="/liked">
+            Liked
+          </NavLink>
+          <NavLink className={HeaderCSS.MenuItem} to="/watchlist">
+            Watchlist
+          </NavLink>
+        </>
       ) : null}
       {user ? (
         <div className={HeaderCSS.Dropdown}>
-          <button>
+          <button onClick={() => (window.location.href = "/profile")}>
             <div className={HeaderCSS.Profile}>
               <object data={user.photoURL || "https://"} type="image/jpg">
                 <img

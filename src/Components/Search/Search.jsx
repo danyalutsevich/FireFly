@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MovieDBLinks } from "../../Variables";
 import { NavLink, useParams } from "react-router-dom";
-
+import { addSearch } from "../../firebase-config";
 import { Table } from "../Table"
 
 import SearchCSS from "./Search.module.scss";
@@ -9,16 +9,18 @@ import SearchCSS from "./Search.module.scss";
 export function Search() {
   const [films, setFilms] = useState([]);
   const [totalResults, setTotalResults] = useState(0);
-  const {searchValue, page = 1} = useParams();
+  const { searchValue, page = 1 } = useParams();
 
   useEffect(() => {
-    fetch(MovieDBLinks.search(searchValue, page))
-    .then((data) => data.json())
-    .then((data) => {setFilms(data.results); setTotalResults(data.total_results)});
-    
-  }, [page,searchValue]);
+    if (searchValue != "") {
+      fetch(MovieDBLinks.search(searchValue, page))
+        .then((data) => data.json())
+        .then((data) => { setFilms(data.results); setTotalResults(data.total_results) });
+      addSearch(searchValue);
+    }
+  }, [page, searchValue]);
 
-  
+
   return (
     <div className={SearchCSS.Search}>
       <div className={SearchCSS.SearchInfo}>
@@ -27,11 +29,11 @@ export function Search() {
           <span className={SearchCSS.SearchValue}>{searchValue}</span>
         </h1>
         <h2>items
-         <div className={SearchCSS.Divider2}></div>
+          <div className={SearchCSS.Divider2}></div>
           <span>{totalResults}</span>
         </h2>
       </div>
-        <Table films={films} page={page} url={"search/" + searchValue}></Table>
+      <Table films={films} page={page} url={"search/" + searchValue}></Table>
     </div>
   );
 }

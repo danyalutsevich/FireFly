@@ -12,6 +12,19 @@ import WatchlistPopUpCSS from "./WatchlistPopUp.module.scss";
 export function WatchlistPopUp(props) {
   const [films, setFilms] = useState([]);
 
+  const contextData = useContext(FirebaseContext)
+  const [liked, setLiked] = useState([]);
+  const [watchlist, setWatchlist] = useState([]);
+  const [user, setUser] = useState(null);
+  const [ratings, setRatings] = useState([]);
+
+  useEffect(() => {
+    setLiked(contextData.liked);
+    setWatchlist(contextData.watchlist);
+    setUser(contextData.user);
+    setRatings(contextData.ratings);
+  }, [contextData]);
+
   useEffect(() => {
     fetch(MovieDBLinks.search(props.searchValue, 1))
       .then((data) => data.json())
@@ -33,7 +46,14 @@ export function WatchlistPopUp(props) {
         </div>
         <div className={WatchlistPopUpCSS.ContentFilms}>
           {films.map((film) => {
-            return <LikedContentCard id={film.id} key={film.id} />;
+            return     <LikedContentCard 
+            filmID={film.id}
+            liked={liked?.includes(Number(film.id))}
+            watchlist={watchlist?.includes(Number(film.id))}
+            rating={ratings[film.id]}
+            user={user}
+            key={film.id}
+            />;
           })}
         </div>
       </div>

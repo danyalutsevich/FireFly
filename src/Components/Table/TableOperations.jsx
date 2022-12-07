@@ -11,6 +11,8 @@ export function TableOperations(props) {
         rating
     } = props
 
+    console.log(watchlist)
+
     const ratingRange = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
     const [rate, setRate] = useState(rating)
     const [isRateClicked, setIsRateClicked] = useState(false)
@@ -32,7 +34,7 @@ export function TableOperations(props) {
                 <span className={`material-symbols-outlined ${liked ? TableOperationsCSS.Active : TableOperationsCSS.NonActive}`}
                     onClick={() => { like(filmID) }}>favorite</span>
                 <span className={`material-symbols-outlined ${watchlist ? TableOperationsCSS.Active : TableOperationsCSS.NonActive}`}
-                    onClick={() => { saveToWatchlist(filmID) }}>bookmark</span>
+                    onClick={() => { saveToWatchlist(filmID, 'folder') }}>bookmark</span>
             </div>
         </div>
 
