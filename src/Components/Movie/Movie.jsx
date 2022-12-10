@@ -48,7 +48,6 @@ export function Movie(props) {
     setRatings(contextData.ratings);
   }, [contextData]);
 
-  console.log(watchlist)
 
   if (movie === undefined) {
     return <Loading />;
