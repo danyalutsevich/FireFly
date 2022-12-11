@@ -11,23 +11,39 @@ export const ChooseFolder = (props) => {
     } = props
 
     const contextData = useContext(FirebaseContext)
-    console.log(contextData)
+
+    const [folders, setFolders] = useState([])
+    const [newFolder, setNewFolder] = useState("")
+
+    useEffect(() => {
+        setFolders(Object.keys(contextData.watchlist).sort())
+    }, [contextData])
+
 
     return (
         <div className={ChooseFolderCSS.ChooseFolder}>
-
-            <span class="material-symbols-outlined"
-                onClick={() => { setChooseFolder(false) }}
-            >
-                close
-            </span>
-            <div>
+            <div className={ChooseFolderCSS.Head}>
+                <h1>Choose Folder</h1>
+                <span className="material-symbols-outlined" onClick={() => { setChooseFolder(false) }}>
+                    close
+                </span>
+            </div>
+            <div className={ChooseFolderCSS.Folders}>
                 {
-
-                    <div className={ChooseFolderCSS.Folder}>
-
-                    </div>
+                    folders?.map((folder, index) =>
+                        <div className={ChooseFolderCSS.Folder} key={index}
+                            onClick={() => { saveToWatchlist(filmID, folder) }}>
+                            <p>{folder}</p>
+                            {contextData.watchlist[folder].includes(Number(filmID)) && <span className="material-symbols-outlined">check</span>}
+                        </div>
+                    )
                 }
+                <div className={ChooseFolderCSS.AddFolder}>
+                    <input placeholder="Add folder" onChange={(e) => { setNewFolder(e.target.value) }} />
+                    <span className="material-symbols-outlined"
+                        onClick={() => { saveToWatchlist(filmID, newFolder); setNewFolder("") }}
+                    >add</span>
+                </div>
             </div>
 
         </div>

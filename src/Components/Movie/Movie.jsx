@@ -25,7 +25,7 @@ export function Movie(props) {
       })
 
     }
-  })
+  },[])
 
   useEffect(() => {
     if (id) {

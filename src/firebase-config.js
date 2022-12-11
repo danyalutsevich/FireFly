@@ -295,25 +295,28 @@ export const saveToWatchlist = async (filmID, folder) => {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef);
-      const films = document.data()[folder];
+      const films = document.data();
+      const fromFolder = document.data()[folder];
 
-      if (films) {
-        if (films.includes(id)) {
-          films.splice(films?.indexOf(id), 1);
+      if (fromFolder) {
+        if (fromFolder.includes(id)) {
+          fromFolder.splice(fromFolder?.indexOf(id), 1);
           await setDoc(
             documentRef,
-            { [folder]: [...films] },
+            { [folder]: [...fromFolder] },
             { merge: true }
           );
         } else {
+
+
           await setDoc(
             documentRef,
-            { [folder]: [...films, id] },
+            { [folder]: [...fromFolder, id] },
             { merge: true }
           );
         }
       } else {
-        await setDoc(documentRef, { [folder]: [id] });
+        await setDoc(documentRef, { [folder]: [id] }, { merge: true });
       }
     } catch (error) {
       Alert({ title: error.code });

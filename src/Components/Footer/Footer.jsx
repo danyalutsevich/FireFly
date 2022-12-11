@@ -17,7 +17,7 @@ export function Footer() {
         </p>
       </div>
       <p className={FooterCSS.Issue}>
-        <span>You can report a bug by opening an issue on our github</span>
+        <span>You can report a bug by opening an issue in our GitHub</span>
       </p>
       <br />
       <div className={FooterCSS.FireFly}>
