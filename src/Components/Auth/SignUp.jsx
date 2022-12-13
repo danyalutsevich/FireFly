@@ -6,9 +6,13 @@ import { register, uploadImage } from "../../firebase-config";
 
 export function SignUp() {
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
+  const [passwordShown, setPasswordShown] = useState(false);
+  const togglePassword = () => {
 
+    setPasswordShown(!passwordShown);
+  };
   const clickHandler = async () => {
     await register(email, password, name);
   };
@@ -31,7 +35,7 @@ export function SignUp() {
         }}
       />
       <input
-        type="password"
+        type={passwordShown ? "text" : "password"}
         placeholder="Enter your password"
         onChange={(e) => {
           setPassword(e.target.value);
@@ -42,8 +46,11 @@ export function SignUp() {
           }
         }}
       />
+      <button onClick={togglePassword}>Show Password</button>
       <button onClick={clickHandler}>Sign Up</button>
+      
       <SignInWithGoogle />
     </div>
   );
 }
+//<input type={passwordShown ? "text" : "password"} />
