@@ -5,6 +5,7 @@ import { Home } from "../Home";
 import { Ratings } from "../Ratings";
 import { Liked } from "../Liked";
 import { Watchlist } from "../Watchlist";
+import { WatchlistFolder } from "../Watchlist";
 import { Profile } from "../Profile";
 import { Error404 } from "../Error404";
 import { Movie } from "../Movie";
@@ -31,6 +32,7 @@ export function App() {
           <Route path="/ratings/:page" element={<Ratings />} />
           <Route path="/liked" element={<Liked />} />
           <Route path="/watchlist" element={<Watchlist />} />
+          <Route path="/watchlist/:folder" element={<WatchlistFolder />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/movie/:id" element={<Movie />} />
           <Route path="/signin" element={<SignIn />} />

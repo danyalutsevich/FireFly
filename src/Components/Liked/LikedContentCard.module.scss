@@ -2,7 +2,6 @@
 
     margin: 10px;
     border-radius: 10px;
-    --display-options: "none";
     --scale-options: 0;
 
     img {
@@ -11,11 +10,12 @@
     }
 
     &:hover {
-        background-color: gray;
+        background-color: #373737;
         --scale-options: 1;
     }
 
     .LikeOptions {
+        // width: 300px;
         scale: var(--scale-options);
         padding: 10px 0;
     }

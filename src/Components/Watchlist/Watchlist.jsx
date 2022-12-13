@@ -1,50 +1,53 @@
 import React, { useEffect, useState, useContext } from "react";
-import { auth, FirebaseContext, resetPasword } from "../../firebase-config";
+import { NavLink } from "react-router-dom";
+import { FirebaseContext, saveToWatchlist } from "../../firebase-config";
 
 import WatchlistCSS from "./Watchlist.module.scss";
 
-import { WatchlistFolder } from "../WatchlistFolder";
-import { AddWatchlistFolder } from "../AddWatchlistFolder";
-
-import { WatchlistPopUp } from "../WatchlistPopUp";
+const stringToColor = function (str) {
+  var hash = 0;
+  for (var i = 0; i < str.length; i++) {
+    hash = str.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  var color = '#';
+  for (var i = 0; i < 3; i++) {
+    var value = (hash >> (i * 8)) & 0xFF - 20;
+    color += ('00' + value.toString(16)).substr(-2);
+  }
+  return color;
+}
 
 export function Watchlist() {
-  const contextVal = useContext(FirebaseContext);
+  const contextData = useContext(FirebaseContext);
 
-  const [showPopUp, setShowPopUp] = useState(false);
-
-  const [folderTitle, setFolderTitle] = useState("");
-
-  const [color, setColor] = useState("");
-
-  const [searchValue, setSearchValue] = useState("");
-
-
-  const setPopUpInfo = (color, folderTitle, searchValue) => {
-    setColor(color);
-    setFolderTitle(folderTitle);
-    setSearchValue(searchValue)
-    setShowPopUp(true);
-  }
+  const [folders, setWatchlistFolders] = useState([]);
+  const [newFolderName, setNewFolderName] = useState("");
+  useEffect(() => {
+    setWatchlistFolders(contextData.watchlistFolders);
+    console.log("folders: ", folders);
+  }, [contextData])
 
   return (
     <div className={WatchlistCSS.Watchlist}>
-      <h2>WatchList</h2>
+      <h1>WatchList</h1>
       <div className={WatchlistCSS.Divider}></div>
       <div className={WatchlistCSS.Container}>
-        <WatchlistFolder showPopUp={() => setPopUpInfo("#34abeb", "Family Movies", "Family")} title="Family Movies" color="#34abeb"></WatchlistFolder>
-        <WatchlistFolder showPopUp={() => setPopUpInfo("#eb4034", "Scary Movies", "Scary")} title="Scary Movies" color="#eb4034"></WatchlistFolder>
-        <WatchlistFolder showPopUp={() => setPopUpInfo("#8d996a", "Party Movies", "Party")} title="Party Movies" color="#8d996a"></WatchlistFolder>
-        <WatchlistFolder showPopUp={() => setPopUpInfo("#996b6a", "Love", "Sex")} title="Love" color="#996b6a"></WatchlistFolder>
-        <AddWatchlistFolder></AddWatchlistFolder>
-        {showPopUp ? (
-          <WatchlistPopUp
-            color={color}
-            folderTitle={folderTitle}
-            searchValue={searchValue}
-            closePopUp={() => setShowPopUp(false)}
-          />
-        ) : null}
+        {
+          folders.map((folder, index) => {
+            return (
+              <NavLink to={`${folder}`}>
+                <div className={WatchlistCSS.Folder} style={{ backgroundColor: stringToColor(folder) }} key={index}>
+                  <p>{folder}</p>
+                </div>
+              </NavLink>
+            )
+          })
+        }
+        <div className={WatchlistCSS.Folder} style={{ backgroundColor: stringToColor(contextData.user?.email || "Add") }}>
+          <input placeholder="Folder Name" onChange={e => { setNewFolderName(e.target.value) }}
+            style={{ backgroundColor: stringToColor(contextData.user?.email || "Add") }}></input>
+          <p onClick={() => { saveToWatchlist([], newFolderName) }}>Add</p>
+        </div>
       </div>
     </div>
   );

@@ -1,0 +1,67 @@
+.NoWatchlistFolderFilms {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        color: white;
+        font-family: "Helvetica";
+        font-size: 50px;
+        text-transform: uppercase;
+        text-align: center;
+    }
+}
+
+.WatchlistFolder {
+
+    h1 {
+        font-family: "Helvetica";
+        color: white;
+        font-size: 4vw;
+        margin-left: 3vw;
+        margin-top: 20px;
+        text-align: left;
+        padding-bottom: 1.3vw;
+    }
+
+    .Title {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 3vw;
+        margin-right: 3vw;
+        margin-top: 20px;
+        margin-bottom: 20px;
+
+        color: white;
+        cursor: pointer;
+
+        .material-symbols-outlined {
+            font-size: 25px;
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 48;
+        }
+
+    }
+
+    hr {
+        border: 0;
+        height: 1px;
+        background-color: white;
+    }
+
+    .Folders {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+    }
+
+}

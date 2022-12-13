@@ -53,6 +53,7 @@ export const FirebaseContextProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [liked, setLikedFilms] = useState([]);
   const [watchlist, setWatchlistFilms] = useState({});
+  const [watchlistFolders, setWatchlistFolders] = useState([]);
   const [ratings, setRatings] = useState({});
   const [searches, setSearches] = useState([]);
 
@@ -64,6 +65,7 @@ export const FirebaseContextProvider = ({ children }) => {
       });
       onSnapshot(doc(db, "Watchlist", currentUser?.uid), (snapshot) => {
         setWatchlistFilms(snapshot.data() || {});
+        setWatchlistFolders(Object.keys(snapshot.data()).sort() || [])
       });
       onSnapshot(doc(db, "Rating", currentUser?.uid), (snapshot) => {
         setRatings(snapshot.data()?.ratings || {});
@@ -76,9 +78,7 @@ export const FirebaseContextProvider = ({ children }) => {
 
   return (
     <FirebaseContext.Provider
-      value={{ user, liked, watchlist, ratings, searches }}
-    >
-      {/* <-- this is the value that will be shared with all components*/}
+      value={{ user, liked, watchlist, watchlistFolders, ratings, searches }}>{/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
   );
@@ -291,12 +291,12 @@ export const like = async (filmID) => {
 
 export const saveToWatchlist = async (filmID, folder) => {
   const id = Number(filmID);
-  if (auth.currentUser?.uid && id) {
+  if (auth.currentUser?.uid) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef);
-      const films = document.data();
-      const fromFolder = document.data()[folder];
+      const films = document?.data() || {};
+      const fromFolder = films[folder]
 
       if (fromFolder) {
         if (fromFolder.includes(id)) {
@@ -307,8 +307,6 @@ export const saveToWatchlist = async (filmID, folder) => {
             { merge: true }
           );
         } else {
-
-
           await setDoc(
             documentRef,
             { [folder]: [...fromFolder, id] },
@@ -319,12 +317,26 @@ export const saveToWatchlist = async (filmID, folder) => {
         await setDoc(documentRef, { [folder]: [id] }, { merge: true });
       }
     } catch (error) {
+      alert(error)
       Alert({ title: error.code });
     }
   } else {
     Alert({ title: "Please login to add a film to your watchlist" });
   }
 };
+
+export const deleteFolder = async (folder) => {
+  if (auth.currentUser?.uid) {
+    try {
+      const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
+      const document = await getDoc(documentRef);
+      const films = document?.data() || {};
+      delete films[folder]
+
+      await setDoc(documentRef, films, { merge: false });
+    } catch (error) {}
+  }
+}
 
 export const addRating = async (filmID, rating) => {
   if (filmID && rating && auth.currentUser?.uid) {

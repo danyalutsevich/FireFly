@@ -1,5 +1,6 @@
 .ChooseFolder{
-
+    
+    font-family: "Helvetica";
     font-variation-settings:
     'FILL' 0,
     'wght' 500,
@@ -10,13 +11,13 @@
     // flex-direction: column;
     // align-items: center;
     // justify-content: center;
-    background-color: gray;
+    background-color: #454545;
     border-radius: 10px;
     position: absolute;
     top: 0;
     right: 80px;
     z-index: 2;
-    width: 60vw;
+    width: 300px;
     max-height:50vh;
     overflow:scroll;
 
@@ -53,10 +54,10 @@
         }
     }
     .Folder:nth-child(odd){
-        background-color: #636363;
+        background-color: #373737;
     }
     .Folder:hover{
-        background-color: #a0a0a0;
+        background-color: gray;
     }
 
     .AddFolder{
@@ -73,6 +74,7 @@
         
         input{
             border: none;
+            width: 250px;
             background-color: #515050;
             font-size: 24px;
             color:white;
