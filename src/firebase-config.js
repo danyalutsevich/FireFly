@@ -291,7 +291,7 @@ export const like = async (filmID) => {
 
 export const saveToWatchlist = async (filmID, folder) => {
   const id = Number(filmID);
-  if (auth.currentUser?.uid) {
+  if (auth.currentUser?.uid && folder) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef);
@@ -321,12 +321,12 @@ export const saveToWatchlist = async (filmID, folder) => {
       Alert({ title: error.code });
     }
   } else {
-    Alert({ title: "Please login to add a film to your watchlist" });
+    Alert({ title: "Please enter a folder name" });
   }
 };
 
 export const deleteFolder = async (folder) => {
-  if (auth.currentUser?.uid) {
+  if (auth.currentUser?.uid&&folder) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef);
