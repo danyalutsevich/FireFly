@@ -7,7 +7,7 @@ export function Footer() {
     <div className={FooterCSS.Footer}>
       <div className={FooterCSS.Footer_Links}>
         <p className={FooterCSS.Link}>
-          <a href="https://www.themoviedb.org/">IMDb Movie Database</a>
+          <a href="https://www.themoviedb.org/">TMDb Movie Database</a>
         </p>
         <p className={FooterCSS.Link}>
           <a href="https://github.com/danyalutsevich/FireFly">GitHub</a>&nbsp;
@@ -17,7 +17,7 @@ export function Footer() {
         </p>
       </div>
       <p className={FooterCSS.Issue}>
-        <span>You can report a bug by opening an issue on our github</span>
+        <span>You can report a bug by opening an issue in our GitHub</span>
       </p>
       <br />
       <div className={FooterCSS.FireFly}>

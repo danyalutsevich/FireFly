@@ -2,7 +2,6 @@
 
     margin: 10px;
     border-radius: 10px;
-    --display-options: "none";
     --scale-options: 0;
 
     img {
@@ -11,7 +10,7 @@
     }
 
     &:hover {
-        background-color: gray;
+        background-color: #373737;
         --scale-options: 1;
     }
 

@@ -61,7 +61,7 @@ export function Liked() {
               <LikedContentCard 
               filmID={id}
               liked={liked?.includes(Number(id))}
-              watchlist={watchlist?.includes(Number(id))}
+              watchlist={Object.values(watchlist).flat().includes(Number(id))}
               rating={ratings[id]}
               user={user}
               key={id}

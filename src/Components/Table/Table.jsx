@@ -78,7 +78,7 @@ export function Table(props) {
                     <TableOperations
                       filmID={film.id}
                       liked={liked?.includes(film.id)}
-                      watchlist={watchlist?.includes(film.id)}
+                      watchlist={Object.values(watchlist).flat().includes(film.id)}
                       rating={ratings[film.id]}
                     />
                   ) : null}

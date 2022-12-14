@@ -1,6 +1,7 @@
 @import "../Header/Header.module.scss";
+
 .Watchlist {
-  h2 {
+  h1 {
     color: white;
     font-family: $font-for-text;
     font-size: 4vw;
@@ -21,10 +22,54 @@
     z-index: 0;
   }
 
+  a {
+    text-decoration: none;
+  }
+
   .Container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .Folder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-for-text;
+    font-size: 24px;
+    color: white;
+    width: 20vw;
+    height: 20vw;
+    border-radius: 10px;
+    margin: 20px;
+    text-align: center;
+    min-width: 200px;
+    min-height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    input {
+      border: 2px solid white;
+      border-radius: 10px;
+      width: 60%;
+      color:white;
+      font-size: 24px;
+    }
+    input::placeholder {
+      color: rgba(255, 255, 255, 0.443);
+    }
+
+    p{
+      cursor: pointer;
+    }
+    p:hover {
+      color: #FFD700;
+    }
+
+
   }
 }

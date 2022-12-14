@@ -52,7 +52,8 @@ export const FirebaseContextProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [liked, setLikedFilms] = useState([]);
-  const [watchlist, setWatchlistFilms] = useState([]);
+  const [watchlist, setWatchlistFilms] = useState({});
+  const [watchlistFolders, setWatchlistFolders] = useState([]);
   const [ratings, setRatings] = useState({});
   const [searches, setSearches] = useState([]);
 
@@ -63,7 +64,8 @@ export const FirebaseContextProvider = ({ children }) => {
         setLikedFilms(snapshot.data()?.likedFilms || []);
       });
       onSnapshot(doc(db, "Watchlist", currentUser?.uid), (snapshot) => {
-        setWatchlistFilms(snapshot.data()?.watchlistFilms || []);
+        setWatchlistFilms(snapshot.data() || {});
+        setWatchlistFolders(Object.keys(snapshot.data()).sort() || [])
       });
       onSnapshot(doc(db, "Rating", currentUser?.uid), (snapshot) => {
         setRatings(snapshot.data()?.ratings || {});
@@ -75,7 +77,8 @@ export const FirebaseContextProvider = ({ children }) => {
   }, []);
 
   return (
-    <FirebaseContext.Provider value={{ user, liked, watchlist, ratings, searches }}>{/* <-- this is the value that will be shared with all components*/}
+    <FirebaseContext.Provider
+      value={{ user, liked, watchlist, watchlistFolders, ratings, searches }}>{/* <-- this is the value that will be shared with all components*/}
       {children}
     </FirebaseContext.Provider>
   );
@@ -286,39 +289,54 @@ export const like = async (filmID) => {
   }
 };
 
-export const saveToWatchlist = async (filmID) => {
+export const saveToWatchlist = async (filmID, folder) => {
   const id = Number(filmID);
-  if (auth.currentUser?.uid && id) {
+  if (auth.currentUser?.uid && folder) {
     try {
       const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
       const document = await getDoc(documentRef);
-      const watchlistFilms = document.data()?.watchlistFilms;
+      const films = document?.data() || {};
+      const fromFolder = films[folder]
 
-      if (watchlistFilms) {
-        if (watchlistFilms.includes(id)) {
-          watchlistFilms.splice(watchlistFilms?.indexOf(id), 1);
+      if (fromFolder) {
+        if (fromFolder.includes(id)) {
+          fromFolder.splice(fromFolder?.indexOf(id), 1);
           await setDoc(
             documentRef,
-            { watchlistFilms: [...watchlistFilms] },
+            { [folder]: [...fromFolder] },
             { merge: true }
           );
         } else {
           await setDoc(
             documentRef,
-            { watchlistFilms: [...watchlistFilms, id] },
+            { [folder]: [...fromFolder, id] },
             { merge: true }
           );
         }
       } else {
-        await setDoc(documentRef, { watchlistFilms: [id] }, { merge: true });
+        await setDoc(documentRef, { [folder]: [id] }, { merge: true });
       }
     } catch (error) {
+      alert(error)
       Alert({ title: error.code });
     }
   } else {
-    Alert({ title: "Please login to add a film to your watchlist" });
+    Alert({ title: "Please enter a folder name" });
   }
 };
+
+export const deleteFolder = async (folder) => {
+  if (auth.currentUser?.uid&&folder) {
+    try {
+      const documentRef = doc(db, "Watchlist", auth.currentUser.uid);
+      const document = await getDoc(documentRef);
+      const films = document?.data() || {};
+      delete films[folder]
+
+      await setDoc(documentRef, films, { merge: false });
+    } catch (error) {}
+  }
+}
 
 export const addRating = async (filmID, rating) => {
   if (filmID && rating && auth.currentUser?.uid) {
@@ -372,21 +390,21 @@ export const resetPasword = async (email) => {
 };
 
 export const addSearch = async (search) => {
-
   const documentRef = doc(db, "Search", auth.currentUser.uid);
   const document = await getDoc(documentRef);
   const searches = document.data()?.searches || [];
 
   try {
     if (search == "") {
-      return
+      return;
+    } else {
+      await setDoc(
+        documentRef,
+        { searches: [search, ...searches] },
+        { merge: true }
+      );
     }
-    else {
-      await setDoc(documentRef, { searches: [search, ...searches] }, { merge: true });
-    }
-  }
-  catch (error) {
+  } catch (error) {
     Alert({ title: error.code });
   }
-}
-
+};

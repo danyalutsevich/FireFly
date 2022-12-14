@@ -25,7 +25,7 @@ export function Movie(props) {
       })
 
     }
-  })
+  },[])
 
   useEffect(() => {
     if (id) {
@@ -47,6 +47,7 @@ export function Movie(props) {
     setUser(contextData.user);
     setRatings(contextData.ratings);
   }, [contextData]);
+
 
   if (movie === undefined) {
     return <Loading />;
@@ -87,7 +88,7 @@ export function Movie(props) {
               <TableOperations
                 filmID={id}
                 liked={liked?.includes(Number(id))}
-                watchlist={watchlist?.includes(Number(id))}
+                watchlist={Object.values(watchlist).flat().includes(Number(id))}
                 rating={ratings[id]}
               />
             ) : null}

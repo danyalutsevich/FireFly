@@ -5,7 +5,9 @@ import { MovieDBLinks } from "../../Variables";
 import { TableOperations } from "../Table";
 
 
-import { like } from "../../firebase-config";
+import { like, FirebaseContext } from "../../firebase-config";
+
+import { useContext } from "react";
 
 
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
