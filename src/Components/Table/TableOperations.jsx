@@ -19,13 +19,6 @@ export function TableOperations(props) {
     const [isRateClicked, setIsRateClicked] = useState(false)
     const [chooseFolder,setChooseFolder] = useState(false)
 
-    // window.addEventListener("click", (e) => {
-    //     if (e.target.className.includes("material-symbols-outlined")) {
-    //         console.log(e.target.className)
-    //         setChooseFolder(false)
-    //     }
-    // })
-
     return (
 
         <div className={TableOperationsCSS.SaveTab}>
