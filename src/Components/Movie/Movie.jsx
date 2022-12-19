@@ -108,8 +108,7 @@ export function Movie(props) {
           </div>
         </div>
       </div>
-      <Cast movie_id={id} companies={movie.production_companies} />
-      <WebTorrent imdbId={movie.imdb_id}/>
+      <Cast movie_id={id} companies={movie.production_companies}  imdb_id={movie.imdb_id} />
     </div>
   );
 }

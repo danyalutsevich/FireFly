@@ -6,22 +6,21 @@ import WebTorrentCSS from "./WebTorrent.module.scss";
 export function WebTorrent(props) {
 
     const [streams, setStreams] = useState(undefined);
-    const [showTorrents, setShowTorrents] = useState(false);
-    const { imdbId } = props;
+    const { imdb_id } = props;
 
 
     useEffect(() => {
-        if (imdbId) {
-            fetch(TorrentIoLinks.byImbdId(imdbId))
+        if (imdb_id) {
+            fetch(TorrentIoLinks.byImbdId(imdb_id))
                 .then(data => data.json())
                 .then(data => { setStreams(data.streams) })
         }
     }, [])
 
     return (
-        <div className={WebTorrentCSS.WebTorrent}>
+        <div className={WebTorrentCSS.WebTorrent} id="webtorrent">
             {
-                streams && showTorrents && streams.map((stream, index) => {
+                streams && streams.map((stream, index) => {
                     return (
                         <div className={WebTorrentCSS.Stream} key={index}>
                             <a href={"magnet:?xt=urn:btih:" + stream.infoHash}>{stream.title}</a>
@@ -29,8 +28,6 @@ export function WebTorrent(props) {
                     )
                 })
             }
-            <button onClick={() => setShowTorrents(!showTorrents)}>{showTorrents ? "Hide" : "Show"} Torrents</button>
-           
         </div>
     )
 

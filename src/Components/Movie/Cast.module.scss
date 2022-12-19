@@ -1,4 +1,5 @@
 @import "../Header/Header.module.scss";
+
 .Cast {
   font-family: $font-for-text;
 
@@ -15,6 +16,11 @@
 
   button:hover {
     background-color: #494949;
+  }
+
+  .ActiveButton {
+    background-color: #151515;
+    color:white;
   }
 
   .Tabs {
@@ -37,20 +43,16 @@
       img {
         height: 50px;
         border-radius: 5px;
-      }
-
-      object {
-        height: 50px;
-        border-radius: 5px;
         margin-right: 5px;
       }
 
+
       h2 {
-        font-size: 1vw;
+        font-size: 1rem;
       }
 
       h3 {
-        font-size: 0.7vw;
+        font-size: 0.7rem;
       }
     }
   }
