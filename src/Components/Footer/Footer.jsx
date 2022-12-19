@@ -19,7 +19,12 @@ export function Footer() {
       <p className={FooterCSS.Issue}>
         <span>You can report a bug by opening an issue in our GitHub</span>
       </p>
-      <br />
+      <div className={FooterCSS.DownloadTorrent}>
+        <p>In order to watch films you should download </p>
+        <a className={FooterCSS.Description} href="https://www.utorrent.com/web/"> WebTorrent</a>
+        <a className={FooterCSS.Win} href="https://download-new.utorrent.com/endpoint/utweb/track/stable/os/win"> Win </a>
+        <a className={FooterCSS.Mac} href="https://utweb-assets.bittorrent.com/installer/uTorrentWeb.dmg"> Mac </a>
+      </div>
       <div className={FooterCSS.FireFly}>
         <p>
           <span>© {new Date().getFullYear()}</span> FireFly

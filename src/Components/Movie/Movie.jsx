@@ -4,6 +4,7 @@ import Iframe from 'react-iframe'
 import { MovieDBLinks } from "../../Variables";
 import { Loading } from "../Loading";
 import { Cast } from "./Cast";
+import { WebTorrent } from "./WebTorrent";
 
 import { TableOperations } from "../Table/TableOperations";
 import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
@@ -108,6 +109,7 @@ export function Movie(props) {
         </div>
       </div>
       <Cast movie_id={id} companies={movie.production_companies} />
+      <WebTorrent imdbId={movie.imdb_id}/>
     </div>
   );
 }
