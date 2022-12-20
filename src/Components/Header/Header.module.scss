@@ -25,6 +25,7 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     position: fixed;
     bottom: 10px;
     left: 10px;
+    z-index: 100;
   }
 
   .MenuItem,
