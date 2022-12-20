@@ -15,10 +15,13 @@
       font-weight: 700;
       margin: 5px;
       color: #7b7a7a;
+      font-family: $font-for-text;
     }
-
+    
     a {
-      margin: 0 10px;
+      font-weight: 700;
+      font-family: $font-for-text;
+      margin: 0 5px;
     }
 
     .Description {
