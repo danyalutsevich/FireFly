@@ -18,6 +18,7 @@ export function Movie(props) {
   const [VideoId, setVideoId] = useState(undefined);
   
   useEffect(()=>{
+    window.scrollTo(0,0)
     if(id) {
       fetch(MovieDBLinks.video(id))
       .then(res => res.json())
