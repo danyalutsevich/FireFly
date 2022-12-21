@@ -4,6 +4,7 @@ import Iframe from 'react-iframe'
 import { MovieDBLinks } from "../../Variables";
 import { Loading } from "../Loading";
 import { Cast } from "./Cast";
+import { WebTorrent } from "./WebTorrent";
 
 import { TableOperations } from "../Table/TableOperations";
 import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
@@ -17,6 +18,7 @@ export function Movie(props) {
   const [VideoId, setVideoId] = useState(undefined);
   
   useEffect(()=>{
+    window.scrollTo(0,0)
     if(id) {
       fetch(MovieDBLinks.video(id))
       .then(res => res.json())
@@ -107,7 +109,7 @@ export function Movie(props) {
           </div>
         </div>
       </div>
-      <Cast movie_id={id} companies={movie.production_companies} />
+      <Cast movie_id={id} companies={movie.production_companies}  imdb_id={movie.imdb_id} />
     </div>
   );
 }

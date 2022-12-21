@@ -15,6 +15,18 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
   a {
     text-decoration: none;
   }
+  
+  .GoUp {
+    text-decoration: none;
+    color: white;
+    background-color: #8b8b8b;
+    padding: 10px;
+    border-radius: 10px;
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 100;
+  }
 
   .MenuItem,
   .Logo,

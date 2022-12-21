@@ -20,3 +20,7 @@ export const MovieDBLinks = {
     search: (query, page) => `https://api.themoviedb.org/3/search/movie?api_key=${MovieDB_API_KEY}&language=en-US&query=${query}&page=${page}`,
     video: (movie_id) => `https://api.themoviedb.org/3/movie/${movie_id}/videos?api_key=${MovieDB_API_KEY}&language=en-US`,
 }
+
+export const TorrentIoLinks = {
+    byImbdId: (imdb_id) => `https://torrentio.strem.fun/sort=seeders%7Cqualityfilter=4k/stream/movie/${imdb_id}.json`,
+}

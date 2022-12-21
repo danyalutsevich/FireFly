@@ -16,7 +16,7 @@ export function Header(props) {
   }, [contextData]);
 
   return (
-    <div className={HeaderCSS.Header}>
+    <div className={HeaderCSS.Header} id="header">
       <NavLink className={HeaderCSS.Logo} to="/">
         FireFly
       </NavLink>
@@ -100,6 +100,9 @@ export function Header(props) {
           </NavLink>
         </div>
       )}
+        <a href="#header" className={HeaderCSS.GoUp+" material-symbols-outlined"}>
+          arrow_upward
+        </a>
     </div>
   );
 }
