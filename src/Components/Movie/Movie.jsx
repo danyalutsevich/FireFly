@@ -16,24 +16,21 @@ export function Movie(props) {
   const [movie, setMovie] = useState(undefined);
   const { id } = useParams();
   const [VideoId, setVideoId] = useState(undefined);
-  
-  useEffect(()=>{
-    window.scrollTo(0,0)
-    if(id) {
-      fetch(MovieDBLinks.video(id))
-      .then(res => res.json())
-      .then(data => {
-        setVideoId(data.results)
-      })
+  const [TrailerKey, setTrailerKey] = useState(undefined);
 
-    }
-  },[])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (id) {
       fetch(MovieDBLinks.movie(id))
         .then((data) => data.json())
         .then((data) => setMovie(data));
+
+      fetch(MovieDBLinks.video(id))
+        .then(res => res.json())
+        .then(data => {
+          setVideoId(data.results.find((video) => video.type === "Trailer"))
+        })
     }
   }, [id]);
 
@@ -42,7 +39,7 @@ export function Movie(props) {
   const [watchlist, setWatchlist] = useState([]);
   const [user, setUser] = useState(null);
   const [ratings, setRatings] = useState([]);
-  
+
   useEffect(() => {
     setLiked(contextData.liked);
     setWatchlist(contextData.watchlist);
@@ -51,10 +48,11 @@ export function Movie(props) {
   }, [contextData]);
 
 
+
   if (movie === undefined) {
     return <Loading />;
   }
-  let trailer = VideoId && VideoId.length > 0 ? (VideoId.find((video) => video.type === "Trailer") ? VideoId.find((video) => video.type === "Trailer").key : VideoId[0].key) : "undefined";
+
   return (
     <div className={MovieCSS.Movie}>
       <div className={MovieCSS.Backdrop}>
@@ -100,16 +98,16 @@ export function Movie(props) {
             <h2>{movie.overview}</h2>
           </div>
           <div className={MovieCSS.Video}>
-            {trailer === "undefined" ? <br/> : 
-            <Iframe 
-            url={"https://www.youtube.com/embed/" + trailer} 
-            className={MovieCSS.Trailer}
-            align="center"
-            allowFullScreen/>}
+            {VideoId?.key &&
+              <Iframe
+                url={"https://www.youtube.com/embed/" + VideoId?.key}
+                className={MovieCSS.Trailer}
+                align="center"
+                allowFullScreen />}
           </div>
         </div>
       </div>
-      <Cast movie_id={id} companies={movie.production_companies}  imdb_id={movie.imdb_id} />
+      <Cast movie_id={id} companies={movie.production_companies} imdb_id={movie.imdb_id} />
     </div>
   );
 }
