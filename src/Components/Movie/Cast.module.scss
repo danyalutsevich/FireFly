@@ -3,33 +3,41 @@
 .Cast {
   font-family: $font-for-text;
 
-  button {
-    padding: 10px;
-    margin: 5px;
-    font-family: $font-for-text;
-    font-weight: 700;
-    text-decoration: underline;
-    border: 0;
-    border-radius: 10px;
-    background-color: #8b8b8b;
-  }
+  .TabButtons {
+    margin: 0 10px;
+    button {
+      padding: 10px 20px;
+      // margin: 5px;
+      font-family: $font-for-text;
+      font-weight: 700;
+      // text-decoration: underline;
+      border: 0;
+      border-radius: 10px 10px 0 0;
+      background-color: #151515;
 
-  button:hover {
-    background-color: #494949;
-  }
+      color: white;
+      
+    }
 
-  .ActiveButton {
-    background-color: #151515;
-    color:white;
+    button:hover {
+      background-color: #494949;
+    }
+
+    .ActiveButton {
+      background-color: #535353;
+      // color:white;
+    }
   }
 
   .Tabs {
     display: flex;
     width: 80vw;
-    padding: 10px 0;
+    padding: 10px;
     flex-wrap: wrap;
-
+    background-color: #535353;
+    border-radius: 10px;
     text-decoration: none;
+
     .Tab {
       display: flex;
       flex-direction: row;
@@ -48,9 +56,9 @@
         margin-right: 5px;
       }
 
-      a{
+      a {
         text-decoration: none;
-        color:black
+        color: black
       }
 
       h2 {

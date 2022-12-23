@@ -52,11 +52,23 @@ export function Cast(props) {
 
   return (
     <div className={CastCSS.Cast} id="cast">
-      <button className={Tab == "cast" ? CastCSS.ActiveButton : null} onClick={() => { setTab("cast") }}>Cast</button>
-      <button className={Tab == "crew" ? CastCSS.ActiveButton : null} onClick={() => { setTab("crew") }}>Crew</button>
-      <button className={Tab == "companies" ? CastCSS.ActiveButton : null} onClick={() => { setTab("companies") }}>Details</button>
-      <button className={Tab == "webtorrent" ? CastCSS.ActiveButton : null} onClick={() => { setTab("webtorrent") }}>WebTorrent</button>
-      <button className={Tab == "similar" ? CastCSS.ActiveButton : null} onClick={() => { setTab("similar") }}>Similar</button>
+      <div className={CastCSS.TabButtons}>
+        <button className={Tab == "cast" ? CastCSS.ActiveButton : null} onClick={() => { setTab("cast") }}>
+          <span class="material-symbols-outlined">star</span>
+          <p>Cast</p></button>
+        <button className={Tab == "crew" ? CastCSS.ActiveButton : null} onClick={() => { setTab("crew") }}>
+          <span class="material-symbols-outlined">groups</span>
+          <p>Crew</p></button>
+        <button className={Tab == "companies" ? CastCSS.ActiveButton : null} onClick={() => { setTab("companies") }}>
+          <span class="material-symbols-outlined">movie</span>
+          <p>Production</p></button>
+        <button className={Tab == "webtorrent" ? CastCSS.ActiveButton : null} onClick={() => { setTab("webtorrent") }}>
+          <span class="material-symbols-outlined">live_tv</span>
+          <p>WebTorrent</p></button>
+        <button className={Tab == "similar" ? CastCSS.ActiveButton : null} onClick={() => { setTab("similar") }}>
+          <span class="material-symbols-outlined">compare</span>
+          <p>Similar</p></button>
+      </div>
       <div className={CastCSS.Tabs}>
         {Tab == "cast" ? credits.cast.map((tabItem, index) => {
           return (renderTabs(tabItem.profile_path, true, tabItem.name, tabItem.character, index, "#"))
