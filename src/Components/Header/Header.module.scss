@@ -64,9 +64,13 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
     input {
       font-size: 3vh;
       height: 5vh;
-      border-radius: 10px;
+      border-radius: 5px;
       font-family: $font-for-text;
       width: 40vh;
+      border: 2px solid black;
+    }
+    input:focus {
+      outline:none;
       border: 2px solid black;
     }
 
