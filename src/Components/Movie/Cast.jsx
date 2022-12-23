@@ -56,22 +56,6 @@ export function Cast(props) {
         }) : null}
         {Tab == "webtorrent" ? <WebTorrent imdb_id={props.imdb_id} /> : null}
       </div>
-
-
     </div>
   );
 }
-
-// <div className={CastCSS.Tab} key={index}>
-//   {tabItem.profile_path ?
-//     <img src={MovieDBLinks.image + tabItem.profile_path} /> :
-//     <img src={"/default_userpic.png"} alt={tabItem.name + " photo"} />
-//   }<div>
-//     <h2>{tabItem.name}</h2>
-//     <h3>{tabItem.character}</h3>
-//     <h3>{tabItem.job}</h3>
-//     <h3>{tabItem.origin_country}</h3>
-//   </div>
-// </div>
-// );
-// data={MovieDBLinks.image + tabItem.logo_path}
