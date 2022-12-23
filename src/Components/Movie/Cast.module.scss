@@ -6,25 +6,16 @@
   button {
     padding: 10px;
     margin: 5px;
-    width: 14vw;
-    height: auto ;
     font-family: $font-for-text;
-    font-weight: bolder;
-    font-size: 1.5vw;
-    text-decoration: none;
-    box-shadow: 1px 7px 7px 1px #acacac;
+    font-weight: 700;
+    text-decoration: underline;
     border: 0;
-    border-radius: 20px;
-    border: 3px solid #e8e8e8;
-    background-color: #e8e8e8;
-    cursor: pointer;
+    border-radius: 10px;
+    background-color: #8b8b8b;
   }
 
   button:hover {
-    background-color: #1c1c1c;
-    border: 3px solid #272727;
-    box-shadow: 1px 7px 7px 1px #383838;
-    color: white;
+    background-color: #494949;
   }
 
   .ActiveButton {
