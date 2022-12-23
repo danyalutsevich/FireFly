@@ -25,6 +25,7 @@ export function Watchlist() {
   useEffect(() => {
     setWatchlistFolders(contextData.watchlistFolders);
     console.log("folders: ", folders);
+    document.title = "Watchlist";
   }, [contextData])
 
   return (

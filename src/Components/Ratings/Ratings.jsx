@@ -13,6 +13,7 @@ export function Ratings() {
     fetch(MovieDBLinks.top_rated(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
+      document.title = "Ratings"
   }, [page]);
 
   if (films.length === 0) {

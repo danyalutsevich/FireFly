@@ -8,13 +8,14 @@
   font-family: $font-for-text;
 
   .Video {
-    display:block;
+    display: block;
     position: relative;
     margin: 2em 0;
     padding: 2em 0;
+
     .Trailer {
       width: 60vw;
-    height: 60vh;
+      height: 60vh;
     }
   }
 
@@ -109,13 +110,15 @@
           font-size: 15px;
         }
       }
+
       .Video {
         .Trailer {
           width: 80vw;
           height: 80vh;
-          margin:0 20px;
+          margin: 0 20px;
         }
-     }
+      }
+
       .About {
         width: 80vw;
       }

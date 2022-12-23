@@ -24,7 +24,7 @@ export function Movie(props) {
     if (id) {
       fetch(MovieDBLinks.movie(id))
         .then((data) => data.json())
-        .then((data) => setMovie(data));
+        .then((data) => { setMovie(data); document.title = data.title });
 
       fetch(MovieDBLinks.video(id))
         .then(res => res.json())
@@ -54,13 +54,13 @@ export function Movie(props) {
   }
 
   return (
-    <div className={MovieCSS.Movie}>
+    <div className={MovieCSS.Movie} style={{ backgroundColor: movie.adult ? "#720000" : "#272727" }}>
       <div className={MovieCSS.Backdrop}>
         <img
           src={MovieDBLinks.image_original + movie.backdrop_path}
           alt="backdrop"
         />
-        <div className={MovieCSS.EdgeBlur}></div>
+        <div className={MovieCSS.EdgeBlur} style={{ boxShadow: movie.adult ? "0 0 80px 150px inset #720000" : "0 0 80px 150px inset #272727" }}></div>
       </div>
       <div className={MovieCSS.Description}>
         <div>

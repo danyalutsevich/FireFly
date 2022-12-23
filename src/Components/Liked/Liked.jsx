@@ -25,6 +25,7 @@ export function Liked() {
     setWatchlist(contextData.watchlist);
     setUser(contextData.user);
     setRatings(contextData.ratings);
+    document.title = "Liked";
   }, [contextData]);
 
   if (liked.length == 0) {

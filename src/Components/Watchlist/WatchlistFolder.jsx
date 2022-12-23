@@ -20,6 +20,7 @@ export function WatchlistFolder() {
         setWatchlist(contextData.watchlist);
         setUser(contextData.user);
         setRatings(contextData.ratings);
+        document.title = folder;
     }, [contextData]);
 
     if (!watchlist[folder]) {
