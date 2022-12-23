@@ -3,6 +3,7 @@
 .Cast {
   font-family: $font-for-text;
 
+  margin-bottom: 100px;
   .TabButtons {
     margin: 0 10px;
     button {
@@ -15,17 +16,17 @@
       border-radius: 10px 10px 0 0;
       background-color: #151515;
 
-      color: white;
+      color:rgb(149, 149, 149);
       width: 14vw;
     }
-
+    
     button:hover {
       background-color: #494949;
     }
-
+    
     .ActiveButton {
       background-color: #535353;
-      // color:white;
+      color: white;
     }
   }
 

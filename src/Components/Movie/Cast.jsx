@@ -80,7 +80,7 @@ export function Cast(props) {
           return (renderTabs(tabItem.logo_path, true, tabItem.name, tabItem.origin_country, index, "#"))
         }) : null}
         {Tab == "similar" ? similar.map((tabItem, index) => {
-          return (renderTabs(tabItem.poster_path, true, tabItem.title, tabItem.release_date, index, "/movie/" + tabItem.id))
+          return (renderTabs(tabItem.poster_path, true, tabItem.title, tabItem.release_date.slice(0,4), index, "/movie/" + tabItem.id))
         }) : null}
         {Tab == "webtorrent" ? <WebTorrent imdb_id={props.imdb_id} /> : null}
       </div>

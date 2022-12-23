@@ -81,22 +81,24 @@ export function Movie(props) {
           <div className={MovieCSS.Title}>
             <h1>{movie.title}</h1>
             <h3>{movie.release_date.slice(0, 4)}</h3>
-            <h2>Rating: {movie.vote_average}</h2>
           </div>
-          <div>
+          <div className={MovieCSS.About}>
+          {/* </div> */}
+          {/* <div> */}
             {user ? (
               <TableOperations
                 filmID={id}
                 liked={liked?.includes(Number(id))}
                 watchlist={Object.values(watchlist).flat().includes(Number(id))}
                 rating={ratings[id]}
-              />
-            ) : null}
-          </div>
-          <div className={MovieCSS.About}>
+                />
+                ) : null}
+                <h2>Rating: {movie.vote_average}</h2>
             <h2>{movie.tagline}</h2>
             <h2>{movie.overview}</h2>
           </div>
+        </div>
+      </div>
           <div className={MovieCSS.Video}>
             {VideoId?.key &&
               <Iframe
@@ -105,8 +107,6 @@ export function Movie(props) {
                 align="center"
                 allowFullScreen />}
           </div>
-        </div>
-      </div>
       <Cast movie_id={id} companies={movie.production_companies} imdb_id={movie.imdb_id} />
     </div>
   );
