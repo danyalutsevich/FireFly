@@ -96,12 +96,14 @@ export function Table(props) {
           to={`/${url == "" ? "" : url + "/"}${
             Number(page) === 1 ? 1 : Number(page) - 1
           }`}
+          onClick={() => {window.scrollTo(0, 0)}}
         >
           prev
         </NavLink>
         <NavLink
           className={TableCSS.PageButton}
           to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
+          onClick={() => {window.scrollTo(0, 0)}}
         >
           next
         </NavLink>

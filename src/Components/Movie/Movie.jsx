@@ -16,24 +16,21 @@ export function Movie(props) {
   const [movie, setMovie] = useState(undefined);
   const { id } = useParams();
   const [VideoId, setVideoId] = useState(undefined);
-  
-  useEffect(()=>{
-    window.scrollTo(0,0)
-    if(id) {
-      fetch(MovieDBLinks.video(id))
-      .then(res => res.json())
-      .then(data => {
-        setVideoId(data.results)
-      })
+  const [TrailerKey, setTrailerKey] = useState(undefined);
 
-    }
-  },[])
 
   useEffect(() => {
+    window.scrollTo(0, 0)
     if (id) {
       fetch(MovieDBLinks.movie(id))
         .then((data) => data.json())
-        .then((data) => setMovie(data));
+        .then((data) => { setMovie(data); document.title = data.title });
+
+      fetch(MovieDBLinks.video(id))
+        .then(res => res.json())
+        .then(data => {
+          setVideoId(data.results.find((video) => video.type === "Trailer"))
+        })
     }
   }, [id]);
 
@@ -42,7 +39,7 @@ export function Movie(props) {
   const [watchlist, setWatchlist] = useState([]);
   const [user, setUser] = useState(null);
   const [ratings, setRatings] = useState([]);
-  
+
   useEffect(() => {
     setLiked(contextData.liked);
     setWatchlist(contextData.watchlist);
@@ -51,18 +48,19 @@ export function Movie(props) {
   }, [contextData]);
 
 
+
   if (movie === undefined) {
     return <Loading />;
   }
-  let trailer = VideoId && VideoId.length > 0 ? (VideoId.find((video) => video.type === "Trailer") ? VideoId.find((video) => video.type === "Trailer").key : VideoId[0].key) : "undefined";
+
   return (
-    <div className={MovieCSS.Movie}>
+    <div className={MovieCSS.Movie} style={{ backgroundColor: movie.adult ? "#720000" : "#272727" }}>
       <div className={MovieCSS.Backdrop}>
         <img
           src={MovieDBLinks.image_original + movie.backdrop_path}
           alt="backdrop"
         />
-        <div className={MovieCSS.EdgeBlur}></div>
+        <div className={MovieCSS.EdgeBlur} style={{ boxShadow: movie.adult ? "0 0 80px 150px inset #720000" : "0 0 80px 150px inset #272727" }}></div>
       </div>
       <div className={MovieCSS.Description}>
         <div>
@@ -83,33 +81,33 @@ export function Movie(props) {
           <div className={MovieCSS.Title}>
             <h1>{movie.title}</h1>
             <h3>{movie.release_date.slice(0, 4)}</h3>
-            <h2>Rating: {movie.vote_average}</h2>
           </div>
-          <div>
+          <div className={MovieCSS.About}>
+          {/* </div> */}
+          {/* <div> */}
             {user ? (
               <TableOperations
                 filmID={id}
                 liked={liked?.includes(Number(id))}
                 watchlist={Object.values(watchlist).flat().includes(Number(id))}
                 rating={ratings[id]}
-              />
-            ) : null}
-          </div>
-          <div className={MovieCSS.About}>
+                />
+                ) : null}
+                <h2>Rating: {movie.vote_average}</h2>
             <h2>{movie.tagline}</h2>
             <h2>{movie.overview}</h2>
           </div>
-          <div className={MovieCSS.Video}>
-            {trailer === "undefined" ? <br/> : 
-            <Iframe 
-            url={"https://www.youtube.com/embed/" + trailer} 
-            className={MovieCSS.Trailer}
-            align="center"
-            allowFullScreen/>}
-          </div>
         </div>
       </div>
-      <Cast movie_id={id} companies={movie.production_companies}  imdb_id={movie.imdb_id} />
+          <div className={MovieCSS.Video}>
+            {VideoId?.key &&
+              <Iframe
+                url={"https://www.youtube.com/embed/" + VideoId?.key}
+                className={MovieCSS.Trailer}
+                align="center"
+                allowFullScreen />}
+          </div>
+      <Cast movie_id={id} companies={movie.production_companies} imdb_id={movie.imdb_id} />
     </div>
   );
 }

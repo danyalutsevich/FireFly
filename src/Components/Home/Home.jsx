@@ -23,6 +23,7 @@ export function Home() {
     fetch(MovieDBLinks.popular(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
+      document.title = "Home"
   }, [page]);
   if (films.length === 0) {
     return <Loading />;

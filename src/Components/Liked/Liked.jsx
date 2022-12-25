@@ -2,17 +2,10 @@ import React, { useState, useEffect, useContext } from 'react';
 import { NavLink } from "react-router-dom";
 
 import { FirebaseContext } from '../../firebase-config';
-
 import LikedCSS from "./Liked.module.scss";
 import { LikedContentCard } from "./LikedContentCard";
 
-import { MovieDBLinks } from '../../Variables';
-import { Loading } from '../Loading';
-
 export function Liked() {
-  const [sortMethod, setSortMethod] = useState("by date added")
-  const [icon, setIcon] = useState("arrow_upward")
-
 
   const contextData = useContext(FirebaseContext)
   const [liked, setLiked] = useState([]);
@@ -21,10 +14,11 @@ export function Liked() {
   const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
-    setLiked(contextData.liked);
+    setLiked(contextData.liked.reverse());
     setWatchlist(contextData.watchlist);
     setUser(contextData.user);
     setRatings(contextData.ratings);
+    document.title = "Liked";
   }, [contextData]);
 
   if (liked.length == 0) {
@@ -35,22 +29,18 @@ export function Liked() {
     )
   }
 
-
   return (
     <div className={LikedCSS.Liked}>
       <div className={LikedCSS.Header}>
         <h2>Liked</h2>
         <div className={LikedCSS.Sort}>
-          <button className={LikedCSS.SortBtn}>
-            <span>{sortMethod}<i className="material-icons">{icon}</i></span>
-            <i className={`material-icons ${LikedCSS.SortIcon}`}>sort</i>
-          </button>
-          <div>
-            <button onClick={() => { setSortMethod("by date added"); setIcon("arrow_upward") }}>by date added<i className="material-icons">arrow_upward</i></button>
-            <button onClick={() => { setSortMethod("by date added"); setIcon("arrow_downward") }}>by date added<i className="material-icons">arrow_downward</i></button>
-            <button onClick={() => { setSortMethod("by rating"); setIcon("arrow_upward") }}>by rating<i className="material-icons">arrow_upward</i></button>
-            <button onClick={() => { setSortMethod("by rating"); setIcon("arrow_downward") }}>by rating<i className="material-icons">arrow_downward</i></button>
-          </div>
+          <span className="material-symbols-outlined"
+          onClick={() => {
+            setLiked([...liked.reverse()])
+          }}
+          >
+            swap_vert
+          </span>
         </div>
       </div>
       <div className={LikedCSS.Divider}></div>
@@ -58,13 +48,13 @@ export function Liked() {
         {
           liked.map((id) => {
             return (
-              <LikedContentCard 
-              filmID={id}
-              liked={liked?.includes(Number(id))}
-              watchlist={Object.values(watchlist).flat().includes(Number(id))}
-              rating={ratings[id]}
-              user={user}
-              key={id}
+              <LikedContentCard
+                filmID={id}
+                liked={liked?.includes(Number(id))}
+                watchlist={Object.values(watchlist).flat().includes(Number(id))}
+                rating={ratings[id]}
+                user={user}
+                key={id}
               />
             )
           })

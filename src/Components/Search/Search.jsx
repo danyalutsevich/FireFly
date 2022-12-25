@@ -15,8 +15,9 @@ export function Search() {
     if (searchValue != "") {
       fetch(MovieDBLinks.search(searchValue, page))
         .then((data) => data.json())
-        .then((data) => { setFilms(data.results); setTotalResults(data.total_results) });
+        .then((data) => { setFilms(data.results); setTotalResults(data.total_results); console.log(data)});
       addSearch(searchValue);
+      document.title = "Search: " + searchValue;
     }
   }, [page, searchValue]);
 
