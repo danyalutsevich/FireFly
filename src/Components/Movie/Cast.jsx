@@ -84,8 +84,6 @@ export function Cast(props) {
         }) : null}
         {Tab == "webtorrent" ? <WebTorrent imdb_id={props.imdb_id} /> : null}
       </div>
-
-
     </div>
   );
 }

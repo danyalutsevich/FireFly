@@ -14,19 +14,24 @@
   }
 
   input {
-    background-color: lightgray;
-    margin: 20px;
+    background-color: #D0D0D0;
+    margin: 15px;
     font-family: $font-for-text;
     font-size: 24px;
-    border-radius: 10px;
+    border-radius: 5px;
     padding: 10px;
     border: none;
     transition: 1000ms;
   }
-
   input:focus {
-    scale: 1.1;
-    transition: 1000ms;
+    border: none;
+    outline: none;
+    background-color: #bdbdbd;
+
+  }
+  input::placeholder {
+    opacity: 30%;
+    color:rgb(56, 56, 56)
   }
 
   button {
@@ -35,7 +40,7 @@
     padding: 10px;
     font-family: $font-for-text;
     font-size: 20px;
-    background-color: darkgray;
+    background-color: #D0D0D0;
     color: black;
     border: none;
     cursor: pointer;

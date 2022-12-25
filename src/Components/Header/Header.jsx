@@ -28,7 +28,6 @@ export function Header(props) {
             className={HeaderCSS.searchInput}
             value={searchValue}
             autoComplete="off"
-            placeholder="Type to search..."
             onFocus={() => {
               setInputIsFocused(true);
             }}
@@ -43,13 +42,16 @@ export function Header(props) {
               }
             }}
           ></input>
+          <span className={HeaderCSS.SearchIcon}>
           <NavLink
             className={HeaderCSS.MenuItem}
             to={searchValue === "" ? "#" : `/search/${searchValue}/1`}
           >
-            <i className="material-icons">search</i>
+            
           </NavLink>
+          </span>
         </div>
+        
         <SearchResults
           searchValue={searchValue}
           isActive={inputIsFocused}
