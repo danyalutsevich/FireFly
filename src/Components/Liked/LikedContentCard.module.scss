@@ -6,7 +6,7 @@
 
     img {
         border-radius: 10px;
-        width: 300px;
+        width: 320px;
     }
 
     &:hover {
@@ -17,6 +17,13 @@
     .LikeOptions {
         scale: var(--scale-options);
         padding: 10px 0;
+    }
+
+    @media screen and (max-width: 767px){
+        margin: 10px;
+        border-radius: 10px;
+        --scale-options: 1;
+        background-color: #373737;
     }
 
 }

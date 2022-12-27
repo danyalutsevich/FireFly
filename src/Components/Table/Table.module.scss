@@ -130,4 +130,55 @@
       }
     }
   }
+
+  .FilmsList_mobile {
+    width: 90%;
+
+    .FilmCell_mobile {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+      height: 180px;
+      background-color: #343434;
+      border-radius: 15px;
+      margin: 30px 5px 30px 5px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-family: $font-for-text;
+        img {
+          height: 130px;
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: end;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+
+            h3 {
+              font-size: 1em;
+              margin: 10px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+            }
+
+            p {
+              font-size: 0.8em;
+            }
+          }
+        }
+      }
+    }
+  }
 }

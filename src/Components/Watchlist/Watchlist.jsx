@@ -9,13 +9,13 @@ const stringToColor = function (str) {
   for (var i = 0; i < str.length; i++) {
     hash = str.charCodeAt(i) + ((hash << 5) - hash);
   }
-  var color = '#';
+  var color = "#";
   for (var i = 0; i < 3; i++) {
-    var value = (hash >> (i * 8)) & 0xFF - 20;
-    color += ('00' + value.toString(16)).substr(-2);
+    var value = (hash >> (i * 8)) & (0xff - 20);
+    color += ("00" + value.toString(16)).substr(-2);
   }
   return color;
-}
+};
 
 export function Watchlist() {
   const contextData = useContext(FirebaseContext);
@@ -26,29 +26,54 @@ export function Watchlist() {
     setWatchlistFolders(contextData.watchlistFolders);
     console.log("folders: ", folders);
     document.title = "Watchlist";
-  }, [contextData])
+  }, [contextData]);
 
   return (
     <div className={WatchlistCSS.Watchlist}>
-      <h1>WatchList</h1>
+      <div className={WatchlistCSS.WatchlistHeader}>
+        <h1>WatchList</h1>
+        <div>
+          <div>
+            <input
+              maxLength={20}
+              type="input"
+              id="name"
+              placeholder="Name"
+              value={newFolderName}
+              onChange={(e) => {
+                setNewFolderName(e.target.value);
+              }}
+            />
+            <label for="name">
+              Folder Name
+            </label>
+          </div>
+          <button
+            onClick={() => {
+              saveToWatchlist([], newFolderName); setNewFolderName("")
+            }}
+          >
+            Create
+          </button>
+        </div>
+      </div>
       <div className={WatchlistCSS.Divider}></div>
       <div className={WatchlistCSS.Container}>
-        {
-          folders.map((folder, index) => {
-            return (
-              <NavLink to={`${folder}`}>
-                <div className={WatchlistCSS.Folder} style={{ backgroundColor: stringToColor(folder) }} key={index}>
-                  <p>{folder}</p>
-                </div>
-              </NavLink>
-            )
-          })
-        }
-        <div className={WatchlistCSS.Folder} style={{ backgroundColor: stringToColor(contextData.user?.email || "Add") }}>
-          <input placeholder="Folder Name" onChange={e => { setNewFolderName(e.target.value) }}
-            style={{ backgroundColor: stringToColor(contextData.user?.email || "Add") }}></input>
-          <p onClick={() => { saveToWatchlist([], newFolderName) }}>Add</p>
-        </div>
+        {folders.map((folder, index) => {
+          return (
+            <div className={WatchlistCSS.FolderWrapper}>
+            <NavLink to={`${folder}`}>
+              <div
+                className={WatchlistCSS.Folder}
+                style={{ backgroundColor: '#424242' }}
+                key={index}
+              >
+                <p>{folder}</p>
+              </div>
+            </NavLink>
+            </div>
+          );
+        })}
       </div>
     </div>
   );
