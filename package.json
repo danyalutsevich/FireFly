@@ -17,7 +17,8 @@
     "sass": "^1.55.0",
     "sweetalert2": "^11.6.6",
     "sweetalert2-react-content": "^5.0.7",
-    "web-vitals": "^2.1.4"
+    "web-vitals": "^2.1.4",
+    "zxcvbn": "^4.4.2"
   },
   "scripts": {
     "start": "react-scripts start",
