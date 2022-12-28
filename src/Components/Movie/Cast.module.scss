@@ -8,6 +8,7 @@
     margin: 0 10px;
     button {
       padding: 10px 20px;
+      justify-content: center;
       // margin: 5px;
       font-family: $font-for-text;
       font-weight: 700;
@@ -18,6 +19,11 @@
 
       color:rgb(149, 149, 149);
       width: 14vw;
+
+      span{
+        display: flex;
+        justify-content: center;
+      }
     }
     
     button:hover {

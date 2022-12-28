@@ -18,19 +18,30 @@
       width: 60vw;
       height: 60vh;
     }
+
+    @media (max-width: 767px){
+      .Trailer{
+        width: 70vw;
+        height: 30vh;
+      }
+    }
   }
 
+  
+  
+  
   .Backdrop {
-    height: 60vh;
+    width: 60vw;
+    // height: 60vh;
     // min-height: 400px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 50px;
-
+    
     img {
-      height: 100%;
+      width: 100%;
     }
 
     .EdgeBlur {
@@ -38,6 +49,14 @@
       height: 100%;
       width: 100%;
       box-shadow: 0 0 80px 150px inset #272727;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .Backdrop {
+      width: 100vw;
+      padding: 0;
+      display: none;
     }
   }
 

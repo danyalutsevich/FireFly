@@ -15,25 +15,20 @@
     border-spacing: 0;
     max-width: 1200px;
   }
-
   th {
     border-bottom: 1px solid #ffffff;
   }
-
   td {
     text-align: center;
     padding: 10px;
     border-top: 1px solid #343434;
   }
-
   td:first-child {
     border-right: none;
   }
-
   td:nth-child(2) {
     text-align: center;
   }
-
   td:nth-child(3) {
     width: 70%;
   }
@@ -112,20 +107,65 @@
     color: white;
     border: none;
   }
-  @media (max-width: 767px) {
-    .Table {
-      overflow: scroll;
-      table {
-        width: 100%;
-      }
 
-      .MoviePoster {
-        height: 100px;
-      }
-      .Pages {
-        flex-direction: column;
-        .PageButton {
-          margin: 10px;
+  @media (max-width: 768px) {
+    .Table {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: auto;
+      
+      
+    }
+  }
+
+  .FilmsList_mobile {
+    width: 90%;
+
+    .FilmCell_mobile {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 10px;
+      height: 180px;
+      background-color: #343434;
+      border-radius: 15px;
+      margin: 30px 5px 30px 5px;
+
+      a {
+        color: white;
+        text-decoration: none;
+        font-size: 24px;
+        font-family: $font-for-text;
+        img {
+          height: 130px;
+        }
+
+        div {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          text-align: end;
+
+          div {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+
+            h3 {
+              font-size: 1em;
+              margin: 10px;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-line-clamp: 2;
+              -webkit-box-orient: vertical;
+            }
+
+            p {
+              font-size: 0.8em;
+            }
+          }
         }
       }
     }

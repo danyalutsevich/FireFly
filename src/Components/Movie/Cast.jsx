@@ -11,6 +11,23 @@ export function Cast(props) {
   const [similar, setSimilar] = useState(undefined);
   const [Tab, setTab] = useState("cast");
 
+  const [windowSize, setWindowSize] = useState([
+    window.innerWidth,
+    window.innerHeight,
+  ]);
+
+  useEffect(() => {
+    const handleWindowResize = () => {
+      setWindowSize([window.innerWidth, window.innerHeight]);
+    };
+
+    window.addEventListener("resize", handleWindowResize);
+
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  });
+
   useEffect(() => {
     fetch(MovieDBLinks.credits(props.movie_id))
       .then((data) => data.json())
@@ -30,6 +47,8 @@ export function Cast(props) {
   if (credits === undefined) {
     return <Loading />;
   }
+
+
 
   const renderTabs = (photo, showPhoto, title, description, key, to) => {
 
@@ -55,19 +74,19 @@ export function Cast(props) {
       <div className={CastCSS.TabButtons}>
         <button className={Tab == "cast" ? CastCSS.ActiveButton : null} onClick={() => { setTab("cast") }}>
           <span class="material-symbols-outlined">star</span>
-          <p>Cast</p></button>
+          {windowSize[0]>767 ? <p>Cast</p> : null}</button>
         <button className={Tab == "crew" ? CastCSS.ActiveButton : null} onClick={() => { setTab("crew") }}>
           <span class="material-symbols-outlined">groups</span>
-          <p>Crew</p></button>
+          {windowSize[0]>767 ? <p>Crew</p> : null}</button>
         <button className={Tab == "companies" ? CastCSS.ActiveButton : null} onClick={() => { setTab("companies") }}>
           <span class="material-symbols-outlined">movie</span>
-          <p>Production</p></button>
+          {windowSize[0]>767 ? <p>Production</p> : null}</button>
         <button className={Tab == "webtorrent" ? CastCSS.ActiveButton : null} onClick={() => { setTab("webtorrent") }}>
           <span class="material-symbols-outlined">live_tv</span>
-          <p>WebTorrent</p></button>
+          {windowSize[0]>767 ? <p>WebTorrent</p> : null}</button>
         <button className={Tab == "similar" ? CastCSS.ActiveButton : null} onClick={() => { setTab("similar") }}>
           <span class="material-symbols-outlined">compare</span>
-          <p>Similar</p></button>
+          {windowSize[0]>767 ? <p>Similar</p> : null}</button>
       </div>
       <div className={CastCSS.Tabs}>
         {Tab == "cast" ? credits.cast.map((tabItem, index) => {
