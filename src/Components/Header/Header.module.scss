@@ -63,12 +63,11 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
       display:flex;
       align-items: center;
       input {
-        width:3vw;
+        width:40vh;
         height: 5vh;
-        border-radius:50%;
-        padding:auto;
-        transition-duration:500ms;
-        cursor:pointer;
+        padding-left:3vw;
+        border-radius:30px;
+        cursor:text;
         font-family:'Inter', sans-serif;
         font-family: 'Lato', sans-serif;
         font-family: 'Noto Sans', sans-serif;
@@ -78,8 +77,7 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
         background-image: url(../../../public/icons-search.svg);
         background-repeat: no-repeat;
         background-size:22px;
-        background-position: 45% 50%;
-        color:transparent;
+        background-position: 10px 50%;
       }
 
       input:hover {
@@ -87,18 +85,7 @@ $font-for-text: "Helvetica" /*"Libre Franklin", sans-serif*/;
       }
 
       input:focus {
-        width:40vh;
-        height: 5vh;
-        padding-left:3vw;
-        border-radius:30px;
-        cursor:text;
-        color:black;
-        outline:none;
-        background-color: transparent;
-        border: 1px solid black;
-        background-image: url(../../../public/icons-search.svg) no-repeat;
-        background-size:22px;
-        background-position: 10px 50%;
+       border: 1px solid black;
       }
     }
     input::-webkit-search-cancel-button {

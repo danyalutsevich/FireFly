@@ -25,10 +25,10 @@ export function Search() {
   return (
     <div className={SearchCSS.Search}>
       <div className={SearchCSS.SearchInfo}>
-        <h1>Search results for
+        <h2>Search results for
           <div className={SearchCSS.Divider}></div>
           <span className={SearchCSS.SearchValue}>{searchValue}</span>
-        </h1>
+        </h2>
         <h2>items
           <div className={SearchCSS.Divider2}></div>
           <span>{totalResults}</span>

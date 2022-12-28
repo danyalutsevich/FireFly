@@ -4,7 +4,7 @@ import SignInCSS from "./SignInWithGoogle.module.scss";
 
 export function SignInWithGoogle() {
   return (
-    <div className={SignInCSS.GoogleSignIn} onClick={signInWithGoogle}>
+    <div className={SignInCSS.GoogleSignIn} onClick={signInWithGoogle} cookiePolicy='single-host-origin'>
       <div className={SignInCSS.Wrapper}>
         <img
           className={SignInCSS.Icon}

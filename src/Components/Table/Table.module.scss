@@ -15,25 +15,20 @@
     border-spacing: 0;
     max-width: 1200px;
   }
-
   th {
     border-bottom: 1px solid #ffffff;
   }
-
   td {
     text-align: center;
     padding: 10px;
     border-top: 1px solid #343434;
   }
-
   td:first-child {
     border-right: none;
   }
-
   td:nth-child(2) {
     text-align: center;
   }
-
   td:nth-child(3) {
     width: 70%;
   }
@@ -112,22 +107,16 @@
     color: white;
     border: none;
   }
-  @media (max-width: 767px) {
-    .Table {
-      overflow: scroll;
-      table {
-        width: 100%;
-      }
 
-      .MoviePoster {
-        height: 100px;
-      }
-      .Pages {
-        flex-direction: column;
-        .PageButton {
-          margin: 10px;
-        }
-      }
+  @media (max-width: 768px) {
+    .Table {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      overflow-x: auto;
+      
+      
     }
   }
 
