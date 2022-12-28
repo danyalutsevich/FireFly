@@ -12,6 +12,10 @@ export function SignIn() {
   const [password, setPassword] = useState("");
   const [resetPassword, setResetPassword] = useState(false);
 
+  useEffect(() => {
+    document.title = "Sign In";
+  },[])
+
   const clickHandler = async () => {
     resetPassword ? await resetPasword(email) : await login(email, password);
     setResetPassword(false);

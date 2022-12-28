@@ -9,6 +9,10 @@ export function SignUp() {
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
 
+  useEffect(() => {
+    document.title = "Sign Up";
+  }, []);
+
   const clickHandler = async () => {
     await register(email, password, name);
   };
