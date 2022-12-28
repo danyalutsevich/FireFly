@@ -28,6 +28,7 @@ export function Table(props) {
     setUser(contextData.user);
     setRatings(contextData.ratings);
   }, [contextData]);
+  
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
