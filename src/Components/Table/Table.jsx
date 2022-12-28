@@ -28,7 +28,7 @@ export function Table(props) {
     setUser(contextData.user);
     setRatings(contextData.ratings);
   }, [contextData]);
-  
+
   const [windowSize, setWindowSize] = useState([
     window.innerWidth,
     window.innerHeight,
@@ -147,18 +147,17 @@ export function Table(props) {
         </table>
       )}
       <div className={TableCSS.Pages}>
-        <NavLink
+        {films.length == 20 && <NavLink
           className={TableCSS.PageButton}
-          to={`/${url == "" ? "" : url + "/"}${
-            Number(page) === 1 ? 1 : Number(page) - 1
-          }`}
+          to={`/${url == "" ? "" : url + "/"}${Number(page) === 1 ? 1 : Number(page) - 1
+            }`}
           onClick={() => {
             window.scrollTo(0, 0);
           }}
         >
           prev
-        </NavLink>
-        <NavLink
+        </NavLink>}
+        {films.length == 20 && <NavLink
           className={TableCSS.PageButton}
           to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
           onClick={() => {
@@ -166,7 +165,7 @@ export function Table(props) {
           }}
         >
           next
-        </NavLink>
+        </NavLink>}
       </div>
     </div>
   );
