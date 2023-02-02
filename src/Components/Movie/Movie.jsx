@@ -47,8 +47,6 @@ export function Movie(props) {
     setRatings(contextData.ratings);
   }, [contextData]);
 
-
-
   if (movie === undefined) {
     return <Loading />;
   }
@@ -83,8 +81,6 @@ export function Movie(props) {
             <h3>{movie.release_date.slice(0, 4)}</h3>
           </div>
           <div className={MovieCSS.About}>
-          {/* </div> */}
-          {/* <div> */}
             {user ? (
               <TableOperations
                 filmID={id}

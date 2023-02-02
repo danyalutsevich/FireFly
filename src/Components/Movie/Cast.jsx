@@ -33,6 +33,7 @@ export function Cast(props) {
       .then((data) => data.json())
       .then((data) => {
         setCredits(data);
+        console.log(data);
       });
 
     fetch(MovieDBLinks.similar(props.movie_id))
@@ -90,10 +91,10 @@ export function Cast(props) {
       </div>
       <div className={CastCSS.Tabs}>
         {Tab == "cast" ? credits.cast.map((tabItem, index) => {
-          return (renderTabs(tabItem.profile_path, true, tabItem.name, tabItem.character, index, "#"))
+          return (renderTabs(tabItem.profile_path, true, tabItem.name, tabItem.character, index, "/person/" + tabItem.id))
         }) : null}
         {Tab == "crew" ? credits.crew.map((tabItem, index) => {
-          return (renderTabs(tabItem.profile_path, true, tabItem.name, tabItem.job, index, "#"))
+          return (renderTabs(tabItem.profile_path, true, tabItem.name, tabItem.job, index, "/person/" + tabItem.id))
         }) : null}
         {Tab == "companies" ? props.companies.map((tabItem, index) => {
           return (renderTabs(tabItem.logo_path, true, tabItem.name, tabItem.origin_country, index, "#"))

@@ -13,6 +13,7 @@ import { Footer } from "../Footer";
 import { Search } from "../Search";
 import { SignIn } from "../Auth";
 import { SignUp } from "../Auth";
+import { Person } from "../Person";
 
 import { FirebaseContextProvider } from "../../firebase-config";
 import { BrowserRouter, Route, Routes, NavLink } from "react-router-dom";
@@ -27,6 +28,7 @@ export function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/page/:page" element={<Home />} />
+          <Route path="/person/:id" element={<Person />} />
           <Route path="/search/:searchValue" element={<Search />} />
           <Route path="/search/:searchValue/:page" element={<Search />} /> {/* useParams hook will return {searchValue, page} */}
           <Route path="/ratings/:page" element={<Ratings />} />
