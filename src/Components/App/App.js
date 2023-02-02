@@ -36,7 +36,8 @@ export function App() {
           <Route path="/watchlist" element={<Watchlist />} />
           <Route path="/watchlist/:folder" element={<WatchlistFolder />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/movie/:id" element={<Movie />} />
+          <Route path="/movie/:id" element={<Movie media_type="movie" />} />
+          <Route path="/tv/:id" element={<Movie media_type="tv" />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="*" element={<Error404 />} />

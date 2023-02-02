@@ -48,7 +48,7 @@ export function Person(props) {
             <div className={PersonCSS.Credits}>
                 {credits?.cast?.map((movie) => {
                     return (
-                        <NavLink to={"/movie/" + movie?.id}>
+                        <NavLink to={"/"+movie.media_type+"/" + movie?.id}>
 
                             <div className={PersonCSS.Credit}>
                                 <img src={movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "/default_userpic.png"} alt={"Poster of " + movie?.title} />
@@ -58,7 +58,6 @@ export function Person(props) {
                         </NavLink>
                     )
                 })}
-                {/* {JSON.stringify(credits)} */}
             </div>
         </div>
     )

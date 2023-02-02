@@ -17,17 +17,28 @@ export function Movie(props) {
   const { id } = useParams();
   const [VideoId, setVideoId] = useState(undefined);
   const [TrailerKey, setTrailerKey] = useState(undefined);
-
+  const [ExternalIds, setExternalIds] = useState(undefined);
 
   useEffect(() => {
     window.scrollTo(0, 0)
     if (id) {
-      fetch(MovieDBLinks.movie(id))
-        .then((data) => data.json())
-        .then((data) => { setMovie(data); document.title = data.title });
+      if (props.media_type === "movie") {
+        fetch(MovieDBLinks.movie(id))
+          .then((data) => data.json())
+          .then((data) => { setMovie(data); document.title = data.title });
+      }
+      else if (props.media_type === "tv") {
+        fetch(MovieDBLinks.tv(id))
+          .then((data) => data.json())
+          .then((data) => { setMovie(data); document.title = data.name });
+      }
 
-      fetch(MovieDBLinks.video(id))
-        .then(res => res.json())
+      fetch(MovieDBLinks.external_ids(id, props.media_type))
+        .then(data => data.json())
+        .then(data => {setExternalIds(data)})
+
+      fetch(MovieDBLinks.video(id, props.media_type))
+        .then(data => data.json())
         .then(data => {
           setVideoId(data.results.find((video) => video.type === "Trailer"))
         })
@@ -77,8 +88,8 @@ export function Movie(props) {
         </div>
         <div>
           <div className={MovieCSS.Title}>
-            <h1>{movie.title}</h1>
-            <h3>{movie.release_date.slice(0, 4)}</h3>
+            <h1>{movie?.title || movie?.name}</h1>
+            <h3>{movie?.release_date?.slice(0, 4)}</h3>
           </div>
           <div className={MovieCSS.About}>
             {user ? (
@@ -87,23 +98,23 @@ export function Movie(props) {
                 liked={liked?.includes(Number(id))}
                 watchlist={Object.values(watchlist).flat().includes(Number(id))}
                 rating={ratings[id]}
-                />
-                ) : null}
-                <h2>Rating: {movie.vote_average}</h2>
+              />
+            ) : null}
+            <h2>Rating: {movie.vote_average}</h2>
             <h2>{movie.tagline}</h2>
             <h2>{movie.overview}</h2>
           </div>
         </div>
       </div>
-          <div className={MovieCSS.Video}>
-            {VideoId?.key &&
-              <Iframe
-                url={"https://www.youtube.com/embed/" + VideoId?.key}
-                className={MovieCSS.Trailer}
-                align="center"
-                allowFullScreen />}
-          </div>
-      <Cast movie_id={id} companies={movie.production_companies} imdb_id={movie.imdb_id} />
+      <div className={MovieCSS.Video}>
+        {VideoId?.key &&
+          <Iframe
+            url={"https://www.youtube.com/embed/" + VideoId?.key}
+            className={MovieCSS.Trailer}
+            align="center"
+            allowFullScreen />}
+      </div>
+      <Cast movie_id={id} companies={movie?.production_companies} imdb_id={ExternalIds?.imdb_id} media_type={props.media_type} />
     </div>
   );
 }

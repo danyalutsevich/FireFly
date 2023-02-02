@@ -29,14 +29,14 @@ export function Cast(props) {
   });
 
   useEffect(() => {
-    fetch(MovieDBLinks.credits(props.movie_id))
+    fetch(MovieDBLinks.credits(props.movie_id,props.media_type))
       .then((data) => data.json())
       .then((data) => {
         setCredits(data);
         console.log(data);
       });
 
-    fetch(MovieDBLinks.similar(props.movie_id))
+    fetch(MovieDBLinks.similar(props.movie_id,props.media_type))
       .then((data) => data.json())
       .then((data) => {
         setSimilar(data.results);
@@ -74,19 +74,19 @@ export function Cast(props) {
     <div className={CastCSS.Cast} id="cast">
       <div className={CastCSS.TabButtons}>
         <button className={Tab == "cast" ? CastCSS.ActiveButton : null} onClick={() => { setTab("cast") }}>
-          <span class="material-symbols-outlined">star</span>
+          <span className="material-symbols-outlined">star</span>
           {windowSize[0]>767 ? <p>Cast</p> : null}</button>
         <button className={Tab == "crew" ? CastCSS.ActiveButton : null} onClick={() => { setTab("crew") }}>
-          <span class="material-symbols-outlined">groups</span>
+          <span className="material-symbols-outlined">groups</span>
           {windowSize[0]>767 ? <p>Crew</p> : null}</button>
         <button className={Tab == "companies" ? CastCSS.ActiveButton : null} onClick={() => { setTab("companies") }}>
-          <span class="material-symbols-outlined">movie</span>
+          <span className="material-symbols-outlined">movie</span>
           {windowSize[0]>767 ? <p>Production</p> : null}</button>
         <button className={Tab == "webtorrent" ? CastCSS.ActiveButton : null} onClick={() => { setTab("webtorrent") }}>
-          <span class="material-symbols-outlined">live_tv</span>
+          <span className="material-symbols-outlined">live_tv</span>
           {windowSize[0]>767 ? <p>WebTorrent</p> : null}</button>
         <button className={Tab == "similar" ? CastCSS.ActiveButton : null} onClick={() => { setTab("similar") }}>
-          <span class="material-symbols-outlined">compare</span>
+          <span className="material-symbols-outlined">compare</span>
           {windowSize[0]>767 ? <p>Similar</p> : null}</button>
       </div>
       <div className={CastCSS.Tabs}>

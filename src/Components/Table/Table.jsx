@@ -53,21 +53,21 @@ export function Table(props) {
           {films.map((film, index) => {
             return (
               <div className={TableCSS.FilmCell_mobile}>
-                <NavLink to={`/movie/${film.id}`}>
+                <NavLink to={`/${film?.media_type ? film?.media_type : props?.media_type}/${film.id}`}>
                   <div>
                     <img
                       className={TableCSS.MoviePoster}
-                      src={MovieDBLinks.image + film.poster_path}
-                      alt={film.original_title + " poster"}
-                      srcSet={MovieDBLinks.image_original + film.poster_path}
+                      src={(film?.poster_path||film?.profile_path)?MovieDBLinks.image + (film?.poster_path||film?.profile_path):"/default_userpic.png"}
+                      alt={(film?.title||film?.name) + " poster"}
+                      // srcSet={MovieDBLinks.image_original + (film?.poster_path||film?.profile_path)}
                       onClick={() => {
-                        window.location.href = "/movie/" + film.id;
+                        window.location.href = `/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id;
                       }}
                     />
                     <div>
-                      <h3>{film.original_title}</h3>
-                      <p>Rating | {film.vote_average}</p>
-                      <p>Year | {film.release_date?.slice(0, 4)}</p>
+                      <h3>{(film?.title||film?.name)}</h3>
+                      <p>Rating | {film?.vote_average}</p>
+                      <p>Year | {film?.release_date?.slice(0, 4)}</p>
                     </div>
                   </div>
                 </NavLink>
@@ -103,27 +103,27 @@ export function Table(props) {
                 <tr key={film.id}>
                   <td>{index + 1 + (page - 1) * films.length}</td>
                   <td className={TableCSS.imageCell}>
-                    {film.poster_path ? (
+                    {(film?.poster_path||film?.profile_path) ? (
                       <img
                         className={TableCSS.MoviePoster}
-                        src={MovieDBLinks.image + film.poster_path}
-                        alt={film.original_title + " poster"}
-                        srcSet={MovieDBLinks.image_original + film.poster_path}
+                        src={MovieDBLinks.image + (film?.poster_path||film?.profile_path)}
+                        alt={(film?.title||film?.name) + " poster"}
+                        // srcSet={MovieDBLinks.image_original + (film?.poster_path||film?.profile_path)}
                         onClick={() => {
-                          window.location.href = "/movie/" + film.id;
+                          window.location.href = `/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id;
                         }}
                       />
                     ) : (
                       <img
                         className={TableCSS.MoviePoster}
                         src={"/default_userpic.png"}
-                        alt={film.original_title + " poster"}
+                        alt={(film?.title||film?.name) + " poster"}
                       />
                     )}
                   </td>
                   <td>
-                    <NavLink to={`/movie/${film.id}`} className={TableCSS.Link}>
-                      {film.original_title}
+                    <NavLink to={`/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id} className={TableCSS.Link}>
+                      {(film?.title||film?.name)}
                     </NavLink>
                   </td>
                   <td>
@@ -138,8 +138,8 @@ export function Table(props) {
                       />
                     ) : null}
                   </td>
-                  <td>{film.release_date?.slice(0, 4)}</td>
-                  <td>{film.vote_average}</td>
+                  <td>{film?.release_date?.slice(0, 4)}</td>
+                  <td>{film?.vote_average}</td>
                 </tr>
               );
             })}

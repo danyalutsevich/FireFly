@@ -21,6 +21,6 @@ export function Ratings() {
   }
 
   return (
-    <Table url={"ratings"} page={page} films={films} />
+    <Table url={"ratings"} page={page} films={films} media_type={"movie"} />
   )
 }
