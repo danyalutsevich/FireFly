@@ -25,6 +25,7 @@ export const MovieDBLinks = {
     person_credits: (person_id) => `https://api.themoviedb.org/3/person/${person_id}/combined_credits?api_key=${MovieDB_API_KEY}&language=en-US`,
     tv: (tv_id) => `https://api.themoviedb.org/3/tv/${tv_id}?api_key=${MovieDB_API_KEY}&language=en-US`,
     external_ids: (movie_id, media_type) => `https://api.themoviedb.org/3/${media_type}/${movie_id}/external_ids?api_key=${MovieDB_API_KEY}&language=en-US`,
+    images: (movie_id, media_type) => `https://api.themoviedb.org/3/${media_type}/${movie_id}/images?api_key=${MovieDB_API_KEY}&language=en-US&include_image_language=en,null`,
 }
 
 export const TorrentIoLinks = {

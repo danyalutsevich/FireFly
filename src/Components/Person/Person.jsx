@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { MovieDBLinks } from "../../Variables";
 import { Loading } from "../Loading";
+import { Images } from "../Images";
 
 import PersonCSS from "./Person.module.scss";
 
@@ -40,15 +41,19 @@ export function Person(props) {
                     {person?.also_known_as?.length > 0 && <h2>Also known as: <p>{person.also_known_as.map((name) => name + ", ")}</p></h2>}
                     {person?.known_for_department && <h2>Known for: <p>{person?.known_for_department}</p></h2>}
                     {person?.place_of_birth && <h2>Place of birth: <p>{person?.place_of_birth}</p></h2>}
-                    {person?.biography && <><h2>Biography: </h2> <p>{person?.biography}</p></>}
                     {/* {JSON.stringify(person)} */}
                 </div>
+            </div>
+            {person?.biography && <><h1>Biography </h1> <p>{person?.biography}</p></>}
+            <h1>Photos</h1>
+            <div className={PersonCSS.Photos}>
+                <Images media_type="person" movie_id={params.id}/>
             </div>
             <h1>Credits</h1>
             <div className={PersonCSS.Credits}>
                 {credits?.cast?.map((movie) => {
                     return (
-                        <NavLink to={"/"+movie.media_type+"/" + movie?.id}>
+                        <NavLink to={"/" + movie.media_type + "/" + movie?.id}>
 
                             <div className={PersonCSS.Credit}>
                                 <img src={movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "/default_userpic.png"} alt={"Poster of " + movie?.title} />
