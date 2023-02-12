@@ -15,7 +15,4 @@ In this way, our users can personally evaluate and influence the internal rankin
 
 Also, the user can change the picture of his avatar at any time or delete his account.
 
-![](https://fireflyratings.com/demo.gif)
-
-
-
+![2023_01_30_125624](https://user-images.githubusercontent.com/83612717/218339628-4975c8bd-7c1c-470f-b27f-c3778391bfcb.gif)
