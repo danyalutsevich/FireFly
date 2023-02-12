@@ -15,4 +15,4 @@ In this way, our users can personally evaluate and influence the internal rankin
 
 Also, the user can change the picture of his avatar at any time or delete his account.
 
-![search bar example](https://raw.githubusercontent.com/danyalutsevich/FireFly/11757d87311372cffe53823f7bf6706262a2eb81/build/search_example.png)
+![usage example](https://fireflyratings.com/demo.gif)
