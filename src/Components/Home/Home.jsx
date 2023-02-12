@@ -31,7 +31,7 @@ export function Home() {
   return (
     <div className={HomeCSS.Home}>
       <TopFilm film={films[0]} />
-      <Table films={films} page={page} url={"page"} media_type={"movie"}/>
+      <Table films={films} page={page} url={"home"} media_type={"movie"}/>
     </div>
   );
 }

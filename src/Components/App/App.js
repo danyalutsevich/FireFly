@@ -27,7 +27,7 @@ export function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/page/:page" element={<Home />} />
+          <Route path="/home/:page" element={<Home />} />
           <Route path="/person/:id" element={<Person />} />
           <Route path="/search/:searchValue" element={<Search />} />
           <Route path="/search/:searchValue/:page" element={<Search />} /> {/* useParams hook will return {searchValue, page} */}
