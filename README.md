@@ -1,5 +1,5 @@
 
-![2023_01_30_125624](https://user-images.githubusercontent.com/83612717/218339628-4975c8bd-7c1c-470f-b27f-c3778391bfcb.gif =1100x620)
+![2023_01_30_125624](https://user-images.githubusercontent.com/83612717/218339628-4975c8bd-7c1c-470f-b27f-c3778391bfcb.gif)
 
 # Project Description
 
