@@ -21,6 +21,9 @@ export function WatchlistFolder() {
         setUser(contextData.user);
         setRatings(contextData.ratings);
         document.title = folder;
+        document.querySelector('meta[name="description"]').setAttribute("content", `Here you can find films saved to your WatchlistFolder`)
+        document.querySelector('meta[property="og:description"]').setAttribute("content", `Here you can find films saved to your WatchlistFolder`)
+        document.querySelector('meta[property="og:title"]').setAttribute("content", "WatchlistFolder")
     }, [contextData]);
 
     if (!watchlist[folder]) {

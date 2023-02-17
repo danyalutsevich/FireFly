@@ -18,6 +18,9 @@ export function Search() {
         .then((data) => { setFilms(data.results); setTotalResults(data.total_results); console.log(data)});
       addSearch(searchValue);
       document.title = "Search: " + searchValue;
+      document.querySelector('meta[name="description"]').setAttribute("content", `Here you can search for films`)
+      document.querySelector('meta[property="og:description"]').setAttribute("content", `Here you can search for films`)
+      document.querySelector('meta[property="og:title"]').setAttribute("content", "Search")
     }
   }, [page, searchValue]);
 

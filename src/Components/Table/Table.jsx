@@ -52,22 +52,23 @@ export function Table(props) {
         <div className={TableCSS.FilmsList_mobile}>
           {films.map((film, index) => {
             return (
-              <div className={TableCSS.FilmCell_mobile}>
-                <NavLink to={`/${film?.media_type ? film?.media_type : props?.media_type}/${film.id}`}>
+              <div className={TableCSS.FilmCell_mobile} itemscope itemtype="https://schema.org/Movie">
+                <NavLink itemprop="url" to={`/${film?.media_type ? film?.media_type : props?.media_type}/${film.id}`}>
                   <div>
                     <img
+                      itemprop="image"
                       className={TableCSS.MoviePoster}
-                      src={(film?.poster_path||film?.profile_path)?MovieDBLinks.image + (film?.poster_path||film?.profile_path):"/default_userpic.png"}
-                      alt={(film?.title||film?.name) + " poster"}
+                      src={(film?.poster_path || film?.profile_path) ? MovieDBLinks.image + (film?.poster_path || film?.profile_path) : "/default_userpic.png"}
+                      alt={(film?.title || film?.name) + " poster"}
                       // srcSet={MovieDBLinks.image_original + (film?.poster_path||film?.profile_path)}
                       onClick={() => {
                         window.location.href = `/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id;
                       }}
                     />
                     <div>
-                      <h3>{(film?.title||film?.name)}</h3>
-                      <p>Rating | {film?.vote_average}</p>
-                      <p>Year | {film?.release_date?.slice(0, 4)}</p>
+                      <h3 itemprop="name">{(film?.title || film?.name)}</h3>
+                      <p itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">Rating | {film?.vote_average}</p>
+                      <p itemprop="datePublished">{film?.release_date?.slice(0, 4) || ((film?.first_air_date?.slice(0, 4)||"") + "  " + (film?.last_air_date?.slice(0, 4)||""))}</p>
                     </div>
                   </div>
                 </NavLink>
@@ -100,30 +101,31 @@ export function Table(props) {
           <tbody>
             {films.map((film, index) => {
               return (
-                <tr key={film.id}>
+                <tr key={film.id} itemscope itemtype="https://schema.org/Movie">
                   <td>{index + 1 + (page - 1) * films.length}</td>
                   <td className={TableCSS.imageCell}>
-                    {(film?.poster_path||film?.profile_path) ? (
-                      <img
+                    {(film?.poster_path || film?.profile_path) ? (
+                      <img itemprop="image"
                         className={TableCSS.MoviePoster}
-                        src={MovieDBLinks.image + (film?.poster_path||film?.profile_path)}
-                        alt={(film?.title||film?.name) + " poster"}
+                        src={MovieDBLinks.image + (film?.poster_path || film?.profile_path)}
+                        srcSet={MovieDBLinks.image + (film?.poster_path || film?.profile_path) + ", " + MovieDBLinks.image_original + (film?.poster_path || film?.profile_path) + " 2x"}
+                        alt={(film?.title || film?.name) + " poster"}
                         // srcSet={MovieDBLinks.image_original + (film?.poster_path||film?.profile_path)}
                         onClick={() => {
                           window.location.href = `/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id;
                         }}
                       />
                     ) : (
-                      <img
+                      <img itemprop="image"
                         className={TableCSS.MoviePoster}
                         src={"/default_userpic.png"}
-                        alt={(film?.title||film?.name) + " poster"}
+                        alt={(film?.title || film?.name) + " poster"}
                       />
                     )}
                   </td>
                   <td>
-                    <NavLink to={`/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id} className={TableCSS.Link}>
-                      {(film?.title||film?.name)}
+                    <NavLink itemprop="url" to={`/${film?.media_type ? film?.media_type : props?.media_type}/` + film.id} className={TableCSS.Link}>
+                      <p itemprop="name">{(film?.title || film?.name)}</p>
                     </NavLink>
                   </td>
                   <td>
@@ -138,16 +140,16 @@ export function Table(props) {
                       />
                     ) : null}
                   </td>
-                  <td>{film?.release_date?.slice(0, 4)}</td>
-                  <td>{film?.vote_average}</td>
+                  <td itemprop="datePublished">{film?.release_date?.slice(0, 4) || ((film?.first_air_date?.slice(0, 4)||"") + " " + (film?.last_air_date?.slice(0, 4)||""))}</td>
+                  <td itemprop="aggregateRating" itemscope itemtype="https://schema.org/AggregateRating">{film?.vote_average}</td>
                 </tr>
               );
             })}
           </tbody>
         </table>
       )}
-      <div className={TableCSS.Pages}>
-        {films.length == 20 && <NavLink
+      <div className={TableCSS.Pages} itemscope itemtype="http://schema.org/Product">
+        {films.length == 20 && <NavLink itemprop="url"
           className={TableCSS.PageButton}
           to={`/${url == "" ? "" : url + "/"}${Number(page) === 1 ? 1 : Number(page) - 1
             }`}
@@ -157,7 +159,7 @@ export function Table(props) {
         >
           prev
         </NavLink>}
-        {films.length == 20 && <NavLink
+        {films.length == 20 && <NavLink itemprop="url"
           className={TableCSS.PageButton}
           to={`/${url == "" ? "" : url + "/"}${Number(page) + 1}`}
           onClick={() => {

@@ -55,17 +55,17 @@ export function Cast(props) {
   const renderTabs = (photo, showPhoto, title, description, key, to) => {
 
     return (
-      <div className={CastCSS.Tab} key={key}>
+      <div className={CastCSS.Tab} key={key} itemprop="actor" itemscope itemtype="http://schema.org/Person">
         {showPhoto ?
           photo ?
-            <img src={MovieDBLinks.image + photo} /> :
-            <img src={"/default_userpic.png"} alt={title + " photo"} /> :
+            <img itemprop="image" src={MovieDBLinks.image + photo} /> :
+            <img itemprop="image" src={"/default_userpic.png"} alt={title + " photo"} /> :
           null
         }<div>
-          <NavLink to={to}>
-            <h2>{title}</h2>
+          <NavLink to={to} itemprop="url">
+            <h2 itemprop="name">{title}</h2>
           </NavLink>
-          <h3>{description}</h3>
+          <h3 itemprop="description">{description}</h3>
         </div>
       </div>
     )

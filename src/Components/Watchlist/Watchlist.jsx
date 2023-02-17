@@ -26,6 +26,9 @@ export function Watchlist() {
     setWatchlistFolders(contextData.watchlistFolders);
     console.log("folders: ", folders);
     document.title = "Watchlist";
+    document.querySelector('meta[name="description"]').setAttribute("content", `Here you can find films saved to your watchlist`)
+    document.querySelector('meta[property="og:description"]').setAttribute("content", `Here you can find films saved to your watchlist`)
+    document.querySelector('meta[property="og:title"]').setAttribute("content", "Watchlist")
   }, [contextData]);
 
   return (
