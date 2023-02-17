@@ -19,6 +19,9 @@ export function Liked() {
     setUser(contextData.user);
     setRatings(contextData.ratings);
     document.title = "Liked";
+    document.querySelector('meta[name="description"]').setAttribute("content", `Your liked films will appear here`)
+    document.querySelector('meta[property="og:description"]').setAttribute("content", `Your liked films will appear here`)
+    document.querySelector('meta[property="og:title"]').setAttribute("content", "Liked")
   }, [contextData]);
 
   if (liked.length == 0) {

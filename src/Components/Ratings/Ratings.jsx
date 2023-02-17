@@ -14,6 +14,9 @@ export function Ratings() {
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
       document.title = "Ratings"
+      document.querySelector('meta[name="description"]').setAttribute("content", `Here you can find top rated films`)
+      document.querySelector('meta[property="og:description"]').setAttribute("content", `Here you can find top rated films`)
+      document.querySelector('meta[property="og:title"]').setAttribute("content", "Ratings")
   }, [page]);
 
   if (films.length === 0) {

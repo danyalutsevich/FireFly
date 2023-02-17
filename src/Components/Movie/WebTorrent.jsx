@@ -29,7 +29,9 @@ export function WebTorrent(props) {
 
     return (
         <div className={WebTorrentCSS.WebTorrent} id="webtorrent">
-            {/* {loading?"Loading...":"ed"} */}
+            <div className={WebTorrentCSS.Stream} key={-1}>
+                <a href={"https://www.utorrent.com/web/"}>Please download Webtorrent to watch a movie, you can watch movie instantly without waiting for the downloading to complete.</a>
+            </div>
             {
                 streams?.length > 0 ? streams.map((stream, index) => {
                     return (

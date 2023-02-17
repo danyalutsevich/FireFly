@@ -14,6 +14,9 @@ export function SignIn() {
 
   useEffect(() => {
     document.title = "Sign In";
+    document.querySelector('meta[name="description"]').setAttribute("content", `Here you can Sign In to your account with Google or with your email. Singin In gives you access to your Watchlist and to your Ratings also you can save films`)
+    document.querySelector('meta[property="og:description"]').setAttribute("content", `Here you can Sign In to your account with Google or with your email Singin In gives you access to your Watchlist and to your Ratings also you can save films`)
+    document.querySelector('meta[property="og:title"]').setAttribute("content", "Sign In")
   },[])
 
   const clickHandler = async () => {
