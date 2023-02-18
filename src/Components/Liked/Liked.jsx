@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Helmet } from 'react-helmet';
 import { NavLink } from "react-router-dom";
 
 import { FirebaseContext } from '../../firebase-config';
@@ -18,15 +19,17 @@ export function Liked() {
     setWatchlist(contextData.watchlist);
     setUser(contextData.user);
     setRatings(contextData.ratings);
-    document.title = "Liked";
-    document.querySelector('meta[name="description"]').setAttribute("content", `Your liked films will appear here`)
-    document.querySelector('meta[property="og:description"]').setAttribute("content", `Your liked films will appear here`)
-    document.querySelector('meta[property="og:title"]').setAttribute("content", "Liked")
   }, [contextData]);
 
   if (liked.length == 0) {
     return (
       <div className={LikedCSS.NoLikedFilms}>
+        <Helmet>
+          <title>Liked</title>
+          <meta property="og:title" content="Liked" />
+          <meta property="og:description" content="Your liked films will appear here" />
+          <meta name="description" content="Your liked films will appear here" />
+        </Helmet>
         <h1>Your liked films <br />will appear here</h1>
       </div>
     )
@@ -34,13 +37,19 @@ export function Liked() {
 
   return (
     <div className={LikedCSS.Liked}>
+        <Helmet>
+          <title>Liked</title>
+          <meta property="og:title" content="Liked" />
+          <meta property="og:description" content="Your liked films will appear here" />
+          <meta name="description" content="Your liked films will appear here" />
+        </Helmet>
       <div className={LikedCSS.Header}>
         <h2>Liked</h2>
         <div className={LikedCSS.Sort}>
           <span className="material-symbols-outlined"
-          onClick={() => {
-            setLiked([...liked.reverse()])
-          }}
+            onClick={() => {
+              setLiked([...liked.reverse()])
+            }}
           >
             swap_vert
           </span>

@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useParams } from "react-router-dom";
 import Iframe from 'react-iframe'
+import { Helmet } from "react-helmet";
+
 import { MovieDBLinks } from "../../Variables";
 import { Loading } from "../Loading";
 import { Cast } from "./Cast";
@@ -10,13 +12,11 @@ import { TableOperations } from "../Table/TableOperations";
 import { like, FirebaseContext, saveToWatchlist } from "../../firebase-config";
 
 import MovieCSS from "./Movie.module.scss";
-import { useInsertionEffect } from "react";
 
 export function Movie(props) {
   const [movie, setMovie] = useState(undefined);
   const { id } = useParams();
   const [VideoId, setVideoId] = useState(undefined);
-  const [TrailerKey, setTrailerKey] = useState(undefined);
   const [ExternalIds, setExternalIds] = useState(undefined);
 
   useEffect(() => {
@@ -27,9 +27,6 @@ export function Movie(props) {
           .then((data) => data.json())
           .then((data) => {
             setMovie(data);
-            document.title = data.title;
-            document.querySelector('meta[property="og:title"]').setAttribute("content", data?.title)
-            document.querySelector('meta[property="og:description"]').setAttribute("content", data?.overview)
           })
       }
       else if (props.media_type === "tv") {
@@ -37,9 +34,6 @@ export function Movie(props) {
           .then((data) => data.json())
           .then((data) => {
             setMovie(data);
-            document.title = data.name
-            document.querySelector('meta[property="og:title"]').setAttribute("content", data?.name)
-            document.querySelector('meta[property="og:description"]').setAttribute("content", data?.overview)
           });
       }
 
@@ -61,7 +55,7 @@ export function Movie(props) {
   const [watchlist, setWatchlist] = useState([]);
   const [user, setUser] = useState(null);
   const [ratings, setRatings] = useState([]);
-
+  
   useEffect(() => {
     setLiked(contextData.liked);
     setWatchlist(contextData.watchlist);
@@ -69,22 +63,69 @@ export function Movie(props) {
     setRatings(contextData.ratings);
   }, [contextData]);
 
+  const meta = `${movie?.title || movie?.name} смотреть онлайн watch online torrent скачать download `
+
   if (movie === undefined) {
-    return <Loading />;
+    return <div>
+      <Helmet>
+        <title>{movie?.title || movie?.name}</title>
+        <link rel="canonical" href={window.location.href} />
+        <meta property="og:title" content={movie?.title || movie?.name} />
+        <meta property="og:description" content={`${meta} About movie: ` + movie?.overview} />
+        <meta property="og:image" content={movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png"} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Firefly" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={movie?.title || movie?.name} />
+        <meta name="twitter:description" content={`${meta} About movie: ` + movie?.overview} />
+        <meta name="twitter:image" content={movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png"} />
+
+        <meta name="description" content={meta} />
+      </Helmet>
+      <Loading />;
+    </div>
   }
 
-  const meta = `${movie?.title} смотреть онлайн watch online torrent скачать download`
-
-  document.querySelector('meta[name="description"]').setAttribute("content", `${meta} About movie: ` + movie?.overview)
-  if (movie?.poster_path) {
-    document.querySelector('meta[property="og:image"]').setAttribute("content", MovieDBLinks.image_original + movie.poster_path)
-  }
-  else {
-    document.querySelector('meta[property="og:image"]').setAttribute("content", "https://fireflyratings.com/default_userpic.png")
+  const movieData = {
+    "@context": "http://schema.org",
+    "@type": "Movie",
+    "name": movie?.title || movie?.name,
+    "description": meta + movie?.overview,
+    "image": movie?.poster_path ? MovieDBLinks.image_original + movie?.poster_path : "https://fireflyratings.com/default_userpic.png",
+    "url": window.location.href,
+    "datePublished": movie?.release_date || movie?.first_air_date,
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": movie?.vote_average,
+      "reviewCount": movie?.vote_count
+    },
+    "duration": movie?.runtime,
+    "genre": movie?.genres.map(genre => genre.name),
   }
 
   return (
     <div className={MovieCSS.Movie} style={{ backgroundColor: movie.adult ? "#720000" : "#272727" }} itemscope itemtype="https://schema.org/Movie">
+      <Helmet>
+        <title>{movie.title || movie.name}</title>
+
+        <script type="application/ld+json">{JSON.stringify(movieData)}</script>
+        <meta property="og:title" content={movie.title || movie.name} />
+        <meta property="og:description" content={`${meta} About movie: ` + movie?.overview} />
+        <meta property="og:image" content={movie?.poster_path ? MovieDBLinks.image_original + movie.poster_path : "https://fireflyratings.com/default_userpic.png"} />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Firefly" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={movie.title || movie.name} />
+        <meta name="twitter:description" content={`${meta} About movie: ` + movie?.overview} />
+        <meta name="twitter:image" content={movie?.poster_path ? MovieDBLinks.image_original + movie.poster_path : "https://fireflyratings.com/default_userpic.png"} />
+
+        <meta name="description" content={meta} />
+      </Helmet>
+
       <div className={MovieCSS.Backdrop}>
         <img
           src={MovieDBLinks.image_original + movie.backdrop_path}
@@ -113,7 +154,7 @@ export function Movie(props) {
         <div>
           <div className={MovieCSS.Title}>
             <h1 itemprop="name">{movie?.title || movie?.name}</h1>
-            <h3 itemprop="datePublished">{movie?.release_date?.slice(0, 4) || ((movie?.first_air_date?.slice(0, 4)||"") + "  " + (movie?.last_air_date?.slice(0, 4)||""))}</h3>
+            <h3 itemprop="datePublished">{movie?.release_date?.slice(0, 4) || ((movie?.first_air_date?.slice(0, 4) || "") + "  " + (movie?.last_air_date?.slice(0, 4) || ""))}</h3>
           </div>
           <div className={MovieCSS.About}>
             {user ? (
