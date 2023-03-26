@@ -98,7 +98,7 @@ export function Movie(props) {
     "datePublished": movie?.release_date || movie?.first_air_date,
     "aggregateRating": {
       "@type": "AggregateRating",
-      "ratingValue": movie?.vote_average,
+      "ratingValue": movie?.vote_average.toFixed(1),
       "reviewCount": movie?.vote_count
     },
     "duration": movie?.runtime,
