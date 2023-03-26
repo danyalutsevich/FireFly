@@ -34,7 +34,7 @@ export function SearchResults(props) {
         })
         :
         films.map((film) => {
-          return <NavLink to={`/movie/${film.id}`} key={film.title}>{film.title} <span>{film?.release_date?.slice(0, 4)}</span></NavLink>;
+          return <NavLink to={`/movie/${film.id}`} key={film?.title || film?.name}>{film?.title || film?.name} <span>{film?.release_date?.slice(0, 4)}</span></NavLink>;
         })}
       <div className={SearchResultsCSS.Divider}></div>
       <NavLink to={props.searchValue === "" ? "#" : `/search/${props.searchValue}/1`}>
