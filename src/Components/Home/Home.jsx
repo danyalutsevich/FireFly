@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Links, { MovieDBLinks } from "../../Variables";
 import { useParams } from "react-router-dom";
+import { Helmet } from "react-helmet";
 
 import { Loading } from "../Loading";
 import { TopFilm } from "../TopFilm";
@@ -23,14 +24,33 @@ export function Home() {
     fetch(MovieDBLinks.popular(page))
       .then((data) => data.json())
       .then((data) => setFilms(data.results));
+    document.title = "Home"
   }, [page]);
   if (films.length === 0) {
     return <Loading />;
   }
   return (
     <div className={HomeCSS.Home}>
+      <Helmet>
+        <title>{"Home"}</title>
+
+        <link rel="canonical" href={window.location.href} />
+        <meta property="og:title" content={"Home"} />
+        <meta property="og:description" content={"This is home Page. You can find tranding movies here"} />
+        <meta property="og:image" content="/logo512.png" />
+        <meta property="og:url" content={window.location.href} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Firefly" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={"Home"} />
+        <meta name="twitter:description" content={"This is home Page. You can find tranding movies here"} />
+        <meta name="twitter:image" content={"/logo512.png"} />
+
+        <meta name="description" content={"This is home Page. You can find tranding movies here"} />
+      </Helmet>
       <TopFilm film={films[0]} />
-      <Table films={films} page={page} url={"page"} />
+      <Table films={films} page={page} url={"home"} media_type={"movie"} />
     </div>
   );
 }

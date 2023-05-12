@@ -1,0 +1,75 @@
+@import "../Header/Header.module.scss";
+
+
+.Person{
+
+    .PersonPic{
+        height: 60vh;
+        min-width: auto;
+        margin: 40px;
+        border-radius: 5px;
+    }
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    
+    .Description{
+        display: flex;
+        // flex-direction: column;
+        align-items: flex-start;
+        // justify-content: center;
+        
+        width: 70vw;
+    }
+
+    .Credits{
+        width: 80vw;
+        display: flex;
+        flex-wrap: wrap;
+
+        img{
+            height: 200px;
+            margin: 10px;
+            overflow: hidden;
+            border-radius: 10px;
+        }
+    }
+
+    .Photos{
+        width: 80vw;
+        display: flex;
+        flex-wrap: wrap;
+
+        // img{
+        //     height: 200px;
+        //     margin: 10px;
+        //     overflow: hidden;
+        //     border-radius: 10px;
+        // }
+    }
+
+    h1{
+        margin: 40px 0px;
+        max-width: 55vw;
+        font-family: "EB Garamond";
+        color: white;
+        font-size: 70px;
+    }
+
+    h2{
+        font-family: $font-for-text;
+        color: white;
+        font-size: 20px;
+        margin:10px 0 ;
+    }
+
+    p,a{
+        font-family: $font-for-text;
+        color: #acacac;
+        font-size: 20px;
+        margin:10px 0 ;
+        max-width: 60vw;
+    }
+}

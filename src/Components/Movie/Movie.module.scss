@@ -8,27 +8,37 @@
   font-family: $font-for-text;
 
   .Video {
-    display:block;
+    display: block;
     position: relative;
     margin: 2em 0;
     padding: 2em 0;
+
     .Trailer {
+      border:0;
       width: 60vw;
-    height: 60vh;
+      height: 60vh;
+    }
+
+    @media (max-width: 767px){
+      .Trailer{
+        width: 70vw;
+        height: 30vh;
+      }
     }
   }
 
   .Backdrop {
-    height: 40vh;
-    min-height: 400px;
+    width: 60vw;
+    // height: 60vh;
+    // min-height: 400px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 50px;
-
+    
     img {
-      height: 100%;
+      width: 100%;
     }
 
     .EdgeBlur {
@@ -39,13 +49,21 @@
     }
   }
 
+  @media (max-width: 767px) {
+    .Backdrop {
+      width: 100vw;
+      padding: 0;
+      display: none;
+    }
+  }
+
   .Description {
     display: flex;
 
     img {
-      height: 40vh;
+      height: 60vh;
       min-width: auto;
-      margin: 0 40px;
+      margin-right:40px;
       border-radius: 5px;
     }
 
@@ -58,6 +76,7 @@
         color: white;
         font-size: 70px;
         margin-right: 20px;
+        max-width: 55vw;
       }
 
       h2 {
@@ -109,13 +128,15 @@
           font-size: 15px;
         }
       }
+
       .Video {
         .Trailer {
           width: 80vw;
           height: 80vh;
-          margin:0 20px;
+          margin: 0 20px;
         }
-     }
+      }
+
       .About {
         width: 80vw;
       }

@@ -1,0 +1,14 @@
+.Images {
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    img {
+        // width: 10vw;
+        height: 20vh;
+        margin: 10px;
+        border-radius: 5px;
+    }
+
+}

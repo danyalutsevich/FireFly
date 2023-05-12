@@ -5,7 +5,9 @@ import { MovieDBLinks } from "../../Variables";
 import { TableOperations } from "../Table";
 
 
-import { like } from "../../firebase-config";
+import { like, FirebaseContext } from "../../firebase-config";
+
+import { useContext } from "react";
 
 
 import LikedContentCardCSS from "./LikedContentCard.module.scss";
@@ -22,15 +24,19 @@ export function LikedContentCard(props) {
 
   const [film, setFilm] = useState({});
 
+  // console.log(filmID);
+
+
+
   useEffect(() => {
     fetch(MovieDBLinks.movie(filmID))
       .then((data) => data.json())
       .then((data) => setFilm(data));
-  }, []);
+  }, [filmID]);
 
   return (
-    <div className={LikedContentCardCSS.LikedFilm}>
-      <NavLink to={`/movie/${film.id}`} key={film}>
+    <div className={LikedContentCardCSS.LikedFilm} key={filmID}>
+      <NavLink to={`/movie/${film.id}`} key={filmID}>
         {film.poster_path ?
           <img
             src={MovieDBLinks.image_original + film?.poster_path}

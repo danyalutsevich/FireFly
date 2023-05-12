@@ -16,6 +16,7 @@ export function Profile() {
 
   useEffect(() => {
     setName(user?.displayName);
+    document.title = "Profile: " + user?.displayName;
   }, [user]);
 
   const fileSelected = async (e) => {

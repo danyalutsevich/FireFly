@@ -1,19 +1,23 @@
+@import "../Header/Header.module.scss";
 .Search{
     .SearchInfo{
+        font-family: $font-for-text;
         width: 85vw;
         margin: 0 auto;
         display: flex;
         justify-content: space-between;
         align-items: baseline;
+        font-size: 1.2em;
     }
 
     h1, h2{
         color:azure;
+        vertical-align: baseline;
         margin: 5vh 0px;
     }
 
     .Divider{
-        height: 5vh;
+        height: 6vh;
         width: 3px;
         background-color:yellow;
         display: inline-block;
@@ -22,8 +26,11 @@
     }
 
     .SearchValue{
-        font-size: 1.5em;
-        vertical-align: baseline;
+        font-family: $font-for-text;
+        font-size: relative;
+        font-weight: lighter;
+        font-size: 1.2em;
+        align-self: center;
         color:azure;
     }
 

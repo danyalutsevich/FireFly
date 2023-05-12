@@ -16,7 +16,7 @@ export function Header(props) {
   }, [contextData]);
 
   return (
-    <div className={HeaderCSS.Header}>
+    <div className={HeaderCSS.Header} id="header">
       <NavLink className={HeaderCSS.Logo} to="/">
         FireFly
       </NavLink>
@@ -28,7 +28,6 @@ export function Header(props) {
             className={HeaderCSS.searchInput}
             value={searchValue}
             autoComplete="off"
-            placeholder="Type to search..."
             onFocus={() => {
               setInputIsFocused(true);
             }}
@@ -43,13 +42,16 @@ export function Header(props) {
               }
             }}
           ></input>
+          <span className={HeaderCSS.SearchIcon}>
           <NavLink
             className={HeaderCSS.MenuItem}
             to={searchValue === "" ? "#" : `/search/${searchValue}/1`}
           >
-            <i className="material-icons">search</i>
+            
           </NavLink>
+          </span>
         </div>
+        
         <SearchResults
           searchValue={searchValue}
           isActive={inputIsFocused}
@@ -100,6 +102,9 @@ export function Header(props) {
           </NavLink>
         </div>
       )}
+        <a href="#header" className={HeaderCSS.GoUp+" material-symbols-outlined"}>
+          arrow_upward
+        </a>
     </div>
   );
 }

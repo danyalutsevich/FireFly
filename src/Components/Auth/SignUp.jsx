@@ -11,8 +11,14 @@ export function SignUp() {
   const [passwordShown, setPasswordShown] = useState(false);
   const togglePassword = () => {
 
-    setPasswordShown(!passwordShown);
-  };
+
+  useEffect(() => {
+    document.title = "Sign Up";
+    document.querySelector('meta[name="description"]').setAttribute("content", `Here you can Sign Up it gives you access to your Watchlist and to your Ratings also you will be able save films`)
+    document.querySelector('meta[property="og:description"]').setAttribute("content", `Here you can Sign Up it gives you access to your Watchlist and to your Ratings also you will be able save films`)
+    document.querySelector('meta[property="og:title"]').setAttribute("content", "Sign up")
+  }, []);
+
   const clickHandler = async () => {
     await register(email, password, name);
   };

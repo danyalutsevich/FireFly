@@ -7,7 +7,7 @@ export function Footer() {
     <div className={FooterCSS.Footer}>
       <div className={FooterCSS.Footer_Links}>
         <p className={FooterCSS.Link}>
-          <a href="https://www.themoviedb.org/">IMDb Movie Database</a>
+          <a href="https://www.themoviedb.org/">TMDb Movie Database</a>
         </p>
         <p className={FooterCSS.Link}>
           <a href="https://github.com/danyalutsevich/FireFly">GitHub</a>&nbsp;
@@ -17,9 +17,14 @@ export function Footer() {
         </p>
       </div>
       <p className={FooterCSS.Issue}>
-        <span>You can report a bug by opening an issue on our github</span>
+        <span>You can report a bug by opening an issue in our GitHub</span>
       </p>
-      <br />
+      <div className={FooterCSS.DownloadTorrent}>
+        <p>In order to watch films you should download </p>
+        <a className={FooterCSS.Description} href="https://www.utorrent.com/web/"> WebTorrent</a>
+        <a className={FooterCSS.Win} href="https://download-new.utorrent.com/endpoint/utweb/track/stable/os/win"> Win </a>
+        <a className={FooterCSS.Mac} href="https://utweb-assets.bittorrent.com/installer/uTorrentWeb.dmg"> Mac </a>
+      </div>
       <div className={FooterCSS.FireFly}>
         <p>
           <span>© {new Date().getFullYear()}</span> FireFly

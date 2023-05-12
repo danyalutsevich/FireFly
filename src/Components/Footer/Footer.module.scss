@@ -6,6 +6,41 @@
   align-items: center;
   justify-content: center;
   background-color: hsla(0, 0%, 13%, 0.455);
+
+  .DownloadTorrent {
+    font-family: $font-for-text;
+    margin: 10px;
+
+    p {
+      font-weight: 700;
+      margin: 5px;
+      color: #7b7a7a;
+      font-family: $font-for-text;
+    }
+    
+    a {
+      font-weight: 700;
+      font-family: $font-for-text;
+      margin: 0 5px;
+    }
+
+    .Description {
+      color: green;
+    }
+
+    .Win {
+      color: blue;
+    }
+
+    .Mac {
+      color: orange;
+    }
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
   .Footer_Links {
     border-top: 1px solid #ffffff;
     display: flex;
@@ -23,6 +58,7 @@
       margin: 30px;
       padding: 10px;
       box-shadow: 5px 5px 5px 0px rgba(0, 0, 0, 0.55);
+
       a {
         display: flex;
         align-items: center;
@@ -41,6 +77,7 @@
       cursor: pointer;
     }
   }
+
   .FireFly {
     display: flex;
     align-items: center;
@@ -52,6 +89,7 @@
     color: white;
     padding-bottom: 10px;
   }
+
   .Issue {
     display: flex;
     align-items: center;
@@ -65,10 +103,12 @@
   @media (max-width: 768px) {
     .Footer_Links {
       flex-direction: column;
+
       .Link {
         margin: 10px;
       }
     }
+
     .FireFly {
       font-size: 1rem;
       width: 30vw;

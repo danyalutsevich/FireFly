@@ -1,3 +1,4 @@
+@import "../Header/Header.module.scss";
 
 .SaveTab {
     display: flex;
@@ -5,9 +6,11 @@
     align-items: center;
     justify-content: end;
     height: 100%;
+    font-family: $font-for-text;
     cursor: pointer;
     font-size: 24px;
     color: white;
+    position: relative;
 
     .NonActive {
         font-variation-settings:

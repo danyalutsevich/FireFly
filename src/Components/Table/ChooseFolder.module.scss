@@ -1,0 +1,81 @@
+.ChooseFolder{
+    
+    font-family: "Helvetica";
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 500,
+    'GRAD' 0,
+    'opsz' 48;
+
+    background-color: #454545;
+    border-radius: 10px;
+    position: absolute;
+    top: 0;
+    right: -40px;
+    z-index: 2;
+    width: 20rem;
+    max-height:50vh;
+    overflow:scroll;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    .Head{
+        display: flex;
+        justify-content: space-between;
+        margin: 10px;
+        h1{
+            font-size: 20px;
+        }
+    }
+
+    .Folders{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 10px 10px 0 10px;
+    }
+    .Folder{
+        display: flex;
+        align-items: center;
+        align-items: center;
+        width:100%;
+        padding: 10px;
+        border-radius: 10px;
+
+        p{
+            margin:0 10px
+        }
+    }
+    .Folder:nth-child(odd){
+        background-color: #373737;
+    }
+    .Folder:hover{
+        background-color: gray;
+    }
+
+    .AddFolder{
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        border-radius: 10px;
+        background-color: #515050;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 20px;
+        color: white;
+        
+        input{
+            border: none;
+            width: 250px;
+            background-color: #515050;
+            font-size: 24px;
+            color:white;
+        }
+    }
+
+
+}

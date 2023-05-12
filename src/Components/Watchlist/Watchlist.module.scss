@@ -1,6 +1,97 @@
 @import "../Header/Header.module.scss";
+
 .Watchlist {
-  h2 {
+  .WatchlistHeader {
+    display: flex;
+    justify-content: space-between;
+
+    div {
+      margin-right: 3vw;
+      margin-top: 3.5vw;
+      padding-bottom: 1.3vw;
+      display: flex;
+      align-items: baseline;
+
+      button{
+        background: #353535;
+        font-family: 'Fira Mono';
+        padding: 0.8vw;
+        border: none;
+        border-radius: 0.9vw;
+        color: #fff;
+        font-size: 1.1vw;
+        font-weight: 900; 
+        transition: scale 200ms;
+      }
+
+      button:hover{
+        scale: 1.1;
+      }
+
+      div{
+          position: relative;
+          padding: 15px 0 0;
+          margin-top: 10px;
+          width: 50%;
+        
+        input {
+          font-family: 'Fira Mono';
+          width: 100%;
+          border: 0;
+          border-bottom: 2px solid #9b9b9b;
+          outline: 0;
+          font-size: 1.3vw;
+          color: #fff;
+          padding: 7px 0;
+          background: transparent;
+          transition: border-color 0.2s;
+        
+          &::placeholder {
+            color: transparent;
+          }
+        
+          &:placeholder-shown ~ label {
+            font-size: 1.3vw;
+            cursor: text;
+            top: 20px;
+          }
+        }
+        
+        label {
+          font-family: 'Fira Mono';
+          position: absolute;
+          top: 0;
+          display: block;
+          transition: 0.2s;
+          font-size: 1vw;
+          color: #9b9b9b;
+        }
+        
+        input:focus {
+          ~ label {
+            position: absolute;
+            top: 0;
+            display: block;
+            transition: 0.2s;
+            font-size: 1.3vw;
+            color: #9b9b9b;
+            font-weight:700;    
+          }
+          padding-bottom: 6px;  
+          font-weight: 700;
+          border-width: 3px;
+          border-image: linear-gradient(to right, #fff,#9b9b9b);
+          border-image-slice: 1;
+        }
+        /* reset input */
+        input{
+          &:required,&:invalid { box-shadow:none; }
+        }
+      }
+    }
+  }
+
+  h1 {
     color: white;
     font-family: $font-for-text;
     font-size: 4vw;
@@ -21,10 +112,45 @@
     z-index: 0;
   }
 
+  .FolderWrapper{
+    margin: 20px;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
   .Container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    margin: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .Folder {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: $font-for-text;
+    font-size: 31px;
+    background-color: #323232;
+    color: lightgoldenrodyellow;
+    width: 20vw;
+    height: 10vw;
+    border-radius: 10px;
+    padding: 8px;
+    text-align: center;
+    min-width: 200px;
+    min-height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #666666;
+    transition: scale 200ms;
+  }
+
+  .Folder:hover{
+    scale: 1.1;
   }
 }

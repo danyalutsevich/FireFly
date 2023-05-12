@@ -2,22 +2,28 @@
 
     margin: 10px;
     border-radius: 10px;
-    --display-options: "none";
     --scale-options: 0;
 
     img {
         border-radius: 10px;
-        width: 300px;
+        width: 320px;
     }
 
     &:hover {
-        background-color: gray;
+        background-color: #373737;
         --scale-options: 1;
     }
 
     .LikeOptions {
         scale: var(--scale-options);
         padding: 10px 0;
+    }
+
+    @media screen and (max-width: 767px){
+        margin: 10px;
+        border-radius: 10px;
+        --scale-options: 1;
+        background-color: #373737;
     }
 
 }
